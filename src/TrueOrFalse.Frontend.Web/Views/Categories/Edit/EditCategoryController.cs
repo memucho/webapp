@@ -180,6 +180,25 @@ public class EditCategoryController : BaseController
         ModifyRelationsForCategory.UpdateRelationsOfTypeIncludesContentOf(category);
     }
 
+    [HttpPost]
+    [AccessOnlyAsAdmin]
+    public void ResetAggregation(int categoryId)
+    {
+        var catRepo = Sl.CategoryRepo;
+
+        var category = catRepo.GetById(categoryId);
+
+        var relationsToRemove =
+            category.CategoryRelations.Where(r => r.CategoryRelationType == CategoryRelationType.IncludesContentOf).ToList();
+
+        foreach (var relation in relationsToRemove)
+        {
+            category.CategoryRelations.Remove(relation);
+        }
+
+        catRepo.Update(category);
+    }
+
     public ActionResult AggregationModalContent(int catId)
     {
         var category = R<CategoryRepository>().GetById(catId);

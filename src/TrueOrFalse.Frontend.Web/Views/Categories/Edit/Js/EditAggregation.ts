@@ -28,6 +28,26 @@
         });
     });
 
+    $('#btnResetAggregation').click(e => {
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: "/EditCategory/ResetAggregation",
+            data: {
+                categoryId: $('#hhdCategoryId').val()
+            },
+            cache: false,
+            success(e) {
+                loadModalBody();
+                //window.alert("Erfolgreich aktualisiert.");
+            },
+            error(e) {
+                console.log(e);
+                window.alert("Ein Fehler ist aufgetreten");
+            }
+        });
+    });
+
     $('#btnCloseAggregation').click(function (e) {
 
         e.preventDefault();

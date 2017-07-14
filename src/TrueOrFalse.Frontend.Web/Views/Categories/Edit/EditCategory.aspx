@@ -280,6 +280,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
+                    
+                    <a href="#" id="btnResetAggregation" class="btn btn-danger" style="float: left">Zurücksetzen</a>
                     <a href="#" class="btn btn-default" id="btnCloseAggregation">Schließen</a>
                     <a href="#" id="btnEditAggregation" class="btn btn-primary">Bearbeiten</a>
                 </div>
