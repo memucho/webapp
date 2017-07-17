@@ -43,19 +43,19 @@ public class QuestionSolutionMultipleChoice : QuestionSolution
     public override bool IsCorrect(string answer)
     {
         string[] Answers = answer.Split(new string[] {"%seperate&xyz%"}, StringSplitOptions.RemoveEmptyEntries).Select(x => x.Trim()).ToArray();
-        string[] Solutions = this.CorrectAnswer().Split(new[] { AnswerListDelimiter }, StringSplitOptions.RemoveEmptyEntries).Select(x => x.Trim()).ToArray();
+        string[] Solutions = CorrectAnswer().Split(new[] { AnswerListDelimiter }, StringSplitOptions.RemoveEmptyEntries).Select(x => x.Trim()).ToArray();
         return Answers.OrderBy(t => t).SequenceEqual(Solutions.OrderBy(t => t));
     }
 
     public override string CorrectAnswer()
     {
         string CorrectAnswer = AnswerListDelimiter;
-        foreach (var SingleChoice in this.Choices)
+        foreach (var SingleChoice in Choices)
         {
-            if (SingleChoice.IsCorrect == true)
+            if (SingleChoice.IsCorrect)
             {
                 CorrectAnswer += SingleChoice.Text;
-                if (SingleChoice != this.Choices[(this.Choices.Count - 1)])
+                if (SingleChoice != Choices[Choices.Count - 1])
                     CorrectAnswer += AnswerListDelimiter;
             }
         }

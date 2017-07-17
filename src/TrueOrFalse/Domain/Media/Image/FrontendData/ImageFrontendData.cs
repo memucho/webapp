@@ -1,4 +1,5 @@
-﻿using static System.String;
+﻿using System.Net;
+using static System.String;
 
 public class ImageFrontendData
 { 
@@ -43,7 +44,6 @@ public class ImageFrontendData
         Description = !IsNullOrEmpty(ImageMetaData.ManualEntriesFromJson().DescriptionManuallyAdded)
             ? ImageMetaData.ManualEntriesFromJson().DescriptionManuallyAdded
             : ImageMetaData.DescriptionParsed;
-
 
         if (!ImageCanBeDisplayed)
         {
@@ -212,7 +212,8 @@ public class ImageFrontendData
 
             var altDescription = IsNullOrEmpty(this.Description) ?
                 "" : 
-                this.Description.Replace("\"", "'")
+                WebUtility.HtmlEncode(this.Description)
+                    .Replace("\"", "'")
                     .Replace("„", "'")
                     .Replace("“", "'")
                     .StripHTMLTags()

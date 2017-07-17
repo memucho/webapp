@@ -1,4 +1,5 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<ImageFrontendData>" %>
+<%@ Import Namespace="System.Net" %>
 
 <div id="modalImageDetail" class="modal">
     <div class="modal-dialog modal-lg">
@@ -15,8 +16,8 @@
                         <% if (!String.IsNullOrEmpty(Model.AttributionHtmlString)){ %>
                            <div><%= Model.AttributionHtmlString %></div>
                         <% } %>
-                        <% if (!String.IsNullOrEmpty(Model.Description)){ %>
-                           <div style="margin-top: 10px;"><span class="InfoLabel">Beschreibung:</span> <%= Model.Description %></div>
+                        <% if (!String.IsNullOrEmpty(WebUtility.HtmlEncode(Model.Description))){ %>
+                           <div style="margin-top: 10px;"><span class="InfoLabel">Beschreibung:</span> <%= WebUtility.HtmlEncode(Model.Description) %></div>
                         <% } %>
                     </div>
                 </div>

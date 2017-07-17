@@ -16,9 +16,8 @@
         <% } %>
     </span>
 </a>
-<a class="helpLink TextLinkWithIcon" href="<%= Links.HelpFAQ() %>">
+<a class="helpLink helpLinkFaq TextLinkWithIcon" href="<%= Links.HelpFAQ() %>">
     <i class="fa fa-question-circle MobileLarge"></i>
-    <span class="TextSpan Help">FAQ</span>
 </a> 
 
 <%--<a href="#" class="helpLink TextLinkWithIcon" id="startWelcomeTour">
@@ -32,7 +31,6 @@
         var imageSetttings = new UserImageSettings(userSession.User.Id);
 %>
         <div class="dropdown" style="display: inline-block;">
-            <span>Hallo</span>
             <a class="TextLinkWithIcon dropdown-toggle" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="#">
                 <span class="userName TextSpan"><b><%= userSession.User.Name%></b></span>
                 <b class="caret"></b>
@@ -49,6 +47,14 @@
                 <% } %>
             </ul>
         </div>
+        <span id="header-level-display" class="level-display">
+            <span style="display: inline-block; white-space: nowrap;" class="show-tooltip" data-placement="bottom" title="Dein erreichtes Level. Lernpunkte erhältst du beim Beantworten von Fragen.">
+                <svg>
+                    <circle cx="50%" cy="50%" r="50%" />
+                    <text class="level-count" x="50%" y="50%" dy = ".34em" ><%= userSession.User.ActivityLevel %></text>
+                </svg>
+            </span>
+        </span>
 <%
     }else {
 %> 

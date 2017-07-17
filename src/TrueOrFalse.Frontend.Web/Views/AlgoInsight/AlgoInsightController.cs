@@ -2,6 +2,7 @@
 using TrueOrFalse.Web;
 
 [SetMenu(MenuEntry.None)]
+[AccessOnlyLocal]
 public class AlgoInsightController : BaseController
 {
     private string _viewName = "AlgoInsight";

@@ -16,6 +16,7 @@
 
 <script type="text/javascript">
     <% Model.EscapeSolutionChars();
+    Model.TrimElementTexts();
 
     var localPairs = Model.Pairs;
     var random = new Random();

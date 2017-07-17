@@ -241,6 +241,11 @@
     <Compile Include="Domain\Classification\Category\CategoryValuation\Persistence\CategoryValuationMap.cs" />
     <Compile Include="Domain\Classification\Category\CategoryValuation\Persistence\CategoryValuationRepo.cs" />
     <Compile Include="Domain\Classification\Category\CategoryValuation\CategoryValuationExt.cs" />
+    <Compile Include="Domain\Classification\Category\Graph\CategoryGraph.cs" />
+    <Compile Include="Domain\Classification\Category\Graph\CategoryLink.cs" />
+    <Compile Include="Domain\Classification\Category\Graph\CategoryNode.cs" />
+    <Compile Include="Domain\Classification\Category\Graph\GraphJsonDtos.cs" />
+    <Compile Include="Domain\Classification\Category\Graph\Ops\GetCategoryGraph.cs" />
     <Compile Include="Domain\Classification\Category\Ops\CategoryDeleter.cs" />
     <Compile Include="Domain\Classification\Category\Ops\CategoryExists.cs" />
     <Compile Include="Domain\Classification\Category\Ops\GetBreadCrumb.cs" />
@@ -250,7 +255,7 @@
     <Compile Include="Domain\Classification\Category\RelatedCategory\CategoryRelation.cs" />
     <Compile Include="Domain\Classification\Category\RelatedCategory\CategoryRelationType.cs" />
     <Compile Include="Domain\Classification\Category\RelatedCategory\Ops\CategoryAggregation.cs" />
-    <Compile Include="Domain\Classification\Category\RelatedCategory\Ops\GetCategoryGraphData.cs" />
+    <Compile Include="Domain\Classification\Category\RelatedCategory\Ops\GetCategoriesDescendants.cs" />
     <Compile Include="Domain\Classification\Category\RelatedCategory\Ops\ModifyRelationsForCategory.cs" />
     <Compile Include="Domain\Classification\Category\RelatedCategory\Persistence\CategoryRelationMap.cs" />
     <Compile Include="Domain\Classification\Category\RelatedCategory\Persistence\CategoryRelationRepo.cs" />
@@ -366,6 +371,12 @@
     <Compile Include="Domain\Question\SolutionType\MultipleChoice\Choice.cs" />
     <Compile Include="Domain\Sponsor\Sponsor.cs" />
     <Compile Include="Domain\Sponsor\SponsorRepo.cs" />
+    <Compile Include="Domain\User\ActivityPoints\Ops\TransferActivityPoints.cs" />
+    <Compile Include="Domain\User\ActivityPoints\Persistence\ActivityPointsMap.cs" />
+    <Compile Include="Domain\User\ActivityPoints\Persistence\ActivityPointsRepo.cs" />
+    <Compile Include="Domain\User\ActivityPoints\ActivityPointsType.cs" />
+    <Compile Include="Domain\User\ActivityPoints\ActivityPoints.cs" />
+    <Compile Include="Domain\User\ActivityPoints\Ops\UserLevelCalculator.cs" />
     <Compile Include="Domain\User\Settings\UpdateKnowledgeReportIntervalResult.cs" />
     <Compile Include="Domain\User\Settings\UpdateSetting.cs" />
     <Compile Include="Domain\User\Settings\UpdateKnowledgeReportInterval.cs" />
@@ -918,6 +929,7 @@
     <Compile Include="Tools\ScheduledJobs\RunningsJobs\RunningJobRepo.cs" />
     <Compile Include="Tools\Update\Scripts\SolrCoreReload.cs" />
     <Compile Include="Tools\Update\Scripts\PathTo.cs" />
+    <Compile Include="Tools\Update\Steps\UpdateToVs178.cs" />
     <Compile Include="Tools\Update\Steps\UpdateToVs177.cs" />
     <Compile Include="Tools\Update\Steps\UpdateToVs176.cs" />
     <Compile Include="Tools\Update\Steps\UpdateToVs175.cs" />
@@ -1017,6 +1029,7 @@
     <Compile Include="Tools\Update\Steps\UpdateToVs164.cs" />
     <Compile Include="Tools\Update\UpdateStepExecuter.cs" />
     <Compile Include="Tools\Update\Update.cs" />
+    <Compile Include="Web\Attributes\Filters\AccessOnlyLocalAttribute.cs" />
     <Compile Include="Web\Attributes\Validation\MustBeTrueAttribute.cs" />
     <Compile Include="Web\Context\MenuHistory\DateHistory.cs" />
     <Compile Include="Web\Context\MenuHistory\CategoryHistory.cs" />

@@ -24,22 +24,22 @@
                 </p>
                    
                 
-                <ul class="teaserText">
-                    <li><a href="#quizOnPage">Quiz auf deiner Webseite: Wissenstest mit Auswertung einbinden</a></li>
-                    <li><a href="#video">Video mit passendem Quiz einbinden</a></li>
-                    <li><a href="#single">Einzelne Fragen per Widget einbinden</a></li>
-                    <li><a href="#terms">Nutzung für Einzelpersonen und Organisationen</a></li>
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a href="#quizOnPage"><i class="fa fa-caret-right">&nbsp;</i>Quiz auf deiner Webseite: Wissenstest mit Auswertung einbinden</a></li>
+                    <li><a href="#video"><i class="fa fa-caret-right">&nbsp;</i>Video mit passendem Quiz einbinden</a></li>
+                    <li><a href="#single"><i class="fa fa-caret-right">&nbsp;</i>Einzelne Fragen per Widget einbinden</a></li>
+                    <li><a href="#terms"><i class="fa fa-caret-right">&nbsp;</i>Nutzung für Einzelpersonen und Organisationen</a></li>
                 </ul>
             </div>
         </div>
     </div>
 
-    <div class="row">
+    <div class="row" id="quizOnPage">
         <div class="col-xs-12">
             <div class="well explanationBox">
 
                 <h2 class="PageHeader">
-                    <a name="quizOnPage"></a><span class="ColoredUnderline GeneralMemucho">Quiz auf deiner Webseite: Wissenstest mit Auswertung einbinden</span>
+                    <a></a><span class="ColoredUnderline GeneralMemucho">Quiz auf deiner Webseite: Wissenstest mit Auswertung einbinden</span>
                 </h2>
                 <p>
                     Du kannst einen Quiz zu einem ganzen Lernset auf deiner Webseite einbinden. So können deine Webseitenbesucher ihr Wissen testen - und das macht vielen Spaß.
@@ -95,16 +95,17 @@
 
                 </ul>
             </div>
+            <% Html.RenderPartial("~/Views/Shared/LinkToTop.ascx");  %>
         </div>
     </div>
     
     
-    <div class="row">
+    <div class="row" id="video">
         <div class="col-xs-12">
             <div class="well explanationBox">
 
                 <h2 class="PageHeader">
-                    <a name="video"></a><span class="ColoredUnderline GeneralMemucho">Video mit passendem Quiz einbinden</span>
+                    <a></a><span class="ColoredUnderline GeneralMemucho">Video mit passendem Quiz einbinden</span>
                 </h2>
                 <p>
                     memucho verbindet Videos direkt mit den passenden Fragen. So können Nutzer ein Video sehen, 
@@ -162,14 +163,15 @@
                 </ul>
                                 
             </div>
+            <% Html.RenderPartial("~/Views/Shared/LinkToTop.ascx");  %>
         </div>
     </div>
 
-    <div class="row">
+    <div class="row" id="single">
         <div class="col-xs-12">
             <div class="well explanationBox">
                 <h2 class="PageHeader">
-                    <a name="single"></a><span class="ColoredUnderline GeneralMemucho">Einzelne Fragen per Widget einbinden</span>
+                    <a></a><span class="ColoredUnderline GeneralMemucho">Einzelne Fragen per Widget einbinden</span>
                 </h2>
                 <p>
                     Du kannst auch eine einzelne Frage nahtlos auf deiner Webseite einbinden. So kannst du zum Beispiel bei einem Blog-Beitrag den Text auflockern und animierst 
@@ -219,14 +221,15 @@
                     <li><a href="<%= Links.HelpWidgetBlackboard() %>">memuchos Frage-Widget in <strong>Blackboard</strong> einbinden</a></li>
                 </ul>
             </div>
+            <% Html.RenderPartial("~/Views/Shared/LinkToTop.ascx");  %>
         </div>
     </div>
     
-    <div class="row">
+    <div class="row" id="terms">
         <div class="col-xs-12">
             <div class="well explanationBox">
                 <h2 class="PageHeader">
-                    <a name="terms"></a><span class="ColoredUnderline GeneralMemucho">Für Einzelpersonen und Organisationen</span>
+                    <a></a><span class="ColoredUnderline GeneralMemucho">Für Einzelpersonen und Organisationen</span>
                 </h2>
                 <p>
                     Die Nutzung der memucho-Widgets ist <strong>für Einzelpersonen kostenlos und werbefrei</strong>. 
@@ -237,6 +240,7 @@
                 </p>
 
             </div>
+            <% Html.RenderPartial("~/Views/Shared/LinkToTop.ascx");  %>
         </div>
     </div>
 
@@ -259,13 +263,14 @@
                         <p>
                             <strong>Christof Mauersberger</strong><br/>
                             E-Mail: <span class="mailme">christof at memucho dot de</span><br/>
-                            Telefon: 01577-6825707<br/>
+                            Telefon: +49-1577-6825707<br/>
                         </p>
                         
                     </div>
                 </div>
 
             </div>
+            <% Html.RenderPartial("~/Views/Shared/LinkToTop.ascx");  %>
         </div>
     </div>
 

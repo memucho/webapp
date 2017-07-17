@@ -1,0 +1,23 @@
+﻿body #address {
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+body #address h5 {
+  color: #203256;
+}
+body #address #description {
+  margin-top: 40px;
+}
+body .title {
+  display: inline-block;
+  color: #203256;
+  border-width: 2px;
+  border-bottom: solid;
+  border-bottom-color: #afd534;
+}
+body #drivingDirection {
+  margin-top: 50px;
+}
+body p {
+  color: #203256;
+}

@@ -36,7 +36,7 @@
         <h3>Kontakt:</h3>
         <table><tr>
         <td><p>Telefon: </p></td>
-        <td><p>01577 6825707</p></td></tr>
+        <td><p>+49-1577-6825707</p></td></tr>
         <tr><td><p>E-Mail:</p></td>
         <td><p><span class="mailme">team at memucho dot de</span></p></td>
         </tr></table>

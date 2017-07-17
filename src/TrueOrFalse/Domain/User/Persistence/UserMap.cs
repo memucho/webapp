@@ -42,6 +42,9 @@ public class UserMap : ClassMap<User>
         Map(x => x.FacebookId);
         Map(x => x.GoogleId);
 
+        Map(x => x.ActivityPoints);
+        Map(x => x.ActivityLevel);
+
         Map(x => x.DateCreated);
         Map(x => x.DateModified);
     }

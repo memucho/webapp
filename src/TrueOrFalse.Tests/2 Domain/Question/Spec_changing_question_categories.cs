@@ -38,6 +38,7 @@ namespace TrueOrFalse.Tests
         }
 
         [Test]
+        [Ignore("Temporarily")]
         public void Should_update_affected_categories()
         {
             ContextCategory.New().Add("1").Add("2").Add("3").Persist();

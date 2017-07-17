@@ -68,7 +68,7 @@ public class TestSession
         SetLink = Links.SetDetail(set);
         SetName = set.Name;
         SetQuestionCount = set.Questions().Count;
-        var excludeQuestionIds = Sl.R<SessionUser>().AnsweredQuestionIds.ToList();
+        var excludeQuestionIds = Sl.SessionUser.AnsweredQuestionIds.ToList();
         var questions = GetRandomQuestions.Run(set, Settings.TestSessionQuestionCount, excludeQuestionIds, true).ToList();
         Populate(questions);
     }

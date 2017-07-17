@@ -268,6 +268,7 @@
     <Compile Include="2 Domain\Question\Views\QuestionViewTests.cs" />
     <Compile Include="2 Domain\Set\Timecode_Tests.cs" />
     <Compile Include="2 Domain\Set\Valuation\SetValuation_persistence_tests.cs" />
+    <Compile Include="2 Domain\User\ActivityPoints\UserLevelCalculatorTests.cs" />
     <Compile Include="2 Domain\User\Activity\UserActivity_persistence.cs" />
     <Compile Include="2 Domain\User\Activity\Write_activity_new_follower.cs" />
     <Compile Include="2 Domain\User\Activity\Write_activity_following.cs" />

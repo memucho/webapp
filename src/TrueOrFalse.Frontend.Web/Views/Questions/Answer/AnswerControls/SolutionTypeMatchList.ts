@@ -8,36 +8,44 @@ class SolutionTypeMatchList
 
         //get pager from url parameters
         var isMobile = false;
-        if ($(document).width() < 700)
+        if ($(document).width() < 780)
             isMobile = true;
         var isCurrentAnswerBodyMobile = false;
         if ($('#matchlist-mobilepairs').length)
             isCurrentAnswerBodyMobile = true;
         if (isMobile !== isCurrentAnswerBodyMobile) {
-            var urlParams = Utils.GetQueryString();
-            var url = "/AnswerQuestion/RenderAnswerBody/?questionId=" + $("#questionId").val() + "&pager=" + urlParams.pager + "&isMobileDevice=" + isMobile;
+            var url = "/AnswerQuestion/RenderAnswerBody";
 
             var isTestSession = $('#hddIsTestSession').val();
             if(isTestSession !== undefined)
                 if (isTestSession.toLowerCase() === "true")
-                    url += "&testSessionId=" + parseInt($('#hddIsTestSession').attr('data-test-session-id'));
+                    var testSessionId = parseInt($('#hddIsTestSession').attr('data-test-session-id'));
 
             var isLearningSession = $('#hddIsLearningSession').val();
             if (isLearningSession !== undefined)
                 if (isLearningSession.toLowerCase() === "true")
-                    url += "&learningSessionId=" + $("#hddIsLearningSession").attr("data-learning-session-id");
+                    var learningSessionId = $("#hddIsLearningSession").attr("data-learning-session-id");
 
-            var isVideo = $("#hhdHasVideo").val();
-            if (isVideo !== undefined)
-                if (isVideo.toLowerCase() === "true")
-                    url += "&isVideo=true";
+            var isVideo = $("#hhdHasVideo").val() ? $("#hhdHasVideo").val().toLowerCase() === "true" : false;
+
+
+            var urlParams = Utils.GetQueryString();
 
             jQuery.ajax({
                 url: url,
+                data: {
+                    questionId: $("#questionId").val(),
+                    pager: urlParams.pager,
+                    isMobileDevice: isMobile,
+                    testSessionId: testSessionId,
+                    learningSessionId: learningSessionId,
+                    isVideo: isVideo
+                },
                 success: htmlResult => {
                     $("div#LicenseQuestion").remove();
                     $("#AnswerBody")
-                        .replaceWith(htmlResult);                },
+                        .replaceWith(htmlResult);
+                },
                 async: false
             });
         }

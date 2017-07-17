@@ -19,12 +19,16 @@ public class LoginController : BaseController
 
         if (credentialsAreValid.Yes(loginModel.EmailAddress, loginModel.Password))
         {
+
             if (loginModel.PersistentLogin)
             {
                 WritePersistentLoginToCookie.Run(credentialsAreValid.User.Id);
             }
 
             _sessionUser.Login(credentialsAreValid.User);
+
+            TransferActivityPoints.FromSessionToUser();
+            Sl.UserRepo.UpdateActivityPointsData();
 
             return Json(new
             {

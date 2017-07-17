@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Web.Mvc;
-using Microsoft.Ajax.Utilities;
-using NHibernate.Mapping;
-using NHibernate.Util;
 using TrueOrFalse.Frontend.Web.Code;
 
 public class CategoryController : BaseController
@@ -107,10 +104,5 @@ public class CategoryController : BaseController
         R<LearningSessionRepo>().Create(learningSession);
 
         return Redirect(Links.LearningSession(learningSession));
-    }
-
-    public JsonResult GetCategoryGraphDataAsJson(int categoryId)
-    {
-        return GetCategoryGraphData.GetAsJson(Sl.CategoryRepo.GetById(categoryId));
     }
 }

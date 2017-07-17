@@ -91,7 +91,7 @@ a:hover {
 a.TextLink:hover {
   text-decoration: underline;
 }
-@media (max-width: 767px) {
+@media (max-width: 1199px) {
   a i.MobileLarge {
     font-size: 25px;
     padding-left: 5px;
@@ -428,9 +428,9 @@ img {
     display: none;
   }
 }
-@media (min-width: 768px) {
-  #loginAndHelp a.helpLink i {
-    font-size: 16px;
+@media (max-width: 700px) {
+  #loginAndHelp a.helpLink.helpLinkFaq {
+    display: none;
   }
 }
 #loginAndHelp .userImage {
@@ -448,18 +448,12 @@ img {
   margin-left: 0;
 }
 #loginAndHelp .TextSpan,
-#loginAndHelp span {
+#loginAndHelp span:not(.level-display) {
   display: inline-block;
 }
 @media (max-width: 991px) {
   #loginAndHelp .TextSpan,
-  #loginAndHelp span {
-    display: none;
-  }
-}
-@media (max-width: 767px) {
-  #loginAndHelp .TextSpan.Help,
-  #loginAndHelp span.Help {
+  #loginAndHelp span:not(.level-display) {
     display: none;
   }
 }
@@ -626,6 +620,29 @@ fieldset[disabled] #MenuButton:hover {
 }
 ul.AutocompleteHeader {
   max-width: 550px;
+}
+.level-display {
+  margin-left: 3px;
+}
+.level-display svg {
+  width: 32px;
+  height: 32px;
+}
+@media (max-width: 767px) {
+  .level-display svg {
+    margin-top: 4px;
+    width: 25px;
+    height: 25px;
+  }
+}
+.level-display circle {
+  fill: #b9db4f;
+}
+.level-display .level-count {
+  fill: darkblue;
+  font-weight: bolder;
+  font-size: 1.3em;
+  text-anchor: middle;
 }
 /* MASTER SECTION
 ----------------------------------------------------------*/

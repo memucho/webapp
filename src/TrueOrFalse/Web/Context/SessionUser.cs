@@ -70,6 +70,11 @@ public class SessionUser : SessionBase, IRegisterAsInstancePerLifetime
             FormsAuthentication.SignOut();
     }
 
+    public void UpdateUser()
+    {
+        User = Sl.Resolve<UserRepo>().GetById(Sl.SessionUser.UserId);
+    }
+
     public int UserId
     {
         get
@@ -139,4 +144,21 @@ public class SessionUser : SessionBase, IRegisterAsInstancePerLifetime
             TestSessions = new List<TestSession>();
     }
 
+    public List<ActivityPoints> ActivityPoints => Data.Get("pointActivitys", new List<ActivityPoints>());
+
+    public void AddPointActivity(ActivityPoints activityPoints)
+    {
+        ActivityPoints.Add(activityPoints);
+    }
+
+    public int getTotalActivityPoints()
+    {
+        int totalPoints = 0;
+        foreach (var activity in ActivityPoints)
+        {
+            totalPoints += activity.Amount;
+        }
+
+        return totalPoints;
+    }
 }

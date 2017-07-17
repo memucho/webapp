@@ -199,9 +199,15 @@ public class EditCategoryController : BaseController
         catRepo.Update(category);
     }
 
-    public ActionResult AggregationModalContent(int catId)
+    public ActionResult GetEditCategoryAggregationModalContent(int categoryId)
     {
-        var category = R<CategoryRepository>().GetById(catId);
+        var category = Sl.CategoryRepo.GetById(categoryId);
         return View("~/Views/Categories/Modals/EditAggregationModal.ascx", new EditCategoryModel(category));
+    }
+
+    public string GetCategoryGraphDisplay(int categoryId)
+    {
+        var category = Sl.CategoryRepo.GetById(categoryId);
+        return ViewRenderer.RenderPartialView("~/Views/Categories/Edit/GraphDisplay/CategoryGraph.ascx", new CategoryGraphModel(category), ControllerContext);
     }
 }

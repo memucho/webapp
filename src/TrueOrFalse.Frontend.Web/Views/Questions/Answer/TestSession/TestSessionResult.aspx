@@ -1,8 +1,6 @@
 ﻿<%@ Page Title="Dein Ergebnis" Language="C#" MasterPageFile="~/Views/Shared/Site.MenuLeft.Master" Inherits="System.Web.Mvc.ViewPage<TestSessionResultModel>" %>
-<%@ Import Namespace="System.Globalization" %>
 <%@ Import Namespace="System.Web.Optimization" %>
 <%@ Import Namespace="TrueOrFalse.Frontend.Web.Code" %>
-<%@ Register Src="~/Views/Questions/Answer/TestSession/TestSessionResultHead.ascx" TagPrefix="uc1" TagName="TestSessionResultHead" %>
 
 
 <asp:Content ID="head" ContentPlaceHolderID="Head" runat="server">
@@ -18,12 +16,24 @@
     <% if(Model.TestSession.SessionNotFound) { %>
     
         <h2>Uuups...</h2>
-        <p>die Testsitzung ist nicht mehr aktuell.</p>
+        <p><br />Du hattest hier dein Wissen getestet. Leider kannst du nicht fortsetzen, weil deine Sitzung inzwischen abgelaufen ist.</p>
+        <p><a href="/">Zur Startseite</a></p>
 
     <% } else { %>
-
+    
         <% Html.RenderPartial("~/Views/Questions/Answer/TestSession/TestSessionResultHead.ascx", Model);  %>
     
+<%--        <% if (Model.IsLoggedIn)
+                Html.RenderPartial("~/Views/Api/ActivityPoints/ActivityLevelProgress.aspx", new ActivityLevelProgressModel(Sl.SessionUser.User));
+            else
+                Html.RenderPartial("~/Views/Api/ActivityPoints/ActivityLevelProgress.aspx",
+                    new ActivityLevelProgressModel(
+                        new User {
+                            ActivityPoints = Sl.SessionUser.getTotalActivityPoints(),
+                            ActivityLevel = UserLevelCalculator.GetLevel(Sl.SessionUser.getTotalActivityPoints())
+                        }));
+           %>--%>
+
         <% if (!Model.IsLoggedIn) { %>
             <div class="bs-callout bs-callout-info" id="divCallForRegistration" style="width: 100%; margin-top: 0; text-align: left; opacity: 0; display: none;">
                 <div class="row">
@@ -75,7 +85,7 @@
                         <i class="fa fa-play-circle AnswerResultIcon">&nbsp;&nbsp;</i>Weitermachen!
                     </a>
                 </div>
-            
+
                 <% if (Model.ContentRecommendationResult != null) { %>
                     <div style="margin-top: 80px;">
                         <h4>Das könnte dich auch interessieren:</h4>

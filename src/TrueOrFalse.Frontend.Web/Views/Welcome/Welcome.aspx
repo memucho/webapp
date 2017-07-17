@@ -479,22 +479,49 @@
             </div>
         <% } %>
 
-        <div class="well" id="nominationInnopreis" style="padding: 10px; ">
+        <div class="well" id="" style="padding: 10px; ">
             
             <div style="text-align: center;">
-                <img src="/Images/LogosPartners/Logo_LearningLevelUp.png" alt="Learning Level Up und memucho kooperieren!" style="margin-bottom: 10px;"/>
+                <a href="/Kategorien/Learning-Level-Up/722">
+                    <img src="/Images/LogosPartners/Logo_LearningLevelUp.png" alt="Learning Level Up und memucho kooperieren!" style="margin-bottom: 10px;"/>
+                </a>
             </div>
             <p style="text-align: center; margin-bottom: 0;">
-                
                 Wir freuen uns über die Kooperation mit Learning Level Up!
-                
                 <a href="/Kategorien/Learning-Level-Up/722" >
                     <span style="white-space: nowrap">Zur Themenseite.</span>
                 </a> 
             </p>
         </div>        
 
-        <div class="well" id="oerCamp" style="padding: 10px; ">
+        <div class="well" id="awardLandDerIdeen" style="padding: 10px; ">
+            <div style="text-align: center;">
+                <a href="https://www.land-der-ideen.de/ausgezeichnete-orte/preistraeger/memucho-online-plattform-zum-faktenlernen" target="_blank">
+                    <img src="/Images/LogosPartners/landderideen_ausgezeichnet-2017_w190c.jpg" alt="memucho ist ein ausgezeichneter Ort im Land der Ideen 2017" style="margin-bottom: 10px; margin-left: -10px; margin-right: -10px;"/>
+                </a>
+            </div>
+            <p style="text-align: center; margin-bottom: 5px;">
+                memucho: Ausgezeichneter Ort im Land der Ideen 2017.
+            </p>
+            <p style="text-align: center; margin-bottom: 0;">
+                <a href="https://www.land-der-ideen.de/ausgezeichnete-orte/preistraeger/memucho-online-plattform-zum-faktenlernen" target="_blank">
+                    <span style="white-space: nowrap">Zum Wettbewerb <i class="fa fa-external-link"></i></span>
+                </a>
+            </p>
+        </div>        
+
+        <div class="well" id="nominationInnopreis" style="padding: 10px; ">
+            <div style="text-align: center;">
+                <img src="/Images/LogosPartners/innovationspreis-nominiertButton2016.png" alt="Nominiert 2016 für den Innovationspreis Berlin Brandenburg" width="170" height="110" style="margin-bottom: 10px;"/>
+            </div>
+            <p style="text-align: center; margin-bottom: 0;">
+                <a href="http://www.innovationspreis.de/news/aktuelles/zehn-nominierungen-f%C3%BCr-den-innovationspreis-berlin-brandenburg-2016.html" target="_blank">
+                    <span style="white-space: nowrap">Zur Jury-Entscheidung <i class="fa fa-external-link"></i></span>
+                </a>
+            </p>
+        </div>        
+
+<%--        <div class="well" id="oerCamp" style="padding: 10px; ">
             <div style="text-align: center;">
                 <img src="/Images/LogosPartners/OERCamp-Logo-Text_unten.jpg" alt="" width="170" height="183" style="margin-bottom: 10px;"/>
             </div>
@@ -502,7 +529,7 @@
                 memucho ist beim <a href="http://www.oercamp.de">OERcamp</a> in 
                 <a href="http://www.oercamp.de/17/nord/workshops/#nordB4f" target="_blank">Hamburg</a> (23./24. Juni)
             </p>
-        </div>
+        </div>--%>
 
         <div class="well">
             <h4>Neueste Lernsets</h4>
@@ -565,16 +592,6 @@
             </div>
         <% } %>
         
-        <div class="well" id="nominationInnopreis" style="padding: 10px; ">
-            <div style="text-align: center;">
-                <img src="/Images/LogosPartners/innovationspreis-nominiertButton2016.png" alt="Nominiert 2016 für den Innovationspreis Berlin Brandenburg" width="170" height="110" style="margin-bottom: 10px;"/>
-            </div>
-            <p style="text-align: center; margin-bottom: 0;">
-                <a href="http://www.innovationspreis.de/news/aktuelles/zehn-nominierungen-f%C3%BCr-den-innovationspreis-berlin-brandenburg-2016.html" target="_blank">
-                    <span style="white-space: nowrap">Zur Jury-Entscheidung <i class="fa fa-external-link"></i></span>
-                </a>
-            </p>
-        </div>        
         <%--<div class="row" style="padding-top: 10px;">
             <div class="col-md-12"><h3 class="media-heading">memucho-Netzwerk</h3></div>
         </div>

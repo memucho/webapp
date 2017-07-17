@@ -152,7 +152,7 @@
                             Seite als hilfreicher ein und verbessern dein Ranking.
                         </p>
                         <p style="text-align: center; margin-top: 40px;">
-                            <a href="<%= Links.WidgetExamples() %>" class="btn btn-default">Zur Widget-Übersicht</a>
+                            <a href="<%= Links.WidgetExamples() %>" class="btn btn-default">Widgets: Beispiele & Übersicht</a>
                         </p>
                     </div>
                 </div>
@@ -294,6 +294,7 @@
                 </div>
 
             </div>
+            <% Html.RenderPartial("~/Views/Shared/LinkToTop.ascx");  %>
         </div>
     </div>
 
@@ -317,13 +318,14 @@
                         <p>
                             <strong>Christof Mauersberger</strong><br/>
                             E-Mail: <span class="mailme">christof at memucho dot de</span><br/>
-                            Telefon: 01577-6825707<br/>
+                            Telefon: +49-1577-6825707<br/>
                         </p>
                         
                     </div>
                 </div>
 
             </div>
+            <% Html.RenderPartial("~/Views/Shared/LinkToTop.ascx");  %>
         </div>
     </div>
 

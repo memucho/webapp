@@ -1,6 +1,11 @@
 ﻿class AsyncLoading {
     constructor() {
+
+        if (Utils.IsInWidget())
+            return;
+
         $("#AnswerQuestion").ready(() => {
+
             if (window.location.pathname.split("/")[4] === "im-Fragesatz") {
                 $("#NextQuestionLink, #btnNext").click((e) => {
                     e.preventDefault();
@@ -73,40 +78,42 @@
     }
 
     private loadNewQuestion(url: string) {
-                $.ajax({
-                    url: url,
-                    success: result => {
-                        result = JSON.parse(result);
-                        if (result.DateRedirectionLink) {
-                            window.location.href = result.DateRedirectionLink;
-                            return;
-                        }
-                        $("div#LicenseQuestion").remove();
-                        $("#AnswerBody")
-                            .replaceWith(result.answerBodyAsHtml);
-                        if ($("#hddIsLearningSession").val() === "True" || $("#hddIsTestSession").val() === "True")
-                            this.updateSessionHeader(result.sessionData);
-                        else
-                            this.updateNavigationBar(result.navBarData);
-                        document.title = $(".QuestionText").html();
-                        this.updateUrl(result.url);
-                        $("div#answerQuestionDetails").replaceWith(result.questionDetailsAsHtml);
-                        $("div#comments").replaceWith(result.commentsAsHtml);
-                        new PageInit();
+        $.ajax({
+            url: url,
+            type: 'POST',
+            headers: { "cache-control": "no-cache" },
+            success: result => {
+                result = JSON.parse(result);
+                if (result.DateRedirectionLink) {
+                    window.location.href = result.DateRedirectionLink;
+                    return;
+                }
+                $("div#LicenseQuestion").remove();
+                $("#AnswerBody")
+                    .replaceWith(result.answerBodyAsHtml);
+                if ($("#hddIsLearningSession").val() === "True" || $("#hddIsTestSession").val() === "True")
+                    this.updateSessionHeader(result.sessionData);
+                else
+                    this.updateNavigationBar(result.navBarData);
+                document.title = $(".QuestionText").html();
+                this.updateUrl(result.url);
+                $("div#answerQuestionDetails").replaceWith(result.questionDetailsAsHtml);
+                $("div#comments").replaceWith(result.commentsAsHtml);
+                new PageInit();
 
-                        FillSparklineTotals();
-                        InitTooltips();
-                        Images.Init();
-                        InitClickLog("div#LicenseQuestion");
-                        InitClickLog("div#AnswerBody");
-                        InitClickLog("div#AnswerQuestionPager");
-                        InitClickLog("div#answerQuestionDetails");
-                        InitClickLog("div#comments");
-                        PreventDropdonwnsFromBeingHorizontallyOffscreen("div#AnswerBody");
+                FillSparklineTotals();
+                InitTooltips();
+                Images.Init();
+                InitClickLog("div#LicenseQuestion");
+                InitClickLog("div#AnswerBody");
+                InitClickLog("div#AnswerQuestionPager");
+                InitClickLog("div#answerQuestionDetails");
+                InitClickLog("div#comments");
+                PreventDropdonwnsFromBeingHorizontallyOffscreen("div#AnswerBody");
 
-                        this.sendGoogleAnalyticsPageView(result.offlineDevelopment);
-                    }
-                });
+                this.sendGoogleAnalyticsPageView(result.offlineDevelopment);
+            }
+        });
     }
 
     private updateNavigationBar(navBarData: any) {

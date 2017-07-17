@@ -143,9 +143,10 @@
                     </div>
                 </div>
                 <div class="row" id="divWarningLearningGoal" style="display: none;">
+                <%--
+                    <!-- do not show warning as long as it is shown in inappropriate cases -->
                     <div class="col-md-12">
                         <div class="alert alert-danger">
-                            <%--<a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>--%>
                             <p>
                                 <strong>Warnung: Lernziele werden nicht erreicht</strong><br/>
                                 Mit den aktuellen Einstellungen wirst du zum Termin vermutlich nicht alle Fragen sicher beherrschen. 
@@ -153,6 +154,7 @@
                             </p>
                         </div>
                     </div>
+                    --%>
                 </div>
                 
                 <div class="row">

@@ -1,8 +1,6 @@
 ﻿<%@ Page Title="Ergebnis Lernsitzung" Language="C#" MasterPageFile="~/Views/Shared/Site.MenuLeft.Master" Inherits="System.Web.Mvc.ViewPage<LearningSessionResultModel>" %>
-<%@ Import Namespace="System.Globalization" %>
 <%@ Import Namespace="System.Web.Optimization" %>
 <%@ Import Namespace="TrueOrFalse.Frontend.Web.Code" %>
-<%@ Import Namespace="TrueOrFalse" %>
 
 <asp:Content ID="head" ContentPlaceHolderID="Head" runat="server">
     <%= Styles.Render("~/bundles/AnswerQuestion") %>
@@ -72,6 +70,10 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     
+    
+<%--    <% if (Model.IsLoggedIn)
+           Html.RenderPartial("~/Views/Api/ActivityPoints/ActivityLevelProgress.aspx", new ActivityLevelProgressModel(Sl.SessionUser.User)); %>--%>
+
     <h2 style="margin-bottom: 15px; margin-top: 0px;">
         <span class="<% if (Model.LearningSession.IsDateSession) Response.Write("ColoredUnderline Date");
                         if (Model.LearningSession.IsSetSession) Response.Write("ColoredUnderline Set");

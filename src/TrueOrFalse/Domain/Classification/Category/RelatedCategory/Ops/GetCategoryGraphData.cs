@@ -12,7 +12,9 @@ public class GetCategoryGraphData
         var links = new List<Link>();
         foreach (var link in graphData.Links)
         {
-            links.Add(new Link { Source = link.Parent.Id, Target = link.Child.Id });
+            var parentIndex = graphData.Nodes.FindIndex(node => node.Category == link.Parent);
+            var childIndex = graphData.Nodes.FindIndex(node => node.Category == link.Child);
+            links.Add(new Link { SourceIndex = parentIndex, TargetIndex = childIndex });
         }
 
         var nodes = new List<Node>();
@@ -33,7 +35,7 @@ public class GetCategoryGraphData
 
     public static CategoryGraphDataResult Get(Category category)
     {
-        var descendants = ModifyRelationsForCategory.GetCategoriesDescendantsWithAppliedRules(category);
+        var descendants = GetCategoriesDescendants.WithAppliedRules(category);
 
         var nodes = new List<CategoryNode>
         {
@@ -102,7 +104,7 @@ namespace GraphDataAsJson
 
     public class Link
     {
-        public int Source;
-        public int Target;
+        public int SourceIndex;
+        public int TargetIndex;
     }
 }

@@ -24,7 +24,7 @@
     <UseIISExpress>true</UseIISExpress>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
-    <TypeScriptToolsVersion>2.1</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>2.2</TypeScriptToolsVersion>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -293,6 +293,9 @@
     <Compile Include="Views\AlgoInsight\TabRepetitionModel.cs" />
     <Compile Include="Views\AlgoInsight\TabForecastModel .cs" />
     <Compile Include="Views\AlgoInsight\TabForgettingCurveModel.cs" />
+    <Compile Include="Views\Api\ActivityPointsApiController.cs" />
+    <Compile Include="Views\Api\ActivityPoints\ActivityLevelProgressModel.cs" />
+    <Compile Include="Views\Api\ActivityPoints\LevelPopupModel.cs" />
     <Compile Include="Views\Api\AppController.cs" />
     <Compile Include="Views\Api\Search\SearchApiController.cs" />
     <Compile Include="Views\Api\Search\PrepareSearch.cs" />
@@ -308,6 +311,7 @@
     <Compile Include="Views\Categories\Detail\TemplateParser\TemplateJson.cs" />
     <Compile Include="Views\Categories\Detail\TemplateParser\TemplateParser.cs" />
     <Compile Include="Views\Categories\Detail\Partials\SingleSetModel.cs" />
+    <Compile Include="Views\Categories\Edit\GraphDisplay\CategoryGraphModel.cs" />
     <Compile Include="Views\Dates\DateRowModel.cs" />
     <Compile Include="Views\Dates\Edit\EditDateController.cs" />
     <Compile Include="Views\Dates\Edit\EditDateModel.cs" />
@@ -328,6 +332,10 @@
     <Compile Include="Views\Help\WidgetMenuModel.cs" />
     <Compile Include="Views\Knowledge\TrainingDateModel.cs" />
     <Compile Include="Views\Knowledge\Wheel\KnowledgeWheelController.cs" />
+    <Content Include="Images\LogosPartners\landderideen_ausgezeichnet-2017_w190c.jpg" />
+    <Content Include="Scripts\vendor.somewhere\d3.js" />
+    <Content Include="Images\memucho_MEMO_happy_blau.svg" />
+    <Content Include="Scripts\vendor.somewhere\d3v3.js" />
     <Content Include="Scripts\vendor\modernizr-config.json" />
     <Content Include="Images\Error\memo-404_german_600.png" />
     <Content Include="Images\Error\memo-500_german.png" />
@@ -347,12 +355,21 @@
     <Content Include="Images\Screenshots\widget-blackboard_f03_edit-html.png" />
     <Content Include="Images\Screenshots\widget-blackboard_f04_done.png" />
     <Content Include="Images\Screenshots\widget-blackboard_f04_done_short.png" />
+    <Content Include="Views\Categories\Edit\GraphDisplay\CategoryGraph.ascx" />
+    <Content Include="Views\Categories\Edit\Js\ChangeTypeControls.js">
+      <DependentUpon>ChangeTypeControls.ts</DependentUpon>
+    </Content>
+    <Content Include="Views\Categories\Edit\Js\ChangeTypeControls.js.map">
+      <DependentUpon>ChangeTypeControls.ts</DependentUpon>
+    </Content>
     <Content Include="Views\Categories\Edit\Js\EditAggregation.js">
       <DependentUpon>EditAggregation.ts</DependentUpon>
     </Content>
     <Content Include="Scripts\vendor.somewhere\dataTables.bootstrap.css" />
     <Content Include="Scripts\vendor.somewhere\dataTables.bootstrap.js" />
     <Content Include="Scripts\vendor.somewhere\jquery.dataTables.js" />
+    <Content Include="Views\Api\ActivityPoints\ActivityLevelProgress.aspx" />
+    <Content Include="Views\Api\ActivityPoints\LevelPopup.aspx" />
     <Content Include="Views\Categories\Edit\Js\Page.js">
       <DependentUpon>Page.ts</DependentUpon>
     </Content>
@@ -641,6 +658,12 @@
     <Content Include="Views\Maintenance\ContentStats.css">
       <DependentUpon>ContentStats.less</DependentUpon>
     </Content>
+    <Content Include="Views\Questions\ActivityPoints\ActivityPoints.js">
+      <DependentUpon>ActivityPoints.ts</DependentUpon>
+    </Content>
+    <Content Include="Views\Questions\ActivityPoints\ActivityPoints.js.map">
+      <DependentUpon>ActivityPoints.ts</DependentUpon>
+    </Content>
     <Content Include="Views\Questions\Answer\AnswerControls\SolutionTypeFlashCard.js">
       <DependentUpon>SolutionTypeFlashCard.ts</DependentUpon>
     </Content>
@@ -678,6 +701,14 @@
       <DependentUpon>ShareSet.ts</DependentUpon>
     </Content>
     <Content Include="Views\Sets\Detail\ShareSetModal.ascx" />
+    <Content Include="Views\Shared\LinkToTop.ascx" />
+    <Content Include="Views\Welcome\Directions.aspx" />
+    <Content Include="Views\Welcome\Directions.css">
+      <DependentUpon>Directions.less</DependentUpon>
+    </Content>
+    <Content Include="Views\Welcome\Drive.css">
+      <DependentUpon>Directions.less</DependentUpon>
+    </Content>
     <Content Include="Views\Widgets\CustomCss\besser.memucho.de.css" />
     <Content Include="Views\Widgets\WidgetSetStart.aspx" />
     <Content Include="Views\Widgets\WidgetSetResult.aspx" />
@@ -1760,9 +1791,6 @@
     <Content Include="Views\Categories\Edit\EditCategory.css">
       <DependentUpon>EditCategory.less</DependentUpon>
     </Content>
-    <Content Include="Views\Categories\Edit\Js\ChangeTypeControls.js">
-      <DependentUpon>ChangeTypeControls.ts</DependentUpon>
-    </Content>
     <Content Include="Views\Categories\Edit\Js\ImageUpload.js">
       <DependentUpon>ImageUpload.ts</DependentUpon>
     </Content>
@@ -1933,6 +1961,7 @@
     <Compile Include="Views\Welcome\WelcomeModel.cs">
       <SubType>Code</SubType>
     </Compile>
+    <TypeScriptCompile Include="Views\Questions\ActivityPoints\ActivityPoints.ts" />
     <TypeScriptCompile Include="Views\Questions\Answer\AnswerControls\AnswerEntryBase.ts" />
     <TypeScriptCompile Include="Views\Questions\Answer\AnswerControls\SolutionTypeMatchList.ts" />
     <TypeScriptCompile Include="Views\Questions\Answer\AnswerControls\SolutionTypeFlashCard.ts" />
@@ -2328,9 +2357,6 @@
     <Content Include="Views\Questions\Edit\Js\References.js.map">
       <DependentUpon>References.ts</DependentUpon>
     </Content>
-    <Content Include="Views\Categories\Edit\Js\ChangeTypeControls.js.map">
-      <DependentUpon>ChangeTypeControls.ts</DependentUpon>
-    </Content>
     <Content Include="Scripts\answerQuestion\PinQuestion.js.map">
       <DependentUpon>PinQuestion.ts</DependentUpon>
     </Content>
@@ -2590,6 +2616,7 @@
       <DependentUpon>SolutionTypeFlashCard.ascx</DependentUpon>
     </Content>
     <Content Include="Views\Questions\Answer\Js\AsyncLoading.js.map" />
+    <Content Include="Views\Welcome\Directions.less" />
     <None Include="Web.overwritten.config" />
     <None Include="Web.overwritten.config.sample" />
     <Content Include="Views\Welcome\Logout.aspx" />

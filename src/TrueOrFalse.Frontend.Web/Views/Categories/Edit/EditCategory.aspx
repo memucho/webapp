@@ -275,8 +275,14 @@
                     <h3>Unterthemen einschließen</h3>
                 </div>
                 <div class="modal-body clearfix">
-                    <div style="text-align: center">
-                        <i class="fa fa-spinner fa-spin"></i>
+                    <ul class="nav nav-tabs">
+                        <li class="tab-unterthemen active"><a href="#">Unterthemen einschließen</a></li>
+                        <li class="tab-categories-graph"><a href="#">Graphen Ansicht</a></li>
+                    </ul>
+                    <div class="tab-body">
+                        <div style="text-align: center">
+                            <i class="fa fa-spinner fa-spin"></i>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">

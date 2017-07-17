@@ -19,7 +19,7 @@
 @media (min-width: 650px) {
 }
 .explanationBox {
-  margin-top: 40px;
+  margin-top: 30px;
   margin-bottom: 20px;
 }
 @media (max-width: 991px) {
@@ -102,7 +102,13 @@ code {
   font-size: 1.3em;
   font-weight: bold;
 }
+.widgetExamples {
+  margin-top: 40px;
+}
 .widgetExamples h3 {
+  margin-top: 20px;
+}
+.widgetExample {
   margin-top: 50px;
 }
 /***
@@ -297,10 +303,12 @@ Pricing table
   padding: 0px 2px;
   font-size: 16px;
 }
-.features ul {
+.feature-list {
   list-style: none;
-  padding-left: 0px;
+  margin-bottom: 20px;
+  padding-left: 30px;
+  text-indent: -10px;
 }
-.features ul li {
+.feature-list li {
   font-size: 16px;
 }

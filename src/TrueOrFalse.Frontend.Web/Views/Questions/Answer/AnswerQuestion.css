@@ -381,6 +381,64 @@
     padding-bottom: 30px;
   }
 }
+#activityPointsDispaly {
+  font-size: 22px;
+  font-family: sans-serif;
+  line-height: normal;
+  color: #b9db4f;
+}
+#activityPointsDispaly small {
+  font-size: 10px;
+  display: block;
+}
+#levelPopupModal,
+#levelPopupModal .modal-title,
+#levelPopupModal .title-text {
+  font-family: 'Open Sans' !important;
+}
+@media (max-width: 767px) {
+  #levelPopupModal .modal-title {
+    text-align: center;
+  }
+}
+#levelPopupModal .title-text {
+  font-size: 22px;
+}
+#levelPopupModal .happy-memo-svg {
+  margin: 30px 45px 30px 30px;
+  float: right;
+}
+@media (max-width: 767px) {
+  #levelPopupModal .happy-memo-svg {
+    float: unset;
+    display: block;
+    margin: 20px auto 20px auto;
+  }
+}
+#levelPopupModal .level-display {
+  position: relative;
+  top: 7px;
+}
+#levelPopupModal .level-display .level-count {
+  fill: white;
+}
+#levelPopupModal .modal-header {
+  border-bottom: none;
+}
+@media (max-width: 767px) {
+  #levelPopupModal .modal-body {
+    text-align: center;
+  }
+}
+#levelPopupModal .modal-footer {
+  border-top: none;
+  margin-top: unset;
+}
+@media (min-width: 767px) {
+  #levelPopupModal .modal-footer {
+    margin-bottom: 20px;
+  }
+}
 #MarkdownCol {
   position: relative;
   min-height: 1px;

@@ -236,5 +236,13 @@
   {
     "outputFile": "Views/Error/Error.css",
     "inputFile": "Views/Error/Error.less"
+  },
+  {
+    "outputFile": "Views/Welcome/Drive.css",
+    "inputFile": "Views/Welcome/Drive.less"
+  },
+  {
+    "outputFile": "Views/Welcome/Directions.css",
+    "inputFile": "Views/Welcome/Directions.less"
   }
 ]

@@ -50,7 +50,7 @@
             </p>
             <p>
                 Wir haben zu Testzwecken bereits drei einfache Referenz-Algorithmen entwickelt, die in diesem Wettbewerbssystem gegeneinander antreten.
-                Die Ergebnisse (inkl. der bereits implementierten Features) sind <a href="<%= Links.AlgoInsightForecast() %>">hier öffentlich sichtbar</a>.
+                <%--Die Ergebnisse (inkl. der bereits implementierten Features) sind <a href="<%= Links.AlgoInsightForecast() %>">hier öffentlich sichtbar</a>.--%>
             </p>
 
             <h3>Vorschläge für Masterarbeiten</h3>

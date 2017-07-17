@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
-using System.Web.Helpers;
 using System.Web.Script.Serialization;
 using TrueOrFalse.Domain.Question.SolutionType.MatchList;
 
@@ -16,7 +15,7 @@ public class QuestionSolutionMatchList : QuestionSolution
 
     public void FillFromPostData(NameValueCollection postData)
     {
-        List<string> LeftElementText =
+        List<string> leftElementText =
         (
             from key in postData.AllKeys
             where key.StartsWith("LeftElement-")
@@ -24,7 +23,7 @@ public class QuestionSolutionMatchList : QuestionSolution
         )
         .ToList();
 
-        List<string> RightPairElementText =
+        List<string> rightPairElementText =
         (
             from key in postData.AllKeys
             where key.StartsWith("RightPairElement-")
@@ -32,7 +31,7 @@ public class QuestionSolutionMatchList : QuestionSolution
         )
         .ToList();
 
-        List<string> RightElementText =
+        List<string> rightElementText =
         (
             from key in postData.AllKeys
             where key.StartsWith("RightElement-")
@@ -40,21 +39,23 @@ public class QuestionSolutionMatchList : QuestionSolution
         )
         .ToList();
 
-        for (int i = 0; i < LeftElementText.Count; i++)
+        for (int i = 0; i < leftElementText.Count; i++)
         {
-            Pairs.Add(new Pair()
+            Pairs.Add(new Pair
             {
-                ElementLeft = new ElementLeft() {Text = LeftElementText[i]},
-                ElementRight = new ElementRight() {Text = RightPairElementText[i]}
+                ElementLeft = new ElementLeft {Text = leftElementText[i]},
+                ElementRight = new ElementRight {Text = rightPairElementText[i]}
             });
         }
 
-        foreach (var singleRightElementText in RightElementText)
+        foreach (var singleRightElementText in rightElementText)
         {
-            RightElements.Add(new ElementRight() {Text = singleRightElementText});
+            RightElements.Add(new ElementRight {Text = singleRightElementText});
         }
 
         isSolutionOrdered = postData["isSolutionRandomlyOrdered"] != "";
+
+        TrimElementTexts();
     }
 
     public static MatchListAnswerPairs DeserializeMatchListAnswer(string answerJSON)
@@ -68,7 +69,7 @@ public class QuestionSolutionMatchList : QuestionSolution
         if (answer == "")
             return false;
         var answerObject = DeserializeMatchListAnswer(answer);
-        var questionPairs = this.Pairs.OrderBy(t => t.ElementLeft.Text).ToList();
+        var questionPairs = Pairs.OrderBy(t => t.ElementLeft.Text).ToList();
         for (int i = 0; i < questionPairs.Count; i++)
         {
             if (questionPairs[i].ElementRight.Text == "Keine Zuordnung")
@@ -77,13 +78,15 @@ public class QuestionSolutionMatchList : QuestionSolution
                 i--;
             }
         }
+        
         var answerPairs = answerObject.Pairs.OrderBy(t => t.ElementLeft.Text).ToList();
+
         bool answerCorrect = true;
         if (questionPairs.Count != answerPairs.Count)
             answerCorrect = false;
         else
         {
-            for (int i = 0; i < questionPairs.Count(); i++)
+            for (int i = 0; i < questionPairs.Count; i++)
             {
                 bool isSameElementLeft = questionPairs[i].ElementLeft.Text == answerPairs[i].ElementLeft.Text;
                 bool isSameElementRight = questionPairs[i].ElementRight.Text == answerPairs[i].ElementRight.Text;
@@ -93,13 +96,12 @@ public class QuestionSolutionMatchList : QuestionSolution
             }
         }
         return answerCorrect;
-        
     }
 
     public override string CorrectAnswer()
     {
         string CorrectAnswerMessage = PairSeperator;
-        foreach (var pair in this.Pairs)
+        foreach (var pair in Pairs)
             CorrectAnswerMessage += pair.ElementLeft.Text + ElementSeperator + pair.ElementRight.Text + PairSeperator;
 
         return CorrectAnswerMessage;
@@ -121,6 +123,20 @@ public class QuestionSolutionMatchList : QuestionSolution
             .Split(new [] {PairSeperator}, StringSplitOptions.RemoveEmptyEntries)
             .Select(x => $"{String.Join(" - ", x.Split(new []{ElementSeperator}, StringSplitOptions.RemoveEmptyEntries))}, ")
             .Aggregate((a, b) => a + b);
+    }
+
+    public void TrimElementTexts()
+    {
+        foreach (var pair in Pairs)
+        {
+            pair.ElementLeft.Text = pair.ElementLeft.Text.Trim();
+            pair.ElementRight.Text = pair.ElementRight.Text.Trim();
+        }
+
+        foreach (var rightElement in RightElements)
+        {
+            rightElement.Text = rightElement.Text.Trim();
+        }
     }
 
     public void EscapeSolutionChars()

@@ -311,394 +311,457 @@
     });
 }
 
-#MarkdownCol {
-    .make-sm-column(4);
+#activityPointsDispaly {
+    font-size: 22px;
+    font-family: sans-serif;
+    line-height: normal;
+    color: RGB(185,219,79);
 
-      overflow-wrap: break-word;
-      word-wrap: break-word;
-
-      -ms-word-break: break-all;
-      word-break: break-word;
+    small {
+        font-size: 10px;
+        display: block;
+    }
 }
 
-#AnswerAndSolutionCol {
+.apply-open-sans-font() {
+    font-family: 'Open Sans' !important;
+}
 
-    .make-sm-column(12);
+#levelPopupModal {
+    &, & .modal-title, & .title-text {
+        .apply-open-sans-font;
+    }
+
+    .modal-title {
+        @media (max-width: @screen-xs-max) {
+            text-align: center;
+        }
+    }
+
+    .title-text {
+        font-size: 22px;
+    }
+
+    .happy-memo-svg {
+        margin: 30px 45px 30px 30px;
+        float: right;
+
+        @media (max-width: @screen-xs-max) {
+            float: unset;
+            display: block;
+            margin: 20px auto 20px auto;
+        }
+    }
+
+    .level-display {
+        position: relative;
+        top: 7px;
+
+        .level-count {
+            fill: white;
+        }
+    }
+
+    .modal-header {
+        border-bottom: none;
+    }
+
+    .modal-body {
+        @media (max-width: @screen-xs-max) {
+            text-align: center;
+        }
+    }
+
+    .modal-footer {
+        border-top: none;
+        margin-top: unset;
+        @media (min-width: @screen-xs-max) {
+            margin-bottom:20px;
+        }
+    }
+}
+
+    #MarkdownCol {
+        .make-sm-column(4);
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        -ms-word-break: break-all;
+        word-break: break-word;
+    }
+
+    #AnswerAndSolutionCol {
+        .make-sm-column(12);
 
 
-    #MarkdownCol + & {
+        #MarkdownCol + & {
+            .make-sm-column(8);
 
-        .make-sm-column(8);
+            > div {
 
-        > div {
+                .media-sm-up( {
+                    margin-left: 20px;
+                }
 
-            .media-sm-up({
+                );
+            }
+        }
+
+        #AnswerInputSection {
+            .make-sm-column(6);
+
+            .media-below-sm( {
+                max-width: 550px;
+            }
+
+            );
+
+            #MarkdownCol + & {
+                margin-bottom: 10px;
+                width: 100%;
+            }
+        }
+
+        #ButtonsAndSolutionCol {
+            .make-sm-column(6);
+
+            #MarkdownCol + & {
+                width: 100%;
+            }
+        }
+
+        #ButtonsAndSolution {
+
+            .media-sm-up( {
                 margin-left: 20px;
-            });
+            }
+
+            );
+
+            #MarkdownCol + & {
+                margin-left: 0;
+            }
         }
     }
 
     #AnswerInputSection {
+        position: relative;
+        display: inline-block;
+        vertical-align: bottom;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-bottom: 20px;
+        margin-bottom: 0px;
+        width: 100%;
 
-        .make-sm-column(6);
+        .right-answer {
+            color: green;
+            font-weight: bold;
+        }
 
-        .media-below-sm({
-            max-width: 550px;
-        });
+        .wrong-answer {
+            color: @dark-red;
+        }
 
-        #MarkdownCol + & {
+        textarea, input {
             margin-bottom: 10px;
-            width: 100%;
+        }
+
+        label {
+            position: relative;
+        }
+
+        .radio {
+            margin-bottom: 0;
+            margin-top: -2px;
+
+            & + .radio {
+                margin-top: 10px;
+
+                .media-below-sm( {
+                    margin-top: 15px;
+                }
+
+                );
+            }
+        }
+
+        .checkbox {
+            margin-bottom: 0;
+            margin-top: -2px;
+
+            & + .checkbox {
+                margin-top: 10px;
+
+                .media-below-sm( {
+                    margin-top: 15px;
+                }
+
+                );
+            }
         }
     }
 
-    #ButtonsAndSolutionCol {
-        .make-sm-column(6);
-
-        #MarkdownCol + & {
-            width: 100%;
-        }
+    #txtAnswer {
+        max-width: 450px;
     }
 
-    #ButtonsAndSolution {
+    #Buttons {
+        display: inline-block;
+        vertical-align: bottom;
+        margin-bottom: 15px;
+        width: 100%;
 
-        .media-sm-up({
-            margin-left: 20px;
-        });
-        
-        #MarkdownCol + & {
+        .btn-link {
+            padding-left: 0;
+            padding-top: 0;
+            padding-bottom: 0;
             margin-left: 0;
         }
-    }
-}
 
-#AnswerInputSection {
-    position: relative;
-    display: inline-block;
-    vertical-align: bottom;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-bottom: 20px;
-    margin-bottom: 0px;
-    width: 100%;
+        .btn {
+            margin-right: 10px;
+            margin-bottom: 15px;
+        }
 
-    .right-answer{
-        color: green;
-        font-weight: bold;  
-    }
-
-    .wrong-answer{
-        color: @dark-red;
-    }
-
-    textarea, input {
-        margin-bottom: 10px;
-    }
-
-    label {
-        position: relative;
-    }
-
-    .radio {
-        
-        margin-bottom: 0;
-        margin-top: -2px;
-        
-        & +.radio {
-            margin-top: 10px;
-
-            .media-below-sm({
-                margin-top: 15px;
-            });
+        .HeartToAddButton {
+            float: right;
+            margin-bottom: 10px;
         }
     }
 
-    .checkbox {
-        
-        margin-bottom: 0;
-        margin-top: -2px;
-        
-        & +.checkbox {
-            margin-top: 10px;
-
-            .media-below-sm({
-                margin-top: 15px;
-            });
-        }
+    #answerQuestionDetails .label {
+        max-width: 100%;
     }
-}
-
-#txtAnswer {
-    max-width: 450px;
-}
-
-#Buttons {
-    display: inline-block;
-    vertical-align: bottom;
-    margin-bottom: 15px;
-    width: 100%;
-
-    .btn-link {
-        padding-left: 0;
-        padding-top: 0;
-        padding-bottom: 0;
-        margin-left: 0;
-    }
-
-    .btn {
-        margin-right: 10px;
-        margin-bottom: 15px;
-    }
-
-    .HeartToAddButton {
-        float: right;
-        margin-bottom: 10px;
-    }
-}
-
-#answerQuestionDetails .label {
-    max-width: 100%;
-}
-
-/*#AnswerFeedbackAndSolutionDetails {
+    /*#AnswerFeedbackAndSolutionDetails {
     margin-top: 20px;
 }*/
+    #SolutionDetails {
+        .media-below-sm( {
+            padding-bottom: 20px;
+        }
 
-#SolutionDetails {
-    .media-below-sm({
-        padding-bottom:20px;
-    });
-}
-
-.answerFeedback {
-    position: absolute;
-    bottom: 10px;
-    left: 30%;
-    right: 30%;
-    height: 40px;
-    min-width: 150px;
-    padding: 10px;
-    text-align: center;
-    opacity: 0.7;
-    border-radius: 4px;
-    color: white;
-    font-weight: bold;
-}
-
-
-.answerFeedbackCorrect, .answerFeedbackWrong {
-    z-index: 999;
-}
-
-.answerFeedbackCorrect {
-    background-color: @memo-green;
-}
-
-.answerFeedbackWrong {
-    background-color: @dark-red; //#efc7ce
-}
-
-#divAnsweredCorrect {
-    margin-bottom: 15px;
-}
-
-#LicenseQuestion {
-    margin-top: -10px;
-    margin-left: 0px;
-    padding: 1px 20px 10px;
-    font-size: small;
-    text-align: left;   
-}
-
-.commentSettledInfo {
-    color: darkgray;
-}
-
-.MarkdownImage {
-    img {
-
-        max-height: 500px;
-
-        .media-below-sm({
-            max-height: 250px;
-        });
-    }
-}
-
-#MasterWidget {
-    #AnswerBody {
-        border: none;
-        box-shadow: none;
-        padding: 0;
-        margin-bottom: 0;
+        );
     }
 
-    .SessionBar {
+    .answerFeedback {
+        position: absolute;
+        bottom: 10px;
+        left: 30%;
+        right: 30%;
+        height: 40px;
+        min-width: 150px;
+        padding: 10px;
+        text-align: center;
+        opacity: 0.7;
+        border-radius: 4px;
+        color: white;
+        font-weight: bold;
+    }
+
+
+    .answerFeedbackCorrect, .answerFeedbackWrong {
+        z-index: 999;
+    }
+
+    .answerFeedbackCorrect {
+        background-color: @memo-green;
+    }
+
+    .answerFeedbackWrong {
+        background-color: @dark-red; //#efc7ce
+    }
+
+    #divAnsweredCorrect {
         margin-bottom: 15px;
     }
-    
+
     #LicenseQuestion {
-        margin-top: 10px;
-        padding: 0;
+        margin-top: -10px;
+        margin-left: 0px;
+        padding: 1px 20px 10px;
+        font-size: small;
+        text-align: left;
     }
 
-    #video-pager {
-        border: none;
-        padding-left: 0;
-        padding-right: 0;
-    }
-}
-
-
-
-//MatchList
-
-.matchlist-leftelementwrapper {
-    text-align:center;
-}
-
-.matchlist-pairrow {
-    margin-bottom: 10px;
-    margin-top: 2px;
-    display: flex;
-    align-content: center;
-    align-items: center;
-}
-
-.matchlist-droppable {
-    border: 1px dashed;
-    border-radius: 5px;
-    height: 33px;
-    //position: relative;
-    //bottom: 5px;
-}
-
-.matchlist-divider {
-    border-bottom: 1px solid;
-    margin: 20px 25% 0 25%;
-}
-
-.matchlist-hovered {
-    background-color: gainsboro;
-}
-
-#matchlist-rightelements {
-    margin-top: 20px;
-    padding: 0 13px 0 10px;
-    display: flex;
-    align-items: flex-start;
-    align-content: space-around;
-    flex-flow: row wrap;
-    justify-content: space-between;
-}
-
-.matchlist-rightelement{
-    display: inline-block;
-    word-wrap: break-word;
-    border: 1px solid;
-    padding: 2px 0 3px 0;
-    border-radius: 3px;
-    margin: 10px 0 0 0;
-    cursor: move;
-    background-color: white;
-    text-align:center;
-    white-space: pre-wrap;
-}
-
-.matchlist-droppable-dropped {
-    height:initial;
-    padding: 2px;
-    display: inline-block;
-    width:100%;
-}
-
-.matchlist-rightelement-dropped {
-    position: static !important;
-    margin: unset;
-    width: 100%;
-}
-
-//matchlist-mobile
-.matchlist-mobilepairrow {
-    margin-bottom: 20px;
-}
-
-.matchlist-elementlabel {
-    text-align: left;
-    margin-bottom: 5px;
-    font-size: 16px;
-}
-
-
-
-//FlashCard
-
-#flashCardContent {
-    min-height: 250px;
-    cursor: pointer;
-
-    @media (max-width: 768px) {
-        margin-bottom: 25px;
+    .commentSettledInfo {
+        color: darkgray;
     }
 
-    > div, #flashCard-frontContent > p {
-        min-height: inherit;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        align-content: center;
-        justify-content: center;
-    }
-
-    #flashCard-back > p {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        align-content: center;
-        justify-content: center;
-        
+    .MarkdownImage {
         img {
+            max-height: 500px;
+
+            .media-below-sm( {
+                max-height: 250px;
+            }
+
+            );
+        }
+    }
+
+    #MasterWidget {
+        #AnswerBody {
+            border: none;
+            box-shadow: none;
+            padding: 0;
+            margin-bottom: 0;
+        }
+
+        .SessionBar {
+            margin-bottom: 15px;
+        }
+
+        #LicenseQuestion {
+            margin-top: 10px;
+            padding: 0;
+        }
+
+        #video-pager {
+            border: none;
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+    //MatchList
+    .matchlist-leftelementwrapper {
+        text-align: center;
+    }
+
+    .matchlist-pairrow {
+        margin-bottom: 10px;
+        margin-top: 2px;
+        display: flex;
+        align-content: center;
+        align-items: center;
+    }
+
+    .matchlist-droppable {
+        border: 1px dashed;
+        border-radius: 5px;
+        height: 33px;
+        //position: relative;
+        //bottom: 5px;
+    }
+
+    .matchlist-divider {
+        border-bottom: 1px solid;
+        margin: 20px 25% 0 25%;
+    }
+
+    .matchlist-hovered {
+        background-color: gainsboro;
+    }
+
+    #matchlist-rightelements {
+        margin-top: 20px;
+        padding: 0 13px 0 10px;
+        display: flex;
+        align-items: flex-start;
+        align-content: space-around;
+        flex-flow: row wrap;
+        justify-content: space-between;
+    }
+
+    .matchlist-rightelement {
+        display: inline-block;
+        word-wrap: break-word;
+        border: 1px solid;
+        padding: 2px 0 3px 0;
+        border-radius: 3px;
+        margin: 10px 0 0 0;
+        cursor: move;
+        background-color: white;
+        text-align: center;
+        white-space: pre-wrap;
+    }
+
+    .matchlist-droppable-dropped {
+        height: initial;
+        padding: 2px;
+        display: inline-block;
+        width: 100%;
+    }
+
+    .matchlist-rightelement-dropped {
+        position: static !important;
+        margin: unset;
+        width: 100%;
+    }
+    //matchlist-mobile
+    .matchlist-mobilepairrow {
+        margin-bottom: 20px;
+    }
+
+    .matchlist-elementlabel {
+        text-align: left;
+        margin-bottom: 5px;
+        font-size: 16px;
+    }
+    //FlashCard
+    #flashCardContent {
+        min-height: 250px;
+        cursor: pointer;
+
+        @media (max-width: 768px) {
+            margin-bottom: 25px;
+        }
+
+        > div, #flashCard-frontContent > p {
+            min-height: inherit;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            align-content: center;
+            justify-content: center;
+        }
+
+        #flashCard-back > p {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            align-content: center;
+            justify-content: center;
+
+            img {
+                max-width: 60%;
+            }
+        }
+
+        > div {
+            background-color: white;
+            border: 1px solid darken(@border-grey, 5);
+            box-shadow: 10px 10px 5px -5px rgba(0,0,0,0.20);
+        }
+
+        img {
+            padding-bottom: 20px;
+        }
+
+        .flipClickHint {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+
+            span {
+                color: silver;
+            }
+        }
+
+        #flashCard-frontContent, #flashCard-back {
+            padding: 15px 15px 40px 15px;
+        }
+
+        #flashCard-frontContent img {
             max-width: 60%;
         }
     }
 
-    > div {
-        background-color: white;
-        border: 1px solid darken(@border-grey, 5);
-        box-shadow: 10px 10px 5px -5px rgba(0,0,0,0.20);
+    .flashCardAnswerButtons > .btn {
+        margin-left: unset;
     }
-
-    img {
-        padding-bottom: 20px;
-    }
-
-    .flipClickHint {
-        position: absolute;
-        bottom: 1rem;
-        right: 1rem;
-
-        span {
-            color: silver;
-        }
-    }
-
-    #flashCard-frontContent, #flashCard-back {
-        padding: 15px 15px 40px 15px;
-    }
-
-    #flashCard-frontContent img {
-        max-width: 60%;
-    }
-}
-
-.flashCardAnswerButtons > .btn{
-    margin-left: unset;
-}
-
-
-//http://jsfiddle.net/YB8UW/8/
-/*#AnswerInputSection .radio { //styles for radio html like in bootestrap style (input inside label)
+    //http://jsfiddle.net/YB8UW/8/
+    /*#AnswerInputSection .radio { //styles for radio html like in bootestrap style (input inside label)
     background-color: lightgray;
     margin-bottom: 10px;
 
@@ -708,7 +771,7 @@
         width: 100%;
     }
 }*/
-/*#AnswerInputSection .radio { //styles for html with input before label
+    /*#AnswerInputSection .radio { //styles for html with input before label
     background-color: lightgray;
     margin-bottom: 10px;
 

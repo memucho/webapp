@@ -114,7 +114,7 @@
                         Wie wir das machen? Wir analysieren, wie und wofür du lernst und wie andere Nutzer die Inhalte gelernt haben. 
                         Dadurch können wir vorhersagen, wie gut du etwas (noch) weißt. Nutze dafür unsere Lernen-Funktion. 
                         Sie ist nur verfügbar, wenn du <a href="#" data-btn-login="true">angemeldet bist</a>.
-                        (<a href="<%= Links.AlgoInsightForecast() %>">Hier erfährst du mehr über unsere Technologie.</a>)
+                        <%--(<a href="<%= Links.AlgoInsightForecast() %>">Hier erfährst du mehr über unsere Technologie.</a>)--%>
                     </p>
                 </div>
             </div>

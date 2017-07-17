@@ -144,7 +144,7 @@ namespace TrueOrFalse
             routes.MapRoute("Imprint", "Impressum", new { controller = "VariousPublic", action = "Imprint" });
             routes.MapRoute("TermsAndConditions", "AGB", new { controller = "VariousPublic", action = "TermsAndConditions" });
             routes.MapRoute("Various", "{action}", new { controller = "VariousPublic" });
-
+            routes.MapRoute("Directions", "Willkommen/Anfahrt", new { controller = "Welcome", action = "Directions" });
             routes.MapRoute("ApiExport", "Api/Export/{action}", new { controller = "Export", action = "Export" });
             routes.MapRoute("ApiCategory", "Api/Category/{action}", new { controller = "CategoryApi" });
             routes.MapRoute("ApiSets", "Api/Sets/{action}", new { controller = "SetsApi" });
@@ -152,6 +152,7 @@ namespace TrueOrFalse
             routes.MapRoute("ApiUserGoogle", "Api/GoogleUsers/{action}", new { controller = "GoogleUsersApi" });
             routes.MapRoute("ApiQuestions", "Api/Questions/{action}", new { controller = "QuestionsApi" });
             routes.MapRoute("ApiSearch", "Api/Search/{action}", new { controller = "SearchApi" });
+            routes.MapRoute("ApiActivityPoints", "Api/ActivityPoints/{action}", new { controller = "ActivityPointsApi" });
 
             routes.MapRoute("ImageUpload", "Images/ImageUpload/{action}", new { controller = "ImageUpload" });
             

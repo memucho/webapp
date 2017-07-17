@@ -22,7 +22,7 @@
         <% if(Model.TestSessionResultModel.TestSession.SessionNotFound) { %>
     
             <h2>Uuups...</h2>
-            <p>die Testsitzung ist nicht mehr aktuell.</p>
+            <p>Du hattest hier dein Wissen getestet. Leider kannst du nicht fortsetzen, weil deine Sitzung inzwischen abgelaufen ist.</p>
 
         <% } else { %>
 
