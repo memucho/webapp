@@ -18,6 +18,11 @@ public class LearningSessionMap : ClassMap<LearningSession>
 
         Map(x => x.IsWishSession);
 
+        Component(x => x.Settings, settings =>
+        {
+            settings.Map(x => x.LearningSessionType).Column("SettingLearningSessionType");
+        });
+
         Map(x => x.IsCompleted);
 
         Map(x => x.DateCreated);

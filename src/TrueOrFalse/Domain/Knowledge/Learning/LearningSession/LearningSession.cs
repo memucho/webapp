@@ -11,6 +11,7 @@ public class LearningSession : DomainEntity, IRegisterAsInstancePerLifetime
 {
     public const int DefaultNumberOfSteps = 10;
     public virtual User User { get; set; }
+    public virtual LearningSessionSettings Settings { get; set; }
     public virtual IList<LearningSessionStep> Steps{ get; set; }
 
     public virtual string StepsJson

@@ -259,6 +259,9 @@
     <Compile Include="Domain\Classification\Category\History\Persistence\CategoryChangeRepo.cs" />
     <Compile Include="Domain\Classification\Category\Type\Impl\CategoryTypeCourse.cs" />
     <Compile Include="Domain\Classification\Category\Type\Impl\CategoryTypeEducationProvider.cs" />
+    <Compile Include="Domain\Knowledge\Learning\LearningSession\LearningSessionQuestionSelection.cs" />
+    <Compile Include="Domain\Knowledge\Learning\LearningSession\LearningSessionSettings.cs" />
+    <Compile Include="Domain\Knowledge\Learning\LearningSession\LearningSessionType.cs" />
     <Compile Include="Domain\Knowledge\Learning\LearningSession\Ops\CreateLearningSession.cs" />
     <Compile Include="Domain\QuestionSet\Ops\CopySet.cs" />
     <Compile Include="Domain\QuestionSet\Ops\GetAllOvercategorizedSets.cs" />
