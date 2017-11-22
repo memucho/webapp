@@ -29,6 +29,7 @@ class AnswerQuestion {
     public IsGameMode: boolean;
     public IsLearningSession = false;
     public IsTestSession = false;
+    public LearningSessionType = "";
 
     public AnsweredCorrectly = false;
     public AnswersSoFar = [];
@@ -44,6 +45,13 @@ class AnswerQuestion {
         if ($('#hddIsLearningSession').length === 1)
             this.IsLearningSession = $('#hddIsLearningSession').val().toLowerCase() === "true";
 
+        if ($('#hddLearningSessionType').length > 0) {
+            this.LearningSessionType = $('#hddLearningSessionType').val().toLowerCase();
+            if (this.LearningSessionType === "testing")
+                this.IsTestSession = true;
+            console.log("type: " + this.LearningSessionType);
+        }
+
         if (this.IsLearningSession) {
             this.LearningSessionId = +$('#hddIsLearningSession').attr('data-learning-session-id');
             this.LearningSessionStepGuid = $('#hddIsLearningSession').attr('data-current-step-guid');
@@ -52,8 +60,8 @@ class AnswerQuestion {
         if (this.IsLearningSession && $('#hddIsLearningSession').attr('data-is-last-step'))
             this._isLastLearningStep = $('#hddIsLearningSession').attr('data-is-last-step').toLowerCase() === "true";
 
-        if ($('#hddIsTestSession').length === 1)
-            this.IsTestSession = $('#hddIsTestSession').val().toLowerCase() === "true";
+        //if ($('#hddIsTestSession').length === 1)
+        //    this.IsTestSession = $('#hddIsTestSession').val().toLowerCase() === "true";
 
         if (this.IsTestSession && $('#hddIsTestSession').attr('data-is-last-step'))
             AnswerQuestion.IsLastTestSessionStep = $('#hddIsTestSession').attr('data-is-last-step').toLowerCase() === "true";

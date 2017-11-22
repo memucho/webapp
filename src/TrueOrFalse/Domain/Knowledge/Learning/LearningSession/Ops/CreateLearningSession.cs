@@ -30,4 +30,38 @@ public class CreateLearningSession
 
         return learningSession;
     }
+
+    public static LearningSession ForCategory(int categoryId, bool testingMode)
+    {
+        if (testingMode == false)
+            return ForCategory(categoryId); //todo Christof: Combine with above ForCategory
+
+
+        var category = Sl.CategoryRepo.GetByIdEager(categoryId);
+
+        var questions = category.GetAggregatedQuestionsFromMemoryCache();
+
+        if (questions.Count == 0)
+            throw new Exception("Cannot start LearningSession with 0 questions.");
+
+        var user = Sl.R<SessionUser>().User;
+
+        var learningSession = new LearningSession
+        {
+            CategoryToLearn = category,
+            Steps = GetLearningSessionSteps.Run(questions),
+            User = user,
+            Settings = new LearningSessionSettings
+            {
+                AmountQuestions = 6,
+                LearningSessionQuestionSelection = LearningSessionQuestionSelection.AllQuestions,
+                LearningSessionType = LearningSessionType.Testing
+            }
+        };
+
+        Sl.LearningSessionRepo.Create(learningSession);
+
+        return learningSession;
+    }
+
 }
