@@ -8,7 +8,7 @@ public class QuestionSolutionMultipleChoice : QuestionSolution
 {
     private const string AnswerListDelimiter = "</br>";
     public List<Choice> Choices = new List<Choice>();
-    public bool isSolutionOrdered;
+    public bool IsSolutionOrdered;
 
     public void FillFromPostData(NameValueCollection postData)
     {
@@ -37,29 +37,29 @@ public class QuestionSolutionMultipleChoice : QuestionSolution
             });
         }
 
-        isSolutionOrdered = postData["isSolutionRandomlyOrdered"] != "";
+        IsSolutionOrdered = postData["isSolutionRandomlyOrdered"] != "";
     }
 
     public override bool IsCorrect(string answer)
     {
-        string[] Answers = answer.Split(new string[] {"%seperate&xyz%"}, StringSplitOptions.RemoveEmptyEntries).Select(x => x.Trim()).ToArray();
-        string[] Solutions = CorrectAnswer().Split(new[] { AnswerListDelimiter }, StringSplitOptions.RemoveEmptyEntries).Select(x => x.Trim()).ToArray();
-        return Answers.OrderBy(t => t).SequenceEqual(Solutions.OrderBy(t => t));
+        var answers = answer.Split(new string[] {"%seperate&xyz%"}, StringSplitOptions.RemoveEmptyEntries).Select(x => x.Trim());
+        var solutions = CorrectAnswer().Split(new[] { AnswerListDelimiter }, StringSplitOptions.RemoveEmptyEntries).Select(x => x.Trim());
+        return answers.OrderBy(t => t).SequenceEqual(solutions.OrderBy(t => t));
     }
 
     public override string CorrectAnswer()
     {
-        string CorrectAnswer = AnswerListDelimiter;
-        foreach (var SingleChoice in Choices)
+        string correctAnswer = AnswerListDelimiter;
+        foreach (var singleChoice in Choices)
         {
-            if (SingleChoice.IsCorrect)
+            if (singleChoice.IsCorrect)
             {
-                CorrectAnswer += SingleChoice.Text;
-                if (SingleChoice != Choices[Choices.Count - 1])
-                    CorrectAnswer += AnswerListDelimiter;
+                correctAnswer += singleChoice.Text;
+                if (singleChoice != Choices[Choices.Count - 1])
+                    correctAnswer += AnswerListDelimiter;
             }
         }
-        return CorrectAnswer;
+        return correctAnswer;
     }
 
     public override string GetCorrectAnswerAsHtml()

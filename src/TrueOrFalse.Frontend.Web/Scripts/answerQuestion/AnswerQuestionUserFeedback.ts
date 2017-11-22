@@ -113,7 +113,7 @@
         }
 
         $('#Buttons').css('visibility', 'hidden');
-        window.setTimeout(function () { $("#SolutionDetailsSpinner").show(); }, 500);
+        window.setTimeout(() => { $("#SolutionDetailsSpinner").show(); }, 500);
 
         AnswerQuestion.AjaxGetSolution(result => {
 
@@ -302,7 +302,7 @@
     }
 
     ShowAnswerDetails() {
-        window.setTimeout(function () {
+        window.setTimeout(() => {
             $("#SolutionDetailsSpinner").remove();
             $("#SolutionDetails").show();
             $('#Buttons').css('visibility', 'visible');

@@ -20,7 +20,7 @@
 
     var localPairs = Model.Pairs;
     var random = new Random();
-    if (!Model.isSolutionOrdered)
+    if (!Model.IsSolutionOrdered)
         localPairs = Model.Pairs.OrderBy(x => random.Next()).ToList();
 
     foreach (var pair in localPairs)

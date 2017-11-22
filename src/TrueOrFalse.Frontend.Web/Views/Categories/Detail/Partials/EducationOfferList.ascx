@@ -1,14 +1,15 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<EducationOfferListModel>" %>
 <%@ Import Namespace="TrueOrFalse.Frontend.Web.Code" %>
 
-<h2><%: Model.Title %></h2>
-<p><%: Model.Text %></p>
 
-<div class="topicNavigation row" style= <%= Model.CategoryList.Count == 1 ? " \"justify-content: start;\" " : "" %>>
-    <% foreach (var category in Model.CategoryList)
-        { %>
-            <% if(Model.GetTotalSetCount(category) > 0 || Model.GetTotalQuestionCount(category) > 0 || Model.IsInstallationAdmin)
-               { %>
+<% if (Model.CategoryList.Any()) { %>
+
+    <h2><%: Model.Title %></h2>
+    <p><%: Model.Text %></p>
+
+    <div class="topicNavigation row" style= <%= Model.CategoryList.Count == 1 ? " \"justify-content: start;\" " : "" %>>
+        <% foreach (var category in Model.CategoryList)
+            { %>
                 <div class="col-xs-6 topic">
                     <div class="row">
                         <div class="col-xs-3">
@@ -19,9 +20,6 @@
                         <div class="col-xs-9">
                             <a class="topic-name" href="<%= Links.GetUrl(category) %>">
                                 <div class="topic-name">
-                                    <% if (Model.GetTotalSetCount(category) < 1 && Model.GetTotalQuestionCount(category) < 1 && Model.IsInstallationAdmin) { %>
-                                        <i class="fa fa-user-secret show-tooltip" data-original-title="Thema ist leer und wird daher nur Admins angezeigt"></i>
-                                    <% } %>
                                     <%--<%= category.Type.GetCategoryTypeIconHtml() %>--%><%: category.Name %>
                                 </div>
                             </a>
@@ -37,6 +35,9 @@
                         </div>
                     </div>
                 </div>
-            <% } %>
-    <% } %>
-</div>
+        <% } %>
+    </div>
+
+<% } else { %>
+    <div class="hidden">&nbsp;</div><% //if empty, templateparser throws error %>
+<% } %>

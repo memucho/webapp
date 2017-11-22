@@ -123,8 +123,8 @@
                 document.title = $(".QuestionText").html();
                 $("div#answerQuestionDetails").replaceWith(result.questionDetailsAsHtml);
                 $("div#comments").replaceWith(result.commentsAsHtml);
-                new PageInit();
 
+                new PageInit();
                 FillSparklineTotals();
                 InitTooltips();
                 Images.Init();

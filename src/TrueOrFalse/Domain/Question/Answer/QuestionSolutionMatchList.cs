@@ -11,7 +11,7 @@ public class QuestionSolutionMatchList : QuestionSolution
     private const string ElementSeperator = "%elementseperator%";
     public List<Pair> Pairs = new List<Pair>();
     public List<ElementRight> RightElements = new List<ElementRight>();
-    public bool isSolutionOrdered;
+    public bool IsSolutionOrdered;
 
     public void FillFromPostData(NameValueCollection postData)
     {
@@ -53,15 +53,15 @@ public class QuestionSolutionMatchList : QuestionSolution
             RightElements.Add(new ElementRight {Text = singleRightElementText});
         }
 
-        isSolutionOrdered = postData["isSolutionRandomlyOrdered"] != "";
+        IsSolutionOrdered = postData["isSolutionRandomlyOrdered"] != "";
 
         TrimElementTexts();
     }
 
-    public static MatchListAnswerPairs DeserializeMatchListAnswer(string answerJSON)
+    public static MatchListAnswerPairs DeserializeMatchListAnswer(string answerJson)
     {
         var serilizer = new JavaScriptSerializer();
-        return serilizer.Deserialize<MatchListAnswerPairs>(answerJSON);
+        return serilizer.Deserialize<MatchListAnswerPairs>(answerJson);
     }
 
     public override bool IsCorrect(string answer)
@@ -102,11 +102,11 @@ public class QuestionSolutionMatchList : QuestionSolution
     public override string CorrectAnswer()
     {
         TrimElementTexts();
-        string CorrectAnswerMessage = PairSeperator;
+        string correctAnswerMessage = PairSeperator;
         foreach (var pair in Pairs)
-            CorrectAnswerMessage += pair.ElementLeft.Text + ElementSeperator + pair.ElementRight.Text + PairSeperator;
+            correctAnswerMessage += pair.ElementLeft.Text + ElementSeperator + pair.ElementRight.Text + PairSeperator;
 
-        return CorrectAnswerMessage;
+        return correctAnswerMessage;
     }
 
     public override string GetCorrectAnswerAsHtml()

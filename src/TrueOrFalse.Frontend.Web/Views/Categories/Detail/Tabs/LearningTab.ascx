@@ -20,7 +20,7 @@
     
 <% if (Model.Category.CountQuestionsAggregated > 0)
    {
-       var dummyQuestion = Sl.QuestionRepo.GetById(Model.Category.GetAggregatedQuestionIdsFromMemoryCache().FirstOrDefault());
+       var dummyQuestion = Sl.QuestionRepo.GetById(Model.Category.GetAggregatedQuestionsFromMemoryCache().Where(q => q.IsVisibleToCurrentUser()).Select(q => q.Id).FirstOrDefault()); // why not take Question from Cache directly?
 
        Html.RenderPartial("~/Views/Questions/Answer/LearningSession/LearningSessionHeader.ascx", new AnswerQuestionModel(dummyQuestion.Id));
 

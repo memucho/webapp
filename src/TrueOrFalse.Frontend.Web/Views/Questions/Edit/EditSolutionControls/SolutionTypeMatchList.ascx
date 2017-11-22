@@ -144,7 +144,7 @@
         $(".matchlist-rightpairelement").last().val('<%= Model.Pairs[i].ElementRight.Text %>');
     <% }
 
-    if (Model.isSolutionOrdered)
+    if (Model.IsSolutionOrdered)
     { %>
         $('[name="isSolutionRandomlyOrdered"]').prop("checked", false);
     <% }

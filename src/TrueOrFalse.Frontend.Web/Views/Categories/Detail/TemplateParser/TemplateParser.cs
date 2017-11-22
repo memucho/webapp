@@ -59,6 +59,7 @@ public class TemplateParser
             case "singlecategoryfullwidth":
             case "categorynetwork":
             case "contentlists":
+            case "educationofferlist":
             case "singleset":
             case "setlistcard":
             case "setcardminilist":
@@ -102,6 +103,8 @@ public class TemplateParser
                 return new TopicNavigationModel(category, templateJson.Title, templateJson.Text, templateJson.Load, templateJson.Order);
             case "medialist":
                 return new MediaListModel(category, templateJson.Title, templateJson.Text);
+            case "educationofferlist":
+                return new EducationOfferListModel(category, templateJson.Title, templateJson.Text, templateJson.Load, templateJson.Order);
             case "videowidget":
                 return new VideoWidgetModel(templateJson.SetId);
             case "settestsessionnostartscreen":

@@ -86,6 +86,7 @@ public class Category : DomainEntity, ICreator
     public virtual int GetCountQuestionsAggregated()
     {
         return GetAggregatedQuestionsFromMemoryCache().Count;
+        // should be: return GetAggregatedQuestionsFromMemoryCache().Count(q => q.IsVisibleToCurrentUser());
     }
 
     public virtual int GetCountSets()

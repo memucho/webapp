@@ -49,7 +49,7 @@ function writeIframe(iframeId, iframeSource, logoOn) {
     }
 
     if ((logoOn == null | (logoOn !== "true" && logoOn !== "false")) & iframeSource.indexOf("&host=memucho.de") >= 0) { // if no explicit value for logoOn is set and widget runs on memucho, than hide logo
-        logoOn = false;
+        logoOn = "false";
     }
 
     var memuchoLogo = (logoOn === "false")

@@ -43,7 +43,7 @@ class KnowledgeBar {
 
     private static ReloadForTopicNavs() {
         $('#TopicTabContent .KnowledgeBarWrapper').each(function () {
-            var id = $(this).closest('.category-knowledge-bar').attr('data-category-id');
+            var id = $(this).find('.category-knowledge-bar').attr('data-category-id');
             $.get("/Category/KnowledgeBar/?categoryId=" + id,
                 (html) => {
 

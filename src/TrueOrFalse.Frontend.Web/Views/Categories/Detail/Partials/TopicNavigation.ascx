@@ -40,4 +40,6 @@
                 <% } %>
         <% } %>
     </div>
+<% } else { %>
+    <div class="hidden">&nbsp;</div><% //if empty, templateparser throws error %>
 <% } %>

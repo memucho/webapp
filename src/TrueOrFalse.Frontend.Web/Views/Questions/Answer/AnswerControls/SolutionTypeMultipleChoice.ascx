@@ -1,8 +1,7 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<QuestionSolutionMultipleChoice>" %>
 
-
 <% var localChoices = Model.Choices;
-   if (!Model.isSolutionOrdered)
+   if (!Model.IsSolutionOrdered)
    {
        var random = new Random();
        localChoices = Model.Choices.OrderBy(x => random.Next()).ToList();
@@ -20,5 +19,3 @@
 <h6 class = "ItemInfo">
     Es können keine oder mehrere Antworten richtig sein!
 </h6>
-<script type="text/javascript">
-</script>

@@ -15,7 +15,7 @@ public class SingleQuestionsQuizModel : BaseModel
 
         if (string.IsNullOrEmpty(questionIds))
         {
-            Questions = category.GetAggregatedQuestionsFromMemoryCache();
+            Questions = category.GetAggregatedQuestionsFromMemoryCache().Where(q => q.IsVisibleToCurrentUser()).ToList();
         }
         else
         {
