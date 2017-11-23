@@ -120,13 +120,13 @@ public class AnswerQuestion : IRegisterAsInstancePerLifetime
         if(countLastAnswerAsCorrect && countUnansweredAsCorrect)
             throw new Exception("either countLastAnswerAsCorrect OR countUnansweredAsCorrect should be set to true, not both");
 
-        if (testSessionId.HasValue && (countLastAnswerAsCorrect || countUnansweredAsCorrect))
+        if (testSessionId.HasValue && testSessionId != -1 && (countLastAnswerAsCorrect || countUnansweredAsCorrect))
         {
             var currentStep = Sl.SessionUser.GetPreviousTestSessionStep(testSessionId.Value);
             currentStep.AnswerState = TestSessionStepAnswerState.AnsweredCorrect;
         }
 
-        if (learningSessionId.HasValue && (countLastAnswerAsCorrect || countUnansweredAsCorrect))
+        if (learningSessionId.HasValue && learningSessionId != -1 && (countLastAnswerAsCorrect || countUnansweredAsCorrect))
         {
             var learningSession = Sl.LearningSessionRepo.GetById(learningSessionId.Value);
             var learningSessionStep = learningSession.GetStep(new Guid(learningSessionStepGuid));

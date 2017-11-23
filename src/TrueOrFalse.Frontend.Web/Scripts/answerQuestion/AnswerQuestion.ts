@@ -47,9 +47,8 @@ class AnswerQuestion {
 
         if ($('#hddLearningSessionType').length > 0) {
             this.LearningSessionType = $('#hddLearningSessionType').val().toLowerCase();
-            if (this.LearningSessionType === "testing")
-                this.IsTestSession = true;
-            console.log("type: " + this.LearningSessionType);
+            //if (this.LearningSessionType === "testing")
+            //    this.IsTestSession = true;
         }
 
         if (this.IsLearningSession) {
@@ -388,7 +387,7 @@ class AnswerQuestion {
                         $("#answerHistory").html(data);
                     });
 
-                self.UpdateProgressBar(self.GetCurrentStep() - 1);
+                self.UpdateProgressBar(self.GetCurrentStep() - 1); //not correct to assume that steps are always reduced by 1 (even in learning session, when maximum is reached)
 
                 if (self._isLastLearningStep) {
                     $('#btnNext').html('Zum Ergebnis');

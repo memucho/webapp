@@ -65,7 +65,7 @@
         data-current-step-idx="<%= Model.IsLearningSession ? Model.LearningSessionStep.Idx : -1 %>"
         data-is-last-step="<%= Model.IsLastLearningStep %>"
         data-skip-step-index = "-1" />
-    <input type="hidden" id="hddLearningSessionType" value="<%= LearningSessionType.Testing %>"/>
+<%--    <input type="hidden" id="hddLearningSessionType" value="<%= LearningSessionType.Testing %>"/>--%>
     <input type="hidden" id="hddIsTestSession" value="<%= Model.IsTestSession %>" 
         data-test-session-id="<%= Model.IsTestSession ? Model.TestSessionId : -1 %>"
         data-current-step-idx="<%= Model.IsTestSession ? Model.TestSessionCurrentStep : -1 %>"
