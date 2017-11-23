@@ -325,8 +325,12 @@ public class AnswerQuestionController : BaseController
 
         learningSessionStep.AnswerState = StepAnswerState.ShowedSolutionOnly;
 
-        bool newStepAdded = !(learningSession.LimitForThisQuestionHasBeenReached(learningSessionStep) || learningSession.LimitForNumberOfRepetitionsHasBeenReached());
-        learningSession.UpdateAfterWrongAnswerOrShowSolution(learningSessionStep);
+        bool newStepAdded = false;
+        if (learningSession.Settings.LearningSessionType == LearningSessionType.Learning)
+        {
+            newStepAdded = !(learningSession.LimitForThisQuestionHasBeenReached(learningSessionStep) || learningSession.LimitForNumberOfRepetitionsHasBeenReached());
+            learningSession.UpdateAfterWrongAnswerOrShowSolution(learningSessionStep);
+        }
 
         return new JsonResult
         {

@@ -1,6 +1,6 @@
 ﻿public class LearningSessionSettings
 {
-    public LearningSessionType LearningSessionType;
-    public LearningSessionQuestionSelection LearningSessionQuestionSelection;
-    public int AmountQuestions;
+    public LearningSessionType LearningSessionType = LearningSessionType.Learning;
+    public LearningSessionQuestionSelection LearningSessionQuestionSelection = LearningSessionQuestionSelection.AllQuestions;
+    public int AmountQuestions = 10;
 }

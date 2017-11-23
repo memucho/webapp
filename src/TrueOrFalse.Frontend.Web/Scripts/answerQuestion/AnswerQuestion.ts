@@ -353,7 +353,7 @@ class AnswerQuestion {
         var self = this;
         var interactionNumber = $('#hddInteractionNumber').val();
         if (!this.AtLeastOneWrongAnswer) {
-            interactionNumber++; //If no answer was given yet a new anser entry with interactionNumber has to be created
+            interactionNumber++; //If no answer was given yet a new answer entry with interactionNumber has to be created
             this.IncrementInteractionNumber();
         }
 
@@ -466,15 +466,15 @@ class AnswerQuestion {
         var numberStepsDone: number = parseInt($('#CurrentStepNumber').html());
         var numberStepsUpdated = numberSteps !== -1 ? numberSteps : answerResult.numberSteps;
 
-        if (this.IsTestSession) {
-            raiseTo = +AnswerQuestion.TestSessionProgressAfterAnswering;
-        } else if (this.IsLearningSession) {
+        if (this.IsLearningSession) {
             raiseTo = Math.round(numberStepsDone / numberStepsUpdated * 100);
             stepNumberChanged = this.GetCurrentStep() != numberStepsUpdated;
             if (stepNumberChanged) {
                 $("#StepCount").fadeOut(100);
             }
-        } else {return;}
+        } else if (this.IsTestSession) {
+            raiseTo = +AnswerQuestion.TestSessionProgressAfterAnswering;
+        } else { return; }
 
         $("#spanPercentageDone").fadeOut(100);
         var intervalId = window.setInterval(ChangePercentage, 10);

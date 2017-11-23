@@ -18,10 +18,27 @@ public class GetLearningSessionSteps
                 .ToList());
     }
 
-    public static IList<LearningSessionStep> Run(IList<Question> questions, int numberOfSteps = LearningSession.DefaultNumberOfSteps)
+    public static IList<LearningSessionStep> Run(IList<Question> questions)
     {
-        var auxParams = GetStepSelectionParams(questions);
-        var steps = GetSteps(auxParams, numberOfSteps);
+        return Run(questions, new LearningSessionSettings());
+    }
+
+    public static IList<LearningSessionStep> Run(IList<Question> questions, LearningSessionSettings settings)
+    {
+        var numberOfSteps = settings.AmountQuestions == -1 ? questions.Count : settings.AmountQuestions;
+        IList<LearningSessionStep> steps = new List<LearningSessionStep>();
+
+        if (settings.LearningSessionType == LearningSessionType.Learning)
+        {
+            var auxParams = GetStepSelectionParams(questions);
+            steps = GetSteps(auxParams, numberOfSteps);
+        }
+        else if (settings.LearningSessionType == LearningSessionType.Testing)
+        {
+            steps = GetRandomQuestions.Run(questions, numberOfSteps)
+                .Select(q => new LearningSessionStep { Guid = Guid.NewGuid(), Question = q })
+                .ToList();
+        }
 
         return ComplementPreselectedSteps(steps);
     }

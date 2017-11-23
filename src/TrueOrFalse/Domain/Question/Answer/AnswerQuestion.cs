@@ -71,7 +71,7 @@ public class AnswerQuestion : IRegisterAsInstancePerLifetime
             learningSessionStep.AnswerState = StepAnswerState.Answered;
             learningSessionRepo.Update(learningSession);
 
-            if (!answerQuestionResult.IsCorrect)
+            if (learningSession.Settings.LearningSessionType == LearningSessionType.Learning && !answerQuestionResult.IsCorrect)
             {
                 learningSession.UpdateAfterWrongAnswerOrShowSolution(learningSessionStep);
                 answerQuestionResult.NewStepAdded = learningSession.Steps.Count > numberOfStepsBeforeAnswer;

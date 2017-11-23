@@ -31,9 +31,9 @@ public class CreateLearningSession
         return learningSession;
     }
 
-    public static LearningSession ForCategory(int categoryId, bool testingMode)
+    public static LearningSession ForCategory(int categoryId, LearningSessionSettings settings)
     {
-        if (testingMode == false)
+        if (settings.LearningSessionType == LearningSessionType.Learning)
             return ForCategory(categoryId); //todo Christof: Combine with above ForCategory
 
 
@@ -49,14 +49,9 @@ public class CreateLearningSession
         var learningSession = new LearningSession
         {
             CategoryToLearn = category,
-            Steps = GetLearningSessionSteps.Run(questions),
+            Steps = GetLearningSessionSteps.Run(questions, settings),
             User = user,
-            Settings = new LearningSessionSettings
-            {
-                AmountQuestions = 6,
-                LearningSessionQuestionSelection = LearningSessionQuestionSelection.AllQuestions,
-                LearningSessionType = LearningSessionType.Testing
-            }
+            Settings = settings
         };
 
         Sl.LearningSessionRepo.Create(learningSession);

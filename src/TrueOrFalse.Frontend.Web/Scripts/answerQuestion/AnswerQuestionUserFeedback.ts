@@ -137,7 +137,7 @@
                 AnswerQuestionUserFeedback.IfLastTestQuestionChangeBtnNextToResult();
             }
 
-            if (this._answerQuestion.IsLearningSession && this._answerQuestion.LearningSessionType === "learning" && this._answerQuestion.AnswersSoFar.length === 0) {
+            if (this._answerQuestion.IsLearningSession && this._answerQuestion.AnswersSoFar.length === 0) {
                 //if is learningSession and user asked to show solution before answering, then queue this question to be answered again
                 var self = this;
                 this._answerQuestion.ShowedSolutionOnly = true;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 class GetRandomQuestions
 {
-    private static IList<Question> Run(List<Question> questions, int amount, List<int> excludeQuestionIds = null, bool ignoreExclusionIfNotEnoughQuestions = true)
+    public static IList<Question> Run(IList<Question> questions, int amount, List<int> excludeQuestionIds = null, bool ignoreExclusionIfNotEnoughQuestions = true)
     {
         var result = questions;
         if ((excludeQuestionIds != null) && (excludeQuestionIds.Count > 0) && (result.Count > amount))

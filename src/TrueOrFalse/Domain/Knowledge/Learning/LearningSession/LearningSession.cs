@@ -143,8 +143,7 @@ public class LearningSession : DomainEntity, IRegisterAsInstancePerLifetime
                 && !date.TrainingPlan.BoostingPhaseHasStarted()))
         {
             learningSession.Steps = GetLearningSessionSteps
-                .Run(date.AllQuestions(),
-                date.TrainingPlanSettings.QuestionsPerDate_Minimum);
+                .Run(date.AllQuestions(), new LearningSessionSettings { AmountQuestions = date.TrainingPlanSettings.QuestionsPerDate_Minimum });
         }
         else if (trainingDate.LearningSession != null)
         {
