@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Newtonsoft.Json;
 using Seedworks.Lib.Persistence;
 
@@ -34,23 +36,44 @@ public class LearningSessionStep
     [JsonProperty]
     public int QuestionId;
 
-    private Answer _answer;
-
-    public Answer Answer
+    public Answer AnswerWithInput
     {
         get
         {
-            if (_answer != null)
-                return _answer;
+            if (Answers == null)
+                return null;
+
+            if (Answers.Any(a => !a.IsView()))
+                return Answers.OrderBy(a => a.InteractionNumber).Last(a => !a.IsView());
+
+            return Answers.OrderBy(a => a.InteractionNumber).Last();
+        }
+    }
+
+    private IList<Answer> _answers;
+
+    public IList<Answer> Answers
+    {
+        get
+        {
+            if (_answers != null)
+                return _answers;
 
             return Sl.AnswerRepo.GetByLearningSessionStepGuid(Guid);
         }
-        set => _answer = value;
+        set => _answers = value;
     }
+
+    public AnswerCorrectness AnswerCorrectness => AnswerWithInput.AnswerredCorrectly;
+
+    public bool AnsweredCorrectly =>
+        AnswerCorrectness == AnswerCorrectness.True || AnswerCorrectness == AnswerCorrectness.MarkedAsTrue;
 
     [JsonProperty]
     public StepAnswerState AnswerState { get; set; }
 
     [JsonProperty]
     public bool IsRepetition { get; set; }
+
+
 }

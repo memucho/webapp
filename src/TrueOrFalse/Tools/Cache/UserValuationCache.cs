@@ -2,7 +2,6 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 using Seedworks.Web.State;
 
 public class UserValuationCache
@@ -15,6 +14,18 @@ public class UserValuationCache
     {
         var cacheItem = Cache.Get<UserValuationCacheItem>(GetCacheKey(userId));
         return cacheItem ?? CreateItemFromDatabase(userId);
+    }
+
+    public static List<UserValuationCacheItem> GetAllCacheItems()
+    {
+        var allUserIds = Sl.UserRepo.GetAll().Select(u => u.Id);
+        var allUserValuations = new List<UserValuationCacheItem>();
+        foreach (var userId in allUserIds)
+        {
+            allUserValuations.Add(GetItem(userId));
+        }
+
+        return allUserValuations;
     }
 
     private static UserValuationCacheItem CreateItemFromDatabase(int userId)

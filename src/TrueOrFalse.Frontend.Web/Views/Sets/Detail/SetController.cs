@@ -105,6 +105,13 @@ public class SetController : BaseController
                 CopiedSetEditUrl = Links.QuestionSetEdit(copiedSet.Name, copiedSet.Id)
             }
         };
-
     }
+
+    public string KnowledgeBar(int setId) =>
+        ViewRenderer.RenderPartialView(
+            "/Views/Sets/Detail/SetKnowledgeBar.ascx",
+            new SetKnowledgeBarModel(Sl.SetRepo.GetById(setId)),
+            ControllerContext
+        );
+
 }

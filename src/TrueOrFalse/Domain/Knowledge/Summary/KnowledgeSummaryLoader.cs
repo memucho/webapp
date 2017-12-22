@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using NHibernate;
-using NHibernate.Criterion;
 
 public class KnowledgeSummaryLoader
 {
@@ -115,43 +113,17 @@ public class KnowledgeSummaryLoader
         if (userId == -1 && questionIds != null)
             return new KnowledgeSummary(notInWishKnowledge: questionIds.Count);
 
-        var queryOver =
-            Sl.R<ISession>() 
-                .QueryOver<QuestionValuation>()
-                .Select(
-                    Projections.Group<QuestionValuation>(x => x.KnowledgeStatus),
-                    Projections.Count<QuestionValuation>(x => x.KnowledgeStatus)
-                )
-                .Where(x => x.User.Id == userId);
-
+        var questionValuations = Sl.QuestionValuationRepo.GetByUserFromCache(userId);
         if (onlyValuated)
-            queryOver.And(x => x.RelevancePersonal != -1);
-
+            questionValuations = questionValuations.Where(v => v.RelevancePersonal != -1).ToList();
         if (questionIds != null)
-            queryOver.AndRestrictionOn(x => x.Question.Id)
-                     .IsIn(questionIds.ToArray());
+            questionValuations = questionValuations.Where(v => questionIds.Contains(v.Question.Id)).ToList();
 
-        var queryResult = queryOver.List<object[]>();
-
-        int notLearned = 0;
-        int needsLearning = 0;
-        int needsConsolidation = 0;
-        int solid = 0;
-        int notInWishknowledge = 0;
-        foreach (var line in queryResult)
-        {
-            if ((int) line[0] == (int)KnowledgeStatus.NotLearned)
-                notLearned = (int)line[1];
-
-            else if ((int) line[0] == (int)KnowledgeStatus.NeedsLearning)
-                needsLearning = (int)line[1];
-
-            else if ((int)line[0] == (int)KnowledgeStatus.NeedsConsolidation)
-                needsConsolidation = (int)line[1];
-
-            else if ((int)line[0] == (int)KnowledgeStatus.Solid)
-                solid = (int)line[1];
-        }
+        var notLearned = questionValuations.Count(v => v.KnowledgeStatus == KnowledgeStatus.NotLearned);
+        var needsLearning = questionValuations.Count(v => v.KnowledgeStatus == KnowledgeStatus.NeedsLearning);
+        var needsConsolidation = questionValuations.Count(v => v.KnowledgeStatus == KnowledgeStatus.NeedsConsolidation);
+        var solid = questionValuations.Count(v => v.KnowledgeStatus == KnowledgeStatus.Solid);
+        var notInWishknowledge = 0;
 
         if (questionIds != null)
             notInWishknowledge = 

@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using NHibernate;
 using Seedworks.Lib.Persistence;
+using TrueOrFalse;
 using TrueOrFalse.Search;
 
 public class QuestionValuationRepo : RepositoryDb<QuestionValuation> 
@@ -25,12 +27,19 @@ public class QuestionValuationRepo : RepositoryDb<QuestionValuation>
                 q.Question.Id == questionId)
             .SingleOrDefault();
 
-    public IList<QuestionValuation> GetActiveInWishknowledge(int questionId) => 
-        _session.QueryOver<QuestionValuation>()
-            .Where(q => 
-                q.Question.Id == questionId &&
-                q.RelevancePersonal > -1)
-            .List<QuestionValuation>();
+    public QuestionValuation GetByFromCache(int questionId, int userId) => 
+        UserValuationCache.GetItem(userId).QuestionValuations
+            .Where(v => v.Value.Question.Id == questionId)
+            .Select(v => v.Value)
+        .FirstOrDefault();
+
+    public IList<QuestionValuation> GetActiveInWishknowledgeFromCache(int questionId) => 
+        UserValuationCache.GetAllCacheItems()
+            .Select(c => c.QuestionValuations.Values).SelectMany(v => v)
+            .Where(v => 
+                v.Question.Id == questionId && 
+                v.RelevancePersonal > -1)
+            .ToList();
 
     public IList<QuestionValuation> GetByQuestionIds(IEnumerable<int> questionIds, int userId)
     {
@@ -41,14 +50,27 @@ public class QuestionValuationRepo : RepositoryDb<QuestionValuation>
                     .List<QuestionValuation>();        
     }
 
+    public IList<QuestionValuation> GetByQuestionsAndUserFromCache(IEnumerable<int> questionIds, int userId) => 
+        UserValuationCache.GetItem(userId).QuestionValuations.Values
+            .Where(v => questionIds.Contains(v.Question.Id))
+        .ToList();
+
+    public IList<QuestionValuation> GetByQuestionFromCache(Question question)
+    {
+        var questionValuations = UserValuationCache.GetAllCacheItems().Select(c => c.QuestionValuations.Values).SelectMany(v => v);
+
+        return questionValuations.Where(v => v.Question.Id == question.Id).ToList();
+    }
+
+    public IList<QuestionValuation> GetByQuestionsFromCache(IList<Question> questions)
+    {
+        var questionValuations = UserValuationCache.GetAllCacheItems().Select(c => c.QuestionValuations.Values).SelectMany(l => l);
+
+        return questionValuations.Where(v => questions.GetIds().Contains(v.Question.Id)).ToList();
+    }
+
     public IList<QuestionValuation> GetByUser(User user, bool onlyActiveKnowledge = true) => 
         GetByUser(user.Id, onlyActiveKnowledge);
-
-    public IList<QuestionValuation> GetByUserFromCache(int userId, bool onlyActiveKnowledge = true)
-    {
-        var cacheItem = UserValuationCache.GetItem(userId);
-        return cacheItem.QuestionValuations.Values.ToList();
-    }
 
     public IList<QuestionValuation> GetByUser(int userId, bool onlyActiveKnowledge = true)
     {
@@ -62,6 +84,12 @@ public class QuestionValuationRepo : RepositoryDb<QuestionValuation>
         return query.List<QuestionValuation>();
     }
 
+    public IList<QuestionValuation> GetByUserFromCache(int userId, bool onlyActiveKnowledge = true)
+    {
+        var cacheItem = UserValuationCache.GetItem(userId);
+        return cacheItem.QuestionValuations.Values.ToList();
+    }
+
     public IList<QuestionValuation> GetActiveInWishknowledge(IList<int> questionIds, int userId)
     {
         if(!questionIds.Any())
@@ -71,6 +99,16 @@ public class QuestionValuationRepo : RepositoryDb<QuestionValuation>
             .Where(qv => qv.User.Id == userId)
             .AndRestrictionOn(qv => qv.Question.Id).IsIn(questionIds.ToArray())
             .List<QuestionValuation>();
+    }
+
+    public IList<QuestionValuation> GetActiveInWishknowledgeFromCache(IList<int> questionIds, int userId)
+    {
+        if(!questionIds.Any())
+            return new List<QuestionValuation>();
+
+        return UserValuationCache.GetItem(userId).QuestionValuations
+            .Where(v => questionIds.Contains(v.Value.Question.Id))
+            .Select(c => c.Value).ToList();
     }
 
     public void DeleteForQuestion(int questionId)
@@ -98,11 +136,28 @@ public class QuestionValuationRepo : RepositoryDb<QuestionValuation>
         UserValuationCache.AddOrUpdate(questionValuation);
     }
 
+    public void CreateInDatabase(QuestionValuation questionValuation)
+    {
+        base.Create(questionValuation);
+        _searchIndexQuestion.Update(_questionRepo.GetById(questionValuation.Question.Id));
+    }
+
     public override void CreateOrUpdate(QuestionValuation questionValuation)
     {
         base.CreateOrUpdate(questionValuation);
         _searchIndexQuestion.Update(_questionRepo.GetById(questionValuation.Question.Id));
 
+        UserValuationCache.AddOrUpdate(questionValuation);
+    }
+
+    public void CreateOrUpdateInDatabase(QuestionValuation questionValuation)
+    {
+        base.CreateOrUpdate(questionValuation);
+        _searchIndexQuestion.Update(_questionRepo.GetById(questionValuation.Question.Id));
+    }
+
+    public void CreateOrUpdateInCache(QuestionValuation questionValuation)
+    {
         UserValuationCache.AddOrUpdate(questionValuation);
     }
 
@@ -112,5 +167,74 @@ public class QuestionValuationRepo : RepositoryDb<QuestionValuation>
         _searchIndexQuestion.Update(_questionRepo.GetById(questionValuation.Question.Id));
 
         UserValuationCache.AddOrUpdate(questionValuation);
+    }
+
+    public void UpdateInDatabase(QuestionValuation questionValuation)
+    {
+        base.Update(questionValuation);
+        _searchIndexQuestion.Update(_questionRepo.GetById(questionValuation.Question.Id));
+    }
+
+    public void CreateBySaveType(QuestionValuation questionValuation, SaveType saveType)
+    {
+        switch (saveType)
+        {
+            case SaveType.CacheAndDatabase:
+                Create(questionValuation);
+                break;
+
+            case SaveType.CacheOnly:
+                CreateOrUpdateInCache(questionValuation);
+                break;
+
+            case SaveType.DatabaseOnly:
+                CreateInDatabase(questionValuation);
+                break;
+
+            default:
+                throw new ArgumentOutOfRangeException(nameof(saveType), saveType, null);
+        }
+    }
+
+    public void UpdateBySaveType(QuestionValuation questionValuation, SaveType saveType)
+    {
+        switch (saveType)
+        {
+            case SaveType.CacheAndDatabase:
+                Update(questionValuation);
+                break;
+
+            case SaveType.CacheOnly:
+                CreateOrUpdateInCache(questionValuation);
+                break;
+
+            case SaveType.DatabaseOnly:
+                UpdateInDatabase(questionValuation);
+                break;
+
+            default:
+                throw new ArgumentOutOfRangeException(nameof(saveType), saveType, null);
+        }
+    }
+
+    public void CreateOrUpdateBySaveType(QuestionValuation questionValuation, SaveType saveType)
+    {
+        switch (saveType)
+        {
+            case SaveType.CacheAndDatabase:
+                CreateOrUpdate(questionValuation);
+                break;
+
+            case SaveType.CacheOnly:
+                CreateOrUpdateInCache(questionValuation);
+                break;
+
+            case SaveType.DatabaseOnly:
+                CreateOrUpdateInDatabase(questionValuation);
+                break;
+
+            default:
+                throw new ArgumentOutOfRangeException(nameof(saveType), saveType, null);
+        }
     }
 }

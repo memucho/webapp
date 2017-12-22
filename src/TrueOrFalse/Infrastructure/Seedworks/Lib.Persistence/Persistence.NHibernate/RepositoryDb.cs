@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using NHibernate;
 using NHibernate.Criterion;
+using TrueOrFalse;
 
 namespace Seedworks.Lib.Persistence
 {

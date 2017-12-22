@@ -147,6 +147,7 @@ namespace TrueOrFalse
             routes.MapRoute("TermsAndConditions", "AGB", new { controller = "VariousPublic", action = "TermsAndConditions" });
             routes.MapRoute("ApiExport", "Api/Export/{action}", new { controller = "Export", action = "Export" });
             routes.MapRoute("ApiCategory", "Api/Category/{action}", new { controller = "CategoryApi" });
+            routes.MapRoute("ApiCategoryStatistics", "Api/CategoryStatistics/{action}", new { controller = "CategoryStatisticsApi" });
             routes.MapRoute("ApiSets", "Api/Sets/{action}", new { controller = "SetsApi" });
             routes.MapRoute("ApiUserFacebook", "Api/FacebookUsers/{action}", new { controller = "FacebookUsersApi" });
             routes.MapRoute("ApiUserGoogle", "Api/GoogleUsers/{action}", new { controller = "GoogleUsersApi" });

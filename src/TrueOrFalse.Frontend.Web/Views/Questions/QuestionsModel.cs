@@ -61,7 +61,7 @@ public class QuestionsModel : BaseModel
         NotAllowed = !_sessionUser.IsLoggedIn && (searchTab == SearchTabType.Wish || searchTab == SearchTabType.Mine);
 
         var totalsForCurrentUser = Resolve<TotalsPersUserLoader>().Run(UserId, questions);
-        var questionValutionsForCurrentUser = Resolve<QuestionValuationRepo>().GetActiveInWishknowledge(questions.GetIds(), UserId);
+        var questionValutionsForCurrentUser = Sl.QuestionValuationRepo.GetActiveInWishknowledgeFromCache(questions.GetIds(), UserId);
 
         Pager = new PagerModel(questionSearchSpec);
         Suggestion = questionSearchSpec.GetSuggestion();
@@ -117,8 +117,8 @@ public class QuestionsModel : BaseModel
             CanonicalUrl = Links.QuestionsMine();
         if (Pager.CurrentPage > 1)
         {
-            CanonicalUrl += "?page=" + Pager.CurrentPage.ToString();
-            PageTitle += " (Seite " + Pager.CurrentPage.ToString() + ")";
+            CanonicalUrl += "?page=" + Pager.CurrentPage;
+            PageTitle += " (Seite " + Pager.CurrentPage + ")";
         }
     }
 }

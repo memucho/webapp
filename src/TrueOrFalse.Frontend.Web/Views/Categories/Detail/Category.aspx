@@ -24,7 +24,7 @@
     <%= Scripts.Render("~/bundles/js/DeleteQuestion") %>
     <%= Scripts.Render("~/bundles/js/AnswerQuestion") %>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-
+    <script src="http://d3js.org/d3.v4.min.js"></script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">

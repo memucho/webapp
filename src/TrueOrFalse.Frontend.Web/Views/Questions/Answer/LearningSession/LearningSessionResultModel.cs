@@ -75,11 +75,20 @@ public class LearningSessionResultModel : BaseModel
         {
             AnsweredStepsGrouped = LearningSession.Steps.Where(s => s.AnswerState != StepAnswerState.NotViewedOrAborted).GroupBy(d => d.QuestionId);
 
+            LearningSession.FillAllAnswers();
+
             NumberUniqueQuestions = AnsweredStepsGrouped.Count();
 
-            NumberCorrectAnswers = AnsweredStepsGrouped.Count(g => g.First().AnswerState == StepAnswerState.Answered && g.First().Answer.AnsweredCorrectly());
-            NumberCorrectAfterRepetitionAnswers = AnsweredStepsGrouped.Count(g => g.Last().AnswerState == StepAnswerState.Answered &&  g.Count() > 1 && g.Last().Answer.AnsweredCorrectly());
+            NumberCorrectAnswers = AnsweredStepsGrouped.Count(
+                g => g.First().AnswerState == StepAnswerState.Answered 
+                && g.First().AnsweredCorrectly);
+
+            NumberCorrectAfterRepetitionAnswers = AnsweredStepsGrouped.Count(
+                g => g.Last().AnswerState == StepAnswerState.Answered 
+                && g.Count() > 1 && g.Last().AnsweredCorrectly);
+
             NumberNotAnswered = AnsweredStepsGrouped.Count(g => g.All(a => a.AnswerState != StepAnswerState.Answered));
+
             NumberWrongAnswers = NumberUniqueQuestions - NumberNotAnswered - NumberCorrectAnswers - NumberCorrectAfterRepetitionAnswers;
             
             if (NumberWrongAnswers < 0)

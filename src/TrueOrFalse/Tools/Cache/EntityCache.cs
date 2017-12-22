@@ -171,6 +171,14 @@ public class EntityCache
         return questions;
     }
 
+    public static Question GetQuestionById(int questionId)
+    {
+        if (Questions.TryGetValue(questionId, out var question))
+            return question;
+
+        throw new Exception("Question not in Cache");
+    }
+
     public static IList<Set> GetSetsByIds(IList<int> setIds)
     {
         var sets = new List<Set>();

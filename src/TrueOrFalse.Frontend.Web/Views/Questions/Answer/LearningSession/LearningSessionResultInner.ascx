@@ -102,7 +102,7 @@
             </p>
             <% foreach (var uniqueQuestion in Model.AnsweredStepsGrouped)
                 {
-                    if ((uniqueQuestion.First().AnswerState == StepAnswerState.Answered) && uniqueQuestion.First().Answer.AnsweredCorrectly())
+                    if ((uniqueQuestion.First().AnswerState == StepAnswerState.Answered) && uniqueQuestion.First().AnsweredCorrectly)
                     { %> 
                         <div class="row">
                             <div class="col-xs-12">
@@ -113,7 +113,7 @@
                                     </i><%= uniqueQuestion.First().Question.GetShortTitle(150) %> 
                                     (Details)</a><br/>
                     <% }
-                    else if ((uniqueQuestion.Count() > 1) && (uniqueQuestion.Last().AnswerState == StepAnswerState.Answered) && uniqueQuestion.Last().Answer.AnsweredCorrectly())
+                    else if ((uniqueQuestion.Count() > 1) && (uniqueQuestion.Last().AnswerState == StepAnswerState.Answered) && uniqueQuestion.Last().AnsweredCorrectly)
                     { %> 
                         <div class="row">
                             <div class="col-xs-12">
@@ -136,7 +136,7 @@
                                     </i><%= uniqueQuestion.First().Question.GetShortTitle(150) %> 
                                     (Details)</a><br/>
                     <% }
-                    else if (((uniqueQuestion.Last().AnswerState == StepAnswerState.Answered) && (uniqueQuestion.Last().Answer.AnswerredCorrectly == AnswerCorrectness.False)) ||
+                    else if (((uniqueQuestion.Last().AnswerState == StepAnswerState.Answered) && (uniqueQuestion.Last().AnswerCorrectness == AnswerCorrectness.False)) ||
                                 ((uniqueQuestion.Last().AnswerState != StepAnswerState.Answered) && (uniqueQuestion.Count() > 1)))
                     { %>
                         <div class="row">
@@ -189,7 +189,7 @@
                                                     }
                                                     else
                                                     {
-                                                        %> <p class="answerTry">Dein <%= counter %>. Versuch: <%= Question.AnswersAsHtml(step.Answer.AnswerText, step.Question.SolutionType) %></p><%
+                                                        %> <p class="answerTry">Dein <%= counter %>. Versuch: <%= Question.AnswersAsHtml(step.AnswerWithInput.AnswerText, step.Question.SolutionType) %></p><%
                                                     }
                                                     counter++;
                                                 } %>

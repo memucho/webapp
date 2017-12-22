@@ -21,8 +21,8 @@ public class TabKnowledgeModel : BaseModel
                 .SetIds().ToArray()
             );
 
-        var valuations = Resolve<QuestionValuationRepo>()
-            .GetByUser(User.Id)
+        var valuations = Sl.QuestionValuationRepo
+            .GetByUserFromCache(User.Id)
             .QuestionIds().ToList();
 
         WishQuestions = Resolve<QuestionRepo>().GetByIds(valuations);

@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics;
-using System.Linq;
 using NHibernate.Util;
 
 public class ProbabilityUpdate_Question : IRegisterAsInstancePerLifetime

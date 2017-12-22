@@ -24,7 +24,7 @@
     <UseIISExpress>false</UseIISExpress>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
-    <TypeScriptToolsVersion>2.2</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>2.5</TypeScriptToolsVersion>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -301,6 +301,7 @@
     <Compile Include="Views\Api\ActivityPoints\ActivityLevelProgressModel.cs" />
     <Compile Include="Views\Api\ActivityPoints\LevelPopupModel.cs" />
     <Compile Include="Views\Api\AppController.cs" />
+    <Compile Include="Views\Api\CategoryStatisticsApiController.cs" />
     <Compile Include="Views\Api\MetaData\LomApiConroller.cs" />
     <Compile Include="Views\Api\Search\SearchApiController.cs" />
     <Compile Include="Views\Api\Search\PrepareSearch.cs" />
@@ -390,6 +391,21 @@
     <Content Include="Scripts\YoutubeApi.js">
       <DependentUpon>YoutubeApi.ts</DependentUpon>
     </Content>
+    <Content Include="Views\Categories\Detail\Js\Category.js">
+      <DependentUpon>Category.ts</DependentUpon>
+    </Content>
+    <Content Include="Views\Categories\Detail\Js\Category.js.map">
+      <DependentUpon>Category.ts</DependentUpon>
+    </Content>
+    <Content Include="Views\Categories\Detail\Js\CategoryHeader.js">
+      <DependentUpon>CategoryHeader.ts</DependentUpon>
+    </Content>
+    <Content Include="Views\Categories\Detail\Js\CategoryHeader.js.map">
+      <DependentUpon>CategoryHeader.ts</DependentUpon>
+    </Content>
+    <Content Include="Views\Categories\Detail\Js\Tabbing.js">
+      <DependentUpon>Tabbing.ts</DependentUpon>
+    </Content>
     <Content Include="Views\Categories\Detail\Partials\MediaListReferenceTitle.ascx" />
     <Content Include="Views\Categories\Detail\Partials\SetCardMiniList.ascx" />
     <Content Include="Views\Categories\Detail\Partials\BreadCrumbMobile.ascx" />
@@ -462,6 +478,11 @@
     <Content Include="Views\Knowledge\Partials\KnowledgeCardMiniCategory.ascx" />
     <Content Include="Views\Maintenance\Js\CategoryNetworkNavigation.js.map">
       <DependentUpon>CmsCategoryNetworkNavigation.ts</DependentUpon>
+    </Content>
+    <Content Include="package.json" />
+    <Content Include="tsconfig.json" />
+    <Content Include="Views\Categories\Detail\Js\Tabbing.js.map">
+      <DependentUpon>Tabbing.ts</DependentUpon>
     </Content>
     <None Include="Views\Maintenance\ContentStats.less" />
     <Compile Include="Views\Maintenance\ContentStatsModel.cs" />
@@ -794,6 +815,8 @@
     <Content Include="Views\Sets\Edit\Js\AddQuestions.js" />
     <TypeScriptCompile Include="Scripts\YoutubeApi.ts" />
     <TypeScriptCompile Include="Views\Categories\Detail\Js\Category.ts" />
+    <TypeScriptCompile Include="Views\Categories\Detail\Js\CategoryHeader.ts" />
+    <TypeScriptCompile Include="Views\Categories\Detail\Js\Tabbing.ts" />
     <TypeScriptCompile Include="Views\Knowledge\Js\Page.ts" />
     <TypeScriptCompile Include="Views\Knowledge\Js\WishKnowledgeContent.ts" />
     <TypeScriptCompile Include="Views\Maintenance\Js\CMS.ts" />

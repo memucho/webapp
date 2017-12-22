@@ -31,7 +31,7 @@ public class AddValuationEntries_ForQuestionsInSetsAndDates : IRegisterAsInstanc
         
         var allQuestionIds = distinctSets.SelectMany(d => d.QuestionIds()).Distinct().ToList();
 
-        var valuations = Sl.R<QuestionValuationRepo>().GetByQuestionIds(allQuestionIds, user.Id);
+        var valuations = Sl.QuestionValuationRepo.GetByQuestionsAndUserFromCache(allQuestionIds, user.Id);
         var notValuatedIds = allQuestionIds.Except(valuations.QuestionIds());
         AddValuationEntries(user, notValuatedIds);
     }
@@ -44,7 +44,7 @@ public class AddValuationEntries_ForQuestionsInSetsAndDates : IRegisterAsInstanc
     public void Run(IEnumerable<Set> sets, User user)
     {
         var questionIds = sets.SelectMany(set => set.QuestionIds()).Distinct().ToList();
-        var valuations = Sl.R<QuestionValuationRepo>().GetByQuestionIds(questionIds, user.Id);
+        var valuations = Sl.R<QuestionValuationRepo>().GetByQuestionsAndUserFromCache(questionIds, user.Id);
 
         var notValuatedIds = questionIds.Except(valuations.QuestionIds());
         AddValuationEntries(user, notValuatedIds);

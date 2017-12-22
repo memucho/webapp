@@ -56,7 +56,6 @@ public class TrainingPlanCreator
             ProbabilityUpdate_Valuation.Run(question.Id, date.User.Id);
 
         var answerRepo = Sl.R<AnswerRepo>();
-        var questionValuationRepo = Sl.R<QuestionValuationRepo>();
 
         return date
                 .AllQuestions()
@@ -65,7 +64,7 @@ public class TrainingPlanCreator
                     {
                         User = date.User,
                         Question = q,
-                        CalculatedProbability = questionValuationRepo.GetBy(q.Id, date.User.Id).KnowledgeStatus.GetProbability(q.Id),
+                        CalculatedProbability = Sl.QuestionValuationRepo.GetByFromCache(q.Id, date.User.Id).KnowledgeStatus.GetProbability(q.Id),
                         CalculatedAt = DateTimeX.Now(),
                         History = answerRepo
                             .GetByQuestion(q.Id, date.User.Id).Select(x => new AnswerProbabilityHistory(x, null))
@@ -144,8 +143,8 @@ public class TrainingPlanCreator
     {
         var answersOfLastTrainingDone = date.LearningSessions.Any() ?
             date.LearningSessions.OrderBy(x => x.DateCreated)
-                .Last().Steps.Where(s => s.Answer != null)
-                .Select(s => s.Answer)
+                .Last().Steps.Where(s => s.AnswerWithInput != null)
+                .Select(s => s.AnswerWithInput)
                 .OrderBy(a => a.DateCreated).ToList() : new List<Answer>();
 
         if (!answersOfLastTrainingDone.Any())

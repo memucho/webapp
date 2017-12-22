@@ -260,6 +260,7 @@
     <Compile Include="Domain\Classification\Category\Type\Impl\CategoryTypeCourse.cs" />
     <Compile Include="Domain\Classification\Category\Type\Impl\CategoryTypeEducationProvider.cs" />
     <Compile Include="Domain\Knowledge\Learning\LearningSession\LearningSessionQuestionSelection.cs" />
+    <Compile Include="Domain\Classification\Category\Views\ViewsPerDay.cs" />
     <Compile Include="Domain\Knowledge\Learning\LearningSession\LearningSessionSettings.cs" />
     <Compile Include="Domain\Knowledge\Learning\LearningSession\LearningSessionType.cs" />
     <Compile Include="Domain\Knowledge\Learning\LearningSession\Ops\CreateLearningSession.cs" />
@@ -267,6 +268,7 @@
     <Compile Include="Domain\QuestionSet\Ops\GetAllOvercategorizedSets.cs" />
     <Compile Include="Domain\QuestionSet\Ops\GetAllSetsWithDifferentlyCategorizedQuestions.cs" />
     <Compile Include="Domain\QuestionSet\Ops\SortSetsIntoListOfCategories.cs" />
+    <Compile Include="Domain\SaveType.cs" />
     <Compile Include="Tools\Analytics\Widget\WidgetDetailViewsPerMonthAndTypeResult.cs" />
     <Compile Include="Tools\Analytics\Widget\WidgetViewsPerMonthAndKeyResult.cs" />
     <Compile Include="Tools\Export\LomExporter.cs" />
@@ -945,6 +947,7 @@
     <Compile Include="Tools\ScheduledJobs\JobQueue\JobQueueRepo.cs" />
     <Compile Include="Tools\ScheduledJobs\JobQueue\JobQueueType.cs" />
     <Compile Include="Tools\ScheduledJobs\JobScheduler.cs" />
+    <Compile Include="Tools\ScheduledJobs\Jobs\EditCategoryInWishKnowledge.cs" />
     <Compile Include="Tools\ScheduledJobs\Jobs\RefreshEntityCache.cs" />
     <Compile Include="Tools\ScheduledJobs\Jobs\LomExportJob.cs" />
     <Compile Include="Tools\ScheduledJobs\Jobs\RecalcKnowledgeSummariesForCategory.cs" />

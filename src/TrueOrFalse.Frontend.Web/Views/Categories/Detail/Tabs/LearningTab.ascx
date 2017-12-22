@@ -1,9 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" 
     Inherits="System.Web.Mvc.ViewUserControl<CategoryModel>" %>
-<%@ Import Namespace="System.Web.Optimization" %>
-<%@ Import Namespace="TrueOrFalse.Frontend.Web.Code" %>
-
-
 
 <input type="hidden" id="hddIsLearningSession" value="True" 
        data-learning-session-id="-1"
@@ -15,9 +11,8 @@
 <input type="hidden" id="hddQuestionId" value="1"/>
 <input type="hidden" id="hddCategoryId" value="<%= Model.Category.Id %>"/>
 <input type="hidden" id="hddLearningSessionStarted" value="False"/>
+<input type="hidden" id="hddIsLearningSessionOnCategoryPage" value="true"/>
 
-
-    
 <% if (Model.Category.CountQuestionsAggregated > 0)
    {
        var dummyQuestion = Sl.QuestionRepo.GetById(Model.Category.GetAggregatedQuestionsFromMemoryCache().Where(q => q.IsVisibleToCurrentUser()).Select(q => q.Id).FirstOrDefault()); // why not take Question from Cache directly?

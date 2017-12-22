@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" 
     Inherits="System.Web.Mvc.ViewUserControl<SetKnowledgeBarModel>" %>
 
-<div class="set-knowledge-bar">
+<div class="set-knowledge-bar" data-set-id="<%= Model.Set.Id %>">
 
     <% if(Model.SetKnowledgeSummary.NeedsLearningPercentage > 0) { %>
         <div class="needs-learning show-tooltip"

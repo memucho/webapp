@@ -8,7 +8,7 @@ class QuestionRowDelete {
     constructor(sourcePage: QuestionRowDeleteSourcePage) {
 
         var questionIdToDelete;
-        $(function () {
+        $(() => {
             $('a[href*=#modalDeleteQuestion]').click(function (e) {
                 questionIdToDelete = $(this).attr("data-questionId");
                 populateDeleteQuestionId(questionIdToDelete);

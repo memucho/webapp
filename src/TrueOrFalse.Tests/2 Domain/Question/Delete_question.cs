@@ -142,14 +142,14 @@ namespace TrueOrFalse.Tests
             var learningSessionStep1 = new LearningSessionStep
             {
                 QuestionId = question1.Id,
-                Answer = answer1,
+                Answers = new List<Answer>{ answer1 },
                 IsRepetition = false,
                 AnswerState = StepAnswerState.Answered
             };
             var learningSessionStep2 = new LearningSessionStep
             {
                 QuestionId = question1.Id,
-                Answer = answer2,
+                Answers = new List<Answer> { answer2 },
                 IsRepetition = true,
                 AnswerState = StepAnswerState.Answered
             };

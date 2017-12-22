@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using NHibernate;
 
 public abstract class ProbabilityCalc_Abstract
 {

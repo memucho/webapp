@@ -1,5 +1,4 @@
-﻿using System;
-using NHibernate;
+﻿using NHibernate;
 using NHibernate.Transform;
 
 public class GetQuestionTotal : IRegisterAsInstancePerLifetime
@@ -34,7 +33,6 @@ public class GetQuestionTotal : IRegisterAsInstancePerLifetime
 
     private string GetQuery(string entriesField, string avgField, int questionId)
     {
-        return String.Format("SELECT {0} as Count, {1} as Avg FROM Question WHERE Id = {2}", 
-                                entriesField, avgField, questionId);
+        return $"SELECT {entriesField} as Count, {avgField} as Avg FROM Question WHERE Id = {questionId}";
     }
 }

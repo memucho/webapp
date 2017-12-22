@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using NHibernate.Cfg;
 using TrueOrFalse.Web;
 
 public class CategoryModel : BaseModel
@@ -156,4 +157,9 @@ public class CategoryModel : BaseModel
     }
 
     public string GetViews() => Sl.CategoryViewRepo.GetViewCount(Id).ToString();
+
+    public string GetViewsPerDay() => Sl.CategoryViewRepo
+        .GetPerDay(Id)
+        .Select(item => item.Date.ToShortDateString() + " " + item.Views)
+        .Aggregate((a, b) => a + " " + b + System.Environment.NewLine);
 }

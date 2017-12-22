@@ -106,13 +106,10 @@ public class CategoryController : BaseController
         );
     }
 
-    public string KnowledgeBar(int categoryId)
-    {
-        return ViewRenderer.RenderPartialView(
+    public string KnowledgeBar(int categoryId) => 
+        ViewRenderer.RenderPartialView(
             "/Views/Categories/Detail/CategoryKnowledgeBar.ascx",
             new CategoryKnowledgeBarModel(Sl.CategoryRepo.GetById(categoryId)), 
             ControllerContext
         );
-    }
-        
 }

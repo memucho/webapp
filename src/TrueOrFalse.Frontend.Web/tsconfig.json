@@ -1,0 +1,25 @@
+﻿{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "noEmitOnError": true,
+    "sourceMap": true,
+    "target": "es5",
+    "lib": [ "es2015", "dom" ],
+    "module": "amd",
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "paths": {
+      "*": [
+        "node_modules/@types/*"
+      ]
+    }
+  },
+  "include": [
+    "**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.min.js",
+    "**/*.min.js.map"
+  ]
+}

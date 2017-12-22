@@ -84,8 +84,8 @@ public class SetModel : BaseModel
 
         //foo = R<ISession>().SessionFactory.Statistics.QueryExecutionCount;
 
-        var questionValutionsForCurrentUser = Resolve<QuestionValuationRepo>()
-            .GetActiveInWishknowledge(set.QuestionsInSet.Select(x => x.Question.Id).ToList(), _sessionUser.UserId);
+        var questionValutionsForCurrentUser = Sl.QuestionValuationRepo
+            .GetActiveInWishknowledgeFromCache(set.QuestionsInSet.Select(x => x.Question.Id).ToList(), _sessionUser.UserId);
 
         var questions = set.QuestionsInSetPublic.Select(x => x.Question).ToList();
         var totalsPerUser = Resolve<TotalsPersUserLoader>().Run(_sessionUser.UserId, questions);

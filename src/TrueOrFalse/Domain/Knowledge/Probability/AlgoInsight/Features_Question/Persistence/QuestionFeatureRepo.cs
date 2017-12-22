@@ -1,5 +1,4 @@
-﻿using System;
-using NHibernate;
+﻿using NHibernate;
 
 public class QuestionFeatureRepo : RepositoryDbBase<QuestionFeature>
 {
@@ -10,10 +9,10 @@ public class QuestionFeatureRepo : RepositoryDbBase<QuestionFeature>
     public void InsertRelation(int featureId, int questionId)
     {
         _session.CreateSQLQuery(
-            String.Format(@"INSERT INTO `questionfeature_to_question` 
+            $@"INSERT INTO `questionfeature_to_question` 
                 (`QuestionFeature_id`, `Question_id`) 
               VALUES 
-                ({0}, {1});", featureId, questionId)).ExecuteUpdate();
+                ({featureId}, {questionId});").ExecuteUpdate();
     }
 
     public void TruncateTables()

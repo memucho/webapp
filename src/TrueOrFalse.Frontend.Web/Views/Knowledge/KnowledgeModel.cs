@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using NHibernate.Util;
 using TrueOrFalse.Web;
 
 public class KnowledgeModel : BaseModel

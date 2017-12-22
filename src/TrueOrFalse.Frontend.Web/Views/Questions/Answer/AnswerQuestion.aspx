@@ -50,7 +50,7 @@
         var relevancePeronalAvg = "<%= Model.TotalRelevancePersonalAvg %>";
         var relevancePersonalEntries = "<%= Model.TotalRelevancePersonalEntries %>";
         var relevanceForAllAvg = "<%= Model.TotalRelevanceForAllAvg %>";
-        var relevanceForAlleEntries = "<%= Model.TotalRelevanceForAllEntries %>";
+        var relevanceForAllEntries = "<%= Model.TotalRelevanceForAllEntries %>";
     </script>
 
     <link type="text/css" href="/Content/blue.monday/jplayer.blue.monday.css" rel="stylesheet" />
@@ -160,7 +160,7 @@
                         </div>
                     </div>                
                 </div>
-            <% } else { %>
+            <% } else { %> 
                 <div class="row" style="margin-bottom: 20px;">
                     <div class="col-xs-12" style="padding-top: 10px; color: darkgray">
                         Um zu kommentieren, musst du eingeloggt sein.

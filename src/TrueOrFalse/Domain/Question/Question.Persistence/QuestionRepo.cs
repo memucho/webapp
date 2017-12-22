@@ -171,6 +171,8 @@ public class QuestionRepo : RepositoryDbBase<Question>
         };
     }
 
+    public Question GetByIdFromMemoryCache(int questionId) => EntityCache.GetQuestionById(questionId);
+
     public IList<Question> GetByIds(List<int> questionIds) => 
         GetByIds(questionIds.ToArray());
 

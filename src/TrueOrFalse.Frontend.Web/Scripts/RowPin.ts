@@ -136,7 +136,7 @@ class Pin {
         } else if (this.IsSetRow() || this.IsSetDetail()) {
             SetsApi.Pin(id, onPinChanged);
         } else if (this.IsCategoryRow() || this.IsCategoryDetail()) {
-            CategoryApi.Pin(id, onPinChanged)
+            CategoryApi.Pin(id, onPinChanged);
         }
     }
 
@@ -150,7 +150,7 @@ class Pin {
             $("#JS-RemoveQuestions").attr("data-set-id", id);
             $("#UnpinSetModal").modal('show');
 
-        }else if (this.IsCategoryRow() || this.IsCategoryDetail()) {
+        } else if (this.IsCategoryRow() || this.IsCategoryDetail()) {
 
             CategoryApi.Unpin(id);
 

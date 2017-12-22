@@ -144,7 +144,7 @@ public class AnswerQuestion : IRegisterAsInstancePerLifetime
                 learningSession.ReindexSteps();
             }
 
-            Sl.AnswerRepo.Update(learningSessionStep.Answer);
+            Sl.AnswerRepo.Update(learningSessionStep.AnswerWithInput);
             Sl.LearningSessionRepo.Update(learningSession);
         }
 

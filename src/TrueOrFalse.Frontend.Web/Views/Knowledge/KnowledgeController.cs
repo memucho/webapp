@@ -34,8 +34,8 @@ public class KnowledgeController : BaseController
         if (user.WishCountQuestions == 0)
             throw new Exception("Cannot start LearningSession from Wishknowledge with no questions.");
 
-        var valuations = Resolve<QuestionValuationRepo>()
-            .GetByUser(user.Id)
+        var valuations = Sl.QuestionValuationRepo
+            .GetByUserFromCache(user.Id)
             .QuestionIds().ToList();
         var wishQuestions = Resolve<QuestionRepo>().GetByIds(valuations);
 

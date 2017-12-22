@@ -20,7 +20,7 @@ public class BadgeAwardCheckParams
 
     public int WuWi_Count()
     {
-        return R<QuestionValuationRepo>().GetByUser(CurrentUser.Id).Count;
+        return Sl.QuestionValuationRepo.GetByUserFromCache(CurrentUser.Id).Count;
     }
 
     public int WuWi_UserIsCreator()

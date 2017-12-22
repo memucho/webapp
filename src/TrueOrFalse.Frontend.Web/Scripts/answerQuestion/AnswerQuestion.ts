@@ -84,7 +84,7 @@ class AnswerQuestion {
         var self = this;
         this.ClickToContinue = function () {
             $('#continue').fadeIn();
-            $(document).off('click').on('click',
+            $(document).on('click',
                 '.clickToContinue',
                 (e) => {
                     e.preventDefault();
@@ -282,6 +282,7 @@ class AnswerQuestion {
         this._inputFeedback.ShowSolution();
         if (this._isLastLearningStep) {
             $('#btnNext').html('Zum Ergebnis');
+            $('#btnNext').unbind();
         }
 
         this._onCorrectAnswer();
@@ -292,6 +293,7 @@ class AnswerQuestion {
 
         if (this._isLastLearningStep && !result.newStepAdded) {
             $('#btnNext').html('Zum Ergebnis');
+            $('#btnNext').unbind();
         }
 
         if (this.IsGameMode) {

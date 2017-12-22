@@ -38,6 +38,7 @@ namespace TrueOrFalse.Utilities.ScheduledJobs
             Schedule_RecalcReputationForAll();
             Schedule_TrainingReminderCheck();
             Schedule_TrainingPlanUpdateCheck();
+            Schedule_EditCategoryInWishKnowledge();
             Schedule_KnowledgeReportCheck();
             Schedule_LOM_Export();
         }
@@ -143,6 +144,15 @@ namespace TrueOrFalse.Utilities.ScheduledJobs
                         x.StartingDailyAt(new TimeOfDay(3, 30))
                             .OnEveryDay()
                             .EndingDailyAfterCount(1)).Build());
+        }
+
+        private static void Schedule_EditCategoryInWishKnowledge()
+        {
+            _scheduler.ScheduleJob(JobBuilder.Create<EditCategoryInWishKnowledge>().Build(),
+                TriggerBuilder.Create().
+                    WithSimpleSchedule(x => x
+                        .WithIntervalInSeconds(EditCategoryInWishKnowledge.IntervalInSeconds)
+                            .RepeatForever()).Build());
         }
 
         public static void StartImmediately_TrainingReminderCheck() { StartImmediately<TrainingReminderCheck>(); }
