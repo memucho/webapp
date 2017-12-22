@@ -44,21 +44,51 @@
 <div class="SessionBar">
     <div class="QuestionCount" style="float: right;">Abfrage <span id="CurrentStepNumber"><%= Model.CurrentLearningStepIdx + 1 %></span> von <span id="StepCount"><%= Model.LearningSession.Steps.Count %></span></div>
     <div class="SessionType">
-        <span class="show-tooltip"
-        data-original-title="<%= @"<div style='text-align: left;'>In diesem Modus
-                <ul>
-                    <li>wiederholst du personalisiert die Fragen, die du am dringendsten lernen solltest</li>
-                    <li>kannst du dir die Lösung anzeigen lassen</li>
-                    <li>werden dir Fragen, die du nicht richtig beantworten konntest, nochmal vorgelegt</li>
-                </ul>
-            </div>"%>" data-html="true" style="float: left;">
-            Lernen
-            <span class="fa-stack fa-1x" style="font-size: 10px; top: -1px;">
-                <i class="fa fa-circle fa-stack-2x" style="color: #e1efb3;"></i>
-                <i class="fa fa-info fa-stack-1x" style=""></i>
-            </span>
+    <% if (Model.IsInWidget) { %>
+        <span>
+            <% if (Model.LearningSession.Settings.LearningSessionType == LearningSessionType.Learning)
+               {
+                   Response.Write("Lernen");
+               } else if (Model.LearningSession.Settings.LearningSessionType == LearningSessionType.Testing)
+               {
+                   Response.Write("Testen");
+                } %>
         </span>
+    <% } else { %>
+
+        <% if (Model.LearningSession.Settings.LearningSessionType == LearningSessionType.Learning) { %>
+            <span class="show-tooltip"
+            data-original-title="<%= @"<div style='text-align: left;'>In diesem Modus
+                    <ul>
+                        <li>wiederholst du personalisiert die Fragen, die du am dringendsten lernen solltest</li>
+                        <li>kannst du dir die Lösung anzeigen lassen</li>
+                        <li>werden dir Fragen, die du nicht richtig beantworten konntest, nochmal vorgelegt</li>
+                    </ul>
+                </div>" %>" data-html="true" style="float: left;">
+                Lernen
+                <span class="fa-stack fa-1x" style="font-size: 10px; top: -1px;">
+                    <i class="fa fa-circle fa-stack-2x" style="color: #e1efb3;"></i>
+                    <i class="fa fa-info fa-stack-1x" style=""></i>
+                </span>
+            </span>
+        <% } else if (Model.LearningSession.Settings.LearningSessionType == LearningSessionType.Testing) { %>
+            <span class="show-tooltip"
+                  data-original-title="<%= @"<div style='text-align: left;'>In diesem Modus
+                <ul>
+                    <li>werden die Fragen zufällig ausgewählt</li>
+                    <li>hast du jeweils nur einen Antwortversuch</li>
+                </ul>
+            </div>" %>" data-html="true" style="float: left;">
+                Testen
+                <span class="fa-stack fa-1x" style="font-size: 10px; top: -1px;">
+                    <i class="fa fa-circle fa-stack-2x" style="color: #e1efb3;"></i>
+                    <i class="fa fa-info fa-stack-1x" style=""></i>
+                </span>
+            </span>
+        <% } %>
+    <% } %>
     </div>
+
     <div class="ProgressBarContainer">
         <div id="progressPercentageDone" class="ProgressBarSegment ProgressBarDone" style="width: <%= Model.CurrentLearningStepPercentage== 0 ? "0" : Model.CurrentLearningStepPercentage + "%" %>;">
             <div class="ProgressBarSegment ProgressBarLegend">

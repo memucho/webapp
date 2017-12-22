@@ -16,6 +16,8 @@ public class LearningSessionResultModel : BaseModel
     public int NumberCorrectAfterRepetitionPercentage;
     public int NumberWrongAnswersPercentage;
     public int NumberNotAnsweredPercentage;
+    public int PercentageAverageRightAnswers;
+
 
     public IEnumerable<IGrouping<int, LearningSessionStep>> AnsweredStepsGrouped;
 
@@ -102,6 +104,9 @@ public class LearningSessionResultModel : BaseModel
                     new ValueWithResultAction{AbsoluteValue = NumberWrongAnswers, ActionForPercentage = p => NumberWrongAnswersPercentage = p},
                     new ValueWithResultAction{AbsoluteValue = NumberNotAnswered, ActionForPercentage = p => NumberNotAnsweredPercentage = p},
                 });
+
+            var steps = AnsweredStepsGrouped.Select(g => g.First());
+            PercentageAverageRightAnswers = (int)Math.Round(steps.Sum(s => s.Question.CorrectnessProbability) / (float)NumberUniqueQuestions);
         }
     }
 }

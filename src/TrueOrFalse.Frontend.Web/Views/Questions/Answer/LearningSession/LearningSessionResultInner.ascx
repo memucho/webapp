@@ -40,6 +40,19 @@
             <% } %>                
         </div>
 
+        <% var tooltip = string.Format("Der Durchschnitt aller Nutzer beantwortete {0}% richtig", Model.PercentageAverageRightAnswers); %>
+        <div id="divIndicatorAverageWrapper" style="width: 100%">
+            <div id="divIndicatorAverage" style="margin-left: <%= Model.PercentageAverageRightAnswers %>%">
+                <i class="fa fa-caret-up fa-4x show-tooltip" style="margin-left: -16px;" title="<%= tooltip %>"></i>
+            </div>
+            <div id="divIndicatorAverageText">
+                <p class="show-tooltip" title="<%= tooltip %>">
+                    Nutzerdurchschnitt (<span id="avgPercentageCorrect"><%= Model.PercentageAverageRightAnswers %></span>% richtig)
+                </p>
+            </div>
+        </div>
+
+
         <div class="SummaryText" style="clear: left;">
             <p style="margin-bottom: 20px;">In dieser Lernsitzung hast du <%= Model.NumberUniqueQuestions %> Fragen gelernt und dabei</p>
             <div class="row">
@@ -48,10 +61,12 @@
                         <div class="col-xs-2 col-sm-offset-1 sumPctCol"><div class="sumPct sumPctRight"><span class="sumPctSpan"><%=Model.NumberCorrectPercentage %>%</span></div></div>
                         <div class="col-xs-10 col-sm-9 sumExpl">beim 1. Versuch gewusst (<%=Model.NumberCorrectAnswers %> Fragen)</div>
                     </div>
-                    <div class="row">
-                        <div class="col-xs-2 col-sm-offset-1 sumPctCol"><div class="sumPct sumPctRightAfterRep"><span class="sumPctSpan"><%=Model.NumberCorrectAfterRepetitionPercentage %>%</span></div></div>
-                        <div class="col-xs-10 col-sm-9 sumExpl">beim 2. oder 3. Versuch gewusst (<%=Model.NumberCorrectAfterRepetitionAnswers %> Fragen)</div>
-                    </div>
+                    <% if (Model.LearningSession.Settings.LearningSessionType == LearningSessionType.Learning) { %>
+                        <div class="row">
+                            <div class="col-xs-2 col-sm-offset-1 sumPctCol"><div class="sumPct sumPctRightAfterRep"><span class="sumPctSpan"><%=Model.NumberCorrectAfterRepetitionPercentage %>%</span></div></div>
+                            <div class="col-xs-10 col-sm-9 sumExpl">beim 2. oder 3. Versuch gewusst (<%=Model.NumberCorrectAfterRepetitionAnswers %> Fragen)</div>
+                        </div>
+                    <% } %>
                     <div class="row">
                         <div class="col-xs-2 col-sm-offset-1 sumPctCol"><div class="sumPct sumPctWrong"><span class="sumPctSpan"><%=Model.NumberWrongAnswersPercentage %>%</span></div></div>
                         <div class="col-xs-10 col-sm-9 sumExpl">nicht gewusst (<%=Model.NumberWrongAnswers %> Fragen)</div>
@@ -63,6 +78,40 @@
                 </div>
             </div>
         </div>
+        
+        <% if (!Model.IsLoggedIn) { %>
+            <div class="bs-callout bs-callout-info" id="divCallForRegistration" style="width: 100%; margin-top: 0; text-align: left; opacity: 0; display: none;">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h3 style="margin-top: 0;">Schneller lernen, länger wissen</h3>
+                        <p>
+                            Registriere dich bei memucho, um von den vielen Vorteilen personalisierten Lernens zu profitieren. <strong>memucho ist kostenlos!</strong>
+                        </p>
+                    </div>
+                    <div class="col-xs-12 claimsMemucho">
+                        <div class="row">
+                            <div class="col-xs-4" style="text-align: center;">
+                                <i class="fa fa-3x fa-line-chart"></i><br/>
+                                Personalisiere dein Lernen
+                            </div>
+                            <div class="col-xs-4" style="text-align: center;">
+                                <i class="fa fa-3x fa-heart"></i><br/>
+                                Sammele dein Wunschwissen
+                            </div>
+                            <div class="col-xs-4" style="text-align: center;">
+                                <i class="fa fa-3x fa-lightbulb-o"></i><br/>
+                                Entscheide, was du nie vergessen willst
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12" style="text-align: right;">
+                        <a href="<%= Links.AboutMemucho() %>" class="btn btn-link">Erfahre mehr über memucho</a>
+                        <a href="<%= Url.Action(Links.RegisterAction, Links.RegisterController) %>" class="btn btn-success shakeInInterval" role="button"><i class="fa fa-chevron-circle-right">&nbsp;</i> Jetzt Registrieren</a> <br/>
+                    </div>
+                </div>
+            </div>
+        <% } %>        
+
         <div class="buttonRow">
             <% if (Model.LearningSession.IsDateSession) { %>
                 <a href="/Termin/Lernen/<%=Model.LearningSession.DateToLearn.Id %>" class="btn btn-link show-tooltip" style="padding-right: 10px" title="Eine neue Lernsitzung zu diesem Termin beginnen">
