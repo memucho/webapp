@@ -70,11 +70,13 @@ public class SetController : BaseController
     public ActionResult StartTestSession(int setId)
     {
         var set = Sl.SetRepo.GetByIdEager(setId);
-        var testSession = new TestSession(set);
+        if (set.Questions().Count == 0)
+            throw new Exception("Cannot start TestSession/LearningSession from set with no questions.");
 
-        Sl.SessionUser.AddTestSession(testSession);
-
-        return Redirect(Links.TestSession(testSession.UriName, testSession.Id));
+        var learningSession = CreateLearningSession.ForSet(setId,
+            new LearningSessionSettings {LearningSessionType = LearningSessionType.Testing});
+            
+        return Redirect(Links.LearningSession(learningSession));
     }
 
     public ActionResult StartTestSessionForSets(List<int> setIds, string setListTitle)

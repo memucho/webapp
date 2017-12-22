@@ -194,6 +194,14 @@ public class EntityCache
         return sets;
     }
 
+    public static Set GetSetById(int setId)
+    {
+        if (Sets.TryGetValue(setId, out var set))
+            return set;
+
+        return null;
+    }
+
     public static IList<Set> GetAllSets() => Sets.Values.ToList();
 
     private static void AddQuestionInSetTo(
