@@ -56,24 +56,4 @@ public class UpdateAnswerAggregates
             }
         }
     }
-
-    /// <summary>
-    /// Considers all recent updates
-    /// </summary>
-    public static void Update()
-    {
-        //get answers aggregated
-
-        var allAnswersAggregated = Sl.AnswerAggregatedRepo.GetAll();
-
-        foreach (var answerAggregated in allAnswersAggregated)
-        {
-            
-        }
-
-        //get all answer of the last 
-
-        //get all answer from logged in users in this period ... 
-        //update records accordingly
-    }
 }

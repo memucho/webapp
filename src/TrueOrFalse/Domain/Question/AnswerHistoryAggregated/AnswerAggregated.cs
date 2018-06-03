@@ -1,7 +1,6 @@
 ﻿using System;
 using Seedworks.Lib.Persistence;
 
-
 public class AnswerAggregated : IPersistable
 {
     public virtual int Id { get; set; }

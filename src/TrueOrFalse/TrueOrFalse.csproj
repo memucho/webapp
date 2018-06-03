@@ -944,6 +944,10 @@
     <Compile Include="SampleData\SampleData.cs" />
     <Compile Include="Tools\ScheduledJobs\AutofacJobFactory.cs" />
     <Compile Include="Tools\ScheduledJobs\JobExecute.cs" />
+    <Compile Include="Tools\ScheduledJobs\JobHistory\JobHistoryMap.cs" />
+    <Compile Include="Tools\ScheduledJobs\JobHistory\JobHistory.cs" />
+    <Compile Include="Tools\ScheduledJobs\JobHistory\JobHistoryRepo.cs" />
+    <Compile Include="Tools\ScheduledJobs\JobHistory\JobHistoryType.cs" />
     <Compile Include="Tools\ScheduledJobs\JobQueue\JobQueue.cs" />
     <Compile Include="Tools\ScheduledJobs\JobQueue\JobQueueMap.cs" />
     <Compile Include="Tools\ScheduledJobs\JobQueue\JobQueueRepo.cs" />

@@ -56,6 +56,8 @@ public class Sl
 
     public static UserActivityRepo UserActivityRepo => R<UserActivityRepo>();
 
+    public static JobHistoryRepo JobHistoryRepo => R<JobHistoryRepo>();
+
     public static int CurrentUserId => R<SessionUser>().UserId;
 }
 
