@@ -41,6 +41,7 @@ namespace TrueOrFalse.Utilities.ScheduledJobs
             Schedule_EditCategoryInWishKnowledge();
             Schedule_KnowledgeReportCheck();
             Schedule_LOM_Export();
+            Schedule_UpdateAnswerAggregatesJob();
         }
 
         private static void Schedule_CleanupWorkInProgressQuestions()
@@ -136,6 +137,16 @@ namespace TrueOrFalse.Utilities.ScheduledJobs
                             .EndingDailyAfterCount(1)).Build());
         }
 
+        private static void Schedule_UpdateAnswerAggregatesJob()
+        {
+            _scheduler.ScheduleJob(JobBuilder.Create<UpdateAnswerAggregatesJob>().Build(),
+                TriggerBuilder.Create()
+                    .WithDailyTimeIntervalSchedule(x =>
+                        x.StartingDailyAt(new TimeOfDay(3, 30))
+                            .OnEveryDay()
+                            .EndingDailyAfterCount(1)).Build());
+        }
+
         private static void Schedule_RefreshEntityCache()
         {
             _scheduler.ScheduleJob(JobBuilder.Create<RefreshEntityCache>().Build(),
@@ -160,6 +171,8 @@ namespace TrueOrFalse.Utilities.ScheduledJobs
         public static void StartImmediately_CleanUpWorkInProgressQuestions() { StartImmediately<CleanUpWorkInProgressQuestions>(); }
         public static void StartImmediately_RecalcKnowledgeStati() { StartImmediately<RecalcKnowledgeStati>(); }
         public static void StartImmediately_RefreshEntityCache() { StartImmediately<RefreshEntityCache>(); }
+        public static void StartImmediately_UpdateAnswerAggregatesJob() { StartImmediately<UpdateAnswerAggregatesJob>(); }
+        
 
         public static void StartImmediately<TypeToStart>() where TypeToStart : IJob
         {

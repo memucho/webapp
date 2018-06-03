@@ -3,7 +3,10 @@ using System.Linq;
 
 public class UpdateAnswerAggregates
 {
-    public static void Run()
+    /// <summary>
+    /// Considers all answers ever given
+    /// </summary>
+    public static void FullUpadte()
     {
         Logg.r().Information("UpdateAnswerAggregates");
 
@@ -27,8 +30,7 @@ public class UpdateAnswerAggregates
                 var entryByQuestionAndUserId = 
                     allAggregatedEntries.FirstOrDefault(x => x.QuestionId == questionId && x.UserId == user.Id);
 
-                var totalPerUserLoader = Sl.R<TotalsPersUserLoader>();
-                var totalPerUser = totalPerUserLoader.Run(user.Id, questionId);
+                var totalPerUser = Sl.R<TotalsPersUserLoader>().Run(user.Id, questionId);
 
                 if (entryByQuestionAndUserId == null)
                 {
@@ -53,5 +55,25 @@ public class UpdateAnswerAggregates
                 }
             }
         }
+    }
+
+    /// <summary>
+    /// Considers all recent updates
+    /// </summary>
+    public static void Update()
+    {
+        //get answers aggregated
+
+        var allAnswersAggregated = Sl.AnswerAggregatedRepo.GetAll();
+
+        foreach (var answerAggregated in allAnswersAggregated)
+        {
+            
+        }
+
+        //get all answer of the last 
+
+        //get all answer from logged in users in this period ... 
+        //update records accordingly
     }
 }

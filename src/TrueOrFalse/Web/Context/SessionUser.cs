@@ -57,6 +57,8 @@ public class SessionUser : SessionBase, IRegisterAsInstancePerLifetime
         if(HttpContext.Current != null)
             FormsAuthentication.SetAuthCookie(user.Id.ToString(), false);
 
+        Sl.UserRepo.UpdateLastLogin(user);
+
         JobScheduler.StartImmediately_InitUserValuationCache(user.Id);
     }
 

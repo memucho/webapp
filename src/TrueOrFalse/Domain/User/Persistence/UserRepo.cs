@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using NHibernate;
@@ -135,5 +136,10 @@ public class UserRepo : RepositoryDbBase<User>
         user.ActivityPoints = totalPointCount;
         user.ActivityLevel = userLevel;
         Update(user);
+    }
+
+    public void UpdateLastLogin(User user)
+    {
+        user.LastLogin = DateTime.Now;
     }
 }

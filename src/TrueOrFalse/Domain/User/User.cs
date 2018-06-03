@@ -25,6 +25,7 @@ public class User : DomainEntity
     public virtual UserSettingNotificationInterval KnowledgeReportInterval { get; set; }
     public virtual IList<Membership> MembershipPeriods { get; set; }
     public virtual string WidgetHostsSpaceSeparated { get; set; }
+    public virtual DateTime? LastLogin { get; set; }
 
     public virtual IList<string> WidgetHosts()
     {

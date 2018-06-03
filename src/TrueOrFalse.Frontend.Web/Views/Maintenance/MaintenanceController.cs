@@ -297,6 +297,15 @@ public class MaintenanceController : BaseController
 
     [ValidateAntiForgeryToken]
     [HttpPost]
+    public ActionResult UpdateAnswerAggregates()
+    {
+        JobScheduler.StartImmediately_UpdateAnswerAggregatesJob();
+
+        return View("Tools", new ToolsModel { Message = new SuccessMessage("Started UpdateAnswerAggregates") });
+    }
+
+    [ValidateAntiForgeryToken]
+    [HttpPost]
     public ActionResult AssignCategoryToQuestionsInSet(ToolsModel toolsModel)
     {
         var categoryToAssign = Sl.R<CategoryRepository>().GetById(toolsModel.CategoryToAddId);

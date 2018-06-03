@@ -49,6 +49,10 @@
         <i class="fa fa-gavel"></i>
         Start 100 test jobs
     </a><br/>
+    <a href="<%= Url.Action("UpdateAnswerAggregates", "Maintenance") %>" data-url="toSecurePost">
+        <i class="fa fa-gavel"></i>
+        UpdateAnswerAggregates
+    </a><br/>
     
     <h4 style="margin-top: 20px;">Fragen in Lernsets nachkategorisieren</h4>
     <div class="form-horizontal">
