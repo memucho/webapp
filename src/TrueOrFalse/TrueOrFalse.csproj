@@ -266,6 +266,10 @@
     <Compile Include="Domain\QuestionSet\Ops\GetAllOvercategorizedSets.cs" />
     <Compile Include="Domain\QuestionSet\Ops\GetAllSetsWithDifferentlyCategorizedQuestions.cs" />
     <Compile Include="Domain\QuestionSet\Ops\SortSetsIntoListOfCategories.cs" />
+    <Compile Include="Domain\Question\AnswerHistoryAggregated\AnswerAggregated.cs" />
+    <Compile Include="Domain\Question\AnswerHistoryAggregated\Ops\UpdateAnswerAggregates.cs" />
+    <Compile Include="Domain\Question\AnswerHistoryAggregated\Persistence\AnswerAggregatedMap.cs" />
+    <Compile Include="Domain\Question\AnswerHistoryAggregated\Persistence\AnswerAggregatedRepo.cs" />
     <Compile Include="Domain\SaveType.cs" />
     <Compile Include="Tools\Analytics\Widget\WidgetDetailViewsPerMonthAndTypeResult.cs" />
     <Compile Include="Tools\Analytics\Widget\WidgetViewsPerMonthAndKeyResult.cs" />
@@ -966,6 +970,7 @@
     <Compile Include="Tools\ScheduledJobs\RunningsJobs\RunningJobRepo.cs" />
     <Compile Include="Tools\Update\Scripts\SolrCoreReload.cs" />
     <Compile Include="Tools\Update\Scripts\PathTo.cs" />
+    <Compile Include="Tools\Update\Steps\UpdateToVs196.cs" />
     <Compile Include="Tools\Update\Steps\UpdateToVs195.cs" />
     <Compile Include="Tools\Update\Steps\UpdateToVs194.cs" />
     <Compile Include="Tools\Update\Steps\UpdateToVs193.cs" />
