@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Linq;
 using NHibernate;
+using NHibernate.Transform;
 using Seedworks.Lib.Persistence;
 
 public class JobHistoryRepo : RepositoryDb<JobHistory>
@@ -14,9 +16,23 @@ public class JobHistoryRepo : RepositoryDb<JobHistory>
         {
             StartedAt = startedAt,
             FinishedAt = DateTime.Now,
-            JobHistoryType = JobHistoryType.UpdateAnswerAggregates
+            Type = JobHistoryType.UpdateAnswerAggregates
         };
 
         Create(jobHistoryEntry);
+    }
+
+    public JobHistory GetLastUpdateAnswerAggregates()
+    {
+        var query = 
+            $@"SELECT * FROM answer 
+               WHERE Type = {(int)JobHistoryType.UpdateAnswerAggregates}
+               ORDER BY Id DESC 
+               LIMIT 1";
+
+        return _session.CreateSQLQuery(query)
+            .SetResultTransformer(Transformers.AliasToBean(typeof(JobHistory)))
+            .List<JobHistory>()
+            .FirstOrDefault();
     }
 }

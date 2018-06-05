@@ -6,7 +6,7 @@ public class UpdateAnswerAggregates
     /// <summary>
     /// Considers all answers ever given
     /// </summary>
-    public static void FullUpadte()
+    public static void FullUpdate()
     {
         Logg.r().Information("UpdateAnswerAggregates");
 
@@ -14,6 +14,15 @@ public class UpdateAnswerAggregates
         var answerAggregatedRepo = Sl.AnswerAggregatedRepo;
 
         var allAggregatedEntries = answerAggregatedRepo.GetAll();
+
+        var historyEntry = Sl.JobHistoryRepo.GetLastUpdateAnswerAggregates();
+
+        if (historyEntry != null)
+        {
+            users = users
+                .Where(user => user.LastLogin != null && user.LastLogin > historyEntry.FinishedAt)
+                .ToList();
+        }
 
         foreach (var user in users)
         {

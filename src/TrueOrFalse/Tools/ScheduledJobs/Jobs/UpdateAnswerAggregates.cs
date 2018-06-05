@@ -11,7 +11,7 @@ namespace TrueOrFalse.Utilities.ScheduledJobs
             {
                 var startedAt = DateTime.Now;
 
-                UpdateAnswerAggregates.FullUpadte();
+                UpdateAnswerAggregates.FullUpdate();
 
                 Sl.JobHistoryRepo.AddUpdateAnswerAggregates(startedAt);
 
