@@ -290,5 +290,9 @@
   {
     "outputFile": "Views/Users/Account/Settings/UserSettings.css",
     "inputFile": "Views/Users/Account/Settings/UserSettings.less"
+  },
+  {
+    "outputFile": "Views/Welcome/Promoter.css",
+    "inputFile": "Views/Welcome/Promoter.less"
   }
 ]

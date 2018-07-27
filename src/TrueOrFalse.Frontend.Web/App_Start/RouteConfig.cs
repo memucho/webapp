@@ -177,8 +177,12 @@ namespace TrueOrFalse
             routes.MapRoute("WidgetLearningSession", "widget/fragesatz/templateset/{setId}", new { controller = "Widget", action = "SetWithoutStartScreen" });
             routes.MapRoute("WidgetSetVideo", "widget/fragesatz-v/{setId}", new { controller = "Widget", action = "SetVideo" });
 
+            routes.MapRoute("Übersicht", "Übersicht/Förderer", new { controller = "Welcome", action = "Promoter" });
+
             routes.MapRoute("Default", "{controller}/{action}/{id}", new { controller = "Welcome", action = "Welcome", id = UrlParameter.Optional });
             routes.MapRoute("Various", "{action}", new { controller = "VariousPublic" });
+
+           
         }
     }
 }

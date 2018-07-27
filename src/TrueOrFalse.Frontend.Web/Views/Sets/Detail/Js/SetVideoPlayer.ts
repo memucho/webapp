@@ -56,6 +56,7 @@ class SetVideoPlayer
         if (event.data == YT.PlayerState.PLAYING) {
             setVideoPlayer.VideoIsPlaying = true;
             this.VideoCheckIntervalPaused = false;
+            $('#continue').hide();
         } else {
             setVideoPlayer.VideoIsPlaying = false;    
         }

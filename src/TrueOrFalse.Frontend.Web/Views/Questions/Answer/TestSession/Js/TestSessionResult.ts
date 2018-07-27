@@ -28,15 +28,17 @@
             $(".dateSets").toggle(300);
         });
 
+        if ($("#isSetSession").val() !== "True" && $("#LearningTab").hasClass("active")) {
+
         $(".nextLearningTestSession").click((e) => {
             e.preventDefault();
+            $(".EduPartnerWrapper").remove();
             $("#QuestionCountCompletSideBar").fadeIn();
             $(".ProgressBarSegment .ProgressBarLeft").width("0%");
             var answerBody = new AnswerBody();
             answerBody.Loader.loadNewTestSession();
-            
-
-        });
+            });
+        }
     }
 
     public PositionIndicatorAverageText() {

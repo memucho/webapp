@@ -1,9 +1,11 @@
 ﻿<%@ Page Title="Über memucho" Language="C#" MasterPageFile="~/Views/Shared/Site.MenuLeft.Master" 
     Inherits="System.Web.Mvc.ViewPage<AboutMemuchoModel>" %>
 <%@ Import Namespace="TrueOrFalse.Frontend.Web.Code" %>
+<%@ Import Namespace="System.Web.Optimization" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
     <link href="/Views/About/AboutMemucho.css" rel="stylesheet" />
+    <%: Scripts.Render("~/bundles/AboutMemucho") %>
 </asp:Content>
 
 
@@ -15,8 +17,8 @@
     </div>
             
     <div id="teamImgQuote">
-        <img id="teamImg" src="/Images/Team/founderTeam_20161027_e1.jpg"/>
-                
+        <img id="teamImg" src="/Images/Team/founderTeam_20161027_e1.jpg" alt="Hier sollte ien Bild sein"/>
+
         <div id="teamQuoteCircle" class="">
             <div class="circle">
                 <div class="circleInner">
@@ -124,7 +126,7 @@
         <div class="row">
             <div class="col-xs-4 keyNumberCol">
                 <div class="keyNumber">
-                    <%= Model.TotalActivityPoints.ToString("N0") %>
+                    <span class="CountUp" data-number="<%= Model.TotalActivityPoints %>" > 0 </span>
                 </div>
                 <div class="keyNumberExplanation">
                     Lernpunkte wurden bisher bei memucho errungen
@@ -133,7 +135,7 @@
 
             <div class="col-xs-4 keyNumberCol">
                 <div class="keyNumber">
-                    <%= Model.TotalQuestionCount.ToString("N0") %>
+                    <span class="CountUp" data-number="<%= Model.TotalQuestionCount %>"> 0 </span>
                 </div>
                 <div class="keyNumberExplanation">
                     interaktive Fragen gibt es zu beantworten
@@ -142,7 +144,7 @@
 
             <div class="col-xs-4 keyNumberCol">
                 <div class="keyNumber">
-                    <%= Model.PercentageQuestionsAnsweredMostlyWrong %> %
+                    <span class="CountUp" data-number="<%= Model.PercentageQuestionsAnsweredMostlyWrong %>"> 0 </span> %
                 </div>
                 <div class="keyNumberExplanation">
                     der Fragen werden öfter falsch als richtig beantwortet
@@ -216,9 +218,7 @@
 
 
     <% Html.RenderPartial("~/Views/Shared/LinkToTop.ascx");  %>
-            
-            
-            
+     
     <div id="awards">
         <h2>Auszeichnungen</h2>
         <div class="row">

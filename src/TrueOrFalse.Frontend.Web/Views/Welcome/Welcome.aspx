@@ -11,6 +11,7 @@
 
 <asp:Content ID="Content1" runat="server" ContentPlaceHolderID="Head">
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    
     <link href="/Views/Welcome/Welcome.css" rel="stylesheet" />
 
     <script type="text/javascript">
@@ -164,9 +165,9 @@
 
                     <div class="NextLevelContainer">
                         <div class="ProgressBarContainer">
-                            <div id="NextLevelProgressPercentageDone" class="ProgressBarSegment ProgressBarDone" style="width: <%= Model.ActivityPointsPercentageOfNextLevel %>%;">
+                        <div id="NextLevelProgressPercentageDone" class="ProgressBarSegment ProgressBarDone CountUpProgress" data-number="<%= Model.ActivityPointsPercentageOfNextLevel %>" data-character="%" style="width: 95px;">
                                 <div class="ProgressBarSegment ProgressBarLegend">
-                                    <span id="NextLevelProgressSpanPercentageDone"><%= Model.ActivityPointsPercentageOfNextLevel %> %</span>
+                                <span id="NextLevelProgressSpanPercentageDone" class="CountUp" data-number="<%= Model.ActivityPointsPercentageOfNextLevel %>" data-character ="%">0</span>
                                 </div>
                             </div>
                             <div class="ProgressBarSegment ProgressBarLeft" style="width: 100%;"></div>
@@ -308,17 +309,17 @@
                 <div class="col-md-9">
                 <h3>memucho 2x nominiert für OER-Award 2017</h3>
                 <p>
-                    Bei den diesjährigen OER-Awards wurde memucho gleich zweimal nominiert:
+                    Bei den OER-Awards 2017 wurde memucho gleich zweimal nominiert:
                     <ul class="ul">
                         <li>In der Kategorie OER-Infrastruktur und</li>
-                        <li>speziell für unsere freien Lerninhalte für den<a href="<%= Links.CategoryDetail("Basispass Pferdekunde",343) %>">Basispass Pferdekunde</a>.</li>
+                        <li>speziell für unsere freien Lerninhalte für den <a href="<%= Links.CategoryDetail("Basispass Pferdekunde",343) %>">Basispass Pferdekunde</a>.</li>
                     </ul>
                 </p>
-                <p>Die <a href="https://open-educational-resources.de/veranstaltungen/17/award/" target="_blank">OER-Awards <i class="fa fa-external-link" style="font-size: smaller;"></i></a>
+                <p>Darüber freuen wir uns sehr! Die <a href="https://open-educational-resources.de/veranstaltungen/17/award/" target="_blank">OER-Awards <i class="fa fa-external-link" style="font-size: smaller;"></i></a>
                     zeichnen jährlich die besten Angebote im Bereich freie Bildungsinhalte (OER) aus.
                     Die Preis-Verleihung fand am 27. November 2017 in Berlin im Rahmen des 
                     <a href="https://open-educational-resources.de/veranstaltungen/17/" target="_blank">OER-Festivals <i class="fa fa-external-link" style="font-size: smaller;"></i>
-                    </a>statt. Darüber freuen wir uns sehr!
+                    </a>statt.
                 </p>
                 </div>
             </div>

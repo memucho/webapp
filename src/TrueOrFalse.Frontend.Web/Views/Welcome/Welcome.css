@@ -492,21 +492,11 @@ fieldset[disabled] .EduCategory.active {
   padding-top: 0;
   background-color: white;
   margin-bottom: 30px;
-  /*.media-below-sm( {
-        text-align: center;
-    });*/
-  /*span .btn {
-        margin-top: 10px;
-        display: inline-block;
-    }*/
 }
 #memuchoInfoFooter div a.btn {
   margin-top: 10px;
 }
 /* INFO BOX */
-.infoBox {
-  background-color: #d0e689;
-}
 .infoBox .row .col-md-3 {
   text-align: center;
 }
@@ -784,13 +774,6 @@ fieldset[disabled] .EduCategory.active {
   text-align: right;
   background-color: white;
   margin-bottom: 30px;
-  /*.media-below-sm( {
-        text-align: center;
-    });*/
-  /*span .btn {
-        margin-top: 10px;
-        display: inline-block;
-    }*/
   padding-top: 0;
 }
 #principles #memuchoPrinciplesFooter div a.btn {

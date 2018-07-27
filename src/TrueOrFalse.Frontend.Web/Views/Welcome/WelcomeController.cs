@@ -125,4 +125,9 @@ public class WelcomeController : BaseController
             "Newsletter sign up request",
             requesterEmail + " asked to sign up for newsletter."));
     }
+
+    public ActionResult Promoter()
+    {
+        return View(new BaseModel());
+    }
 }

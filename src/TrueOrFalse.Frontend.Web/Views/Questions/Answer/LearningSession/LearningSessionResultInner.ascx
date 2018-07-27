@@ -6,6 +6,9 @@
 
 <link href="/Views/Questions/Answer/LearningSession/LearningSessionResult.css" rel="stylesheet" />
 
+<input type="hidden" id="hddSolutionTypeNum" value="1" />
+<input type="hidden" id="hddCategoryId" value="682" />
+
 <h2 style="margin-bottom: 15px; margin-top: 0px;">
     <span class="<% if (Model.LearningSession.IsDateSession) Response.Write("ColoredUnderline Date");
                     if (Model.LearningSession.IsSetSession) Response.Write("ColoredUnderline Set");
@@ -81,8 +84,8 @@
                     Weiterlernen
                 </a>
             <% } else if (Model.LearningSession.IsCategorySession) { %>
-                <a href="<%= Links.CategoryDetail(Model.LearningSession.CategoryToLearn.Name, Model.LearningSession.CategoryToLearn.Id) %>" class="btn btn-link" style="padding-right: 10px">Zum Thema</a>
-                <a href="<%= Links.StartLearningSession(Model.LearningSession) %>" class="btn btn-primary" style="padding-right: 10px">
+                <a href="<%= Links.CategoryDetail(Model.LearningSession.CategoryToLearn.Name, Model.LearningSession.CategoryToLearn.Id) %>" class="btn btn-link " style="padding-right: 10px">Zum Thema</a>
+                <a href="<%= Links.StartLearningSession(Model.LearningSession) %>" class="btn btn-primary nextLearningTestSession" style="padding-right: 10px">
                     Weiterlernen
                 </a>   
             <% } else if (Model.LearningSession.IsWishSession) { %>
@@ -367,4 +370,4 @@
     </div>
 </div>
 
-
+                                                            

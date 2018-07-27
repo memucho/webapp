@@ -268,6 +268,20 @@ public class LicenseImageRepo
 
             new LicenseImage
             {
+                Id = 18,
+                WikiSearchString = "CC0",
+                LicenseApplicability = LicenseApplicability.LicenseAuthorizedAndAllRequirementsRecorded,
+
+                LicenseRequirementsType = LicenseRequirementsType.Cc0,
+                LicenseLink = "https://creativecommons.org/publicdomain/zero/1.0/legalcode",
+
+                LicenseShortDescriptionLink = "https://creativecommons.org/publicdomain/zero/1.0/deed.de",
+                LicenseLongName = "Creative Commons Zero (Gemeinfreiheit, keine Rechte vorbehalten)",
+                LicenseShortName = "CC0",
+            },
+
+            new LicenseImage
+            {
                 Id = 198,
                 WikiSearchString = "Public Domain / Gemeinfrei (Amtliches Werk)", //Wiki-URL: https://de.wikipedia.org/wiki/Vorlage:Bild-PD-Amtliches_Werk
                 LicenseApplicability = LicenseApplicability.LicenseAuthorizedAndAllRequirementsRecorded,

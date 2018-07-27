@@ -7,8 +7,8 @@
 
         this._answerBody = answerBody;
 
-        //if (Utils.IsInWidget())
-        //    return;
+        if (Utils.IsInWidget())
+            return;
 
         $().ready(() => {
             this._isInLearningTab = $('#LearningTab').length > 0;
@@ -174,7 +174,7 @@
     }
 
     private showLearningSessionResult(result) {
-        var container = this._isInLearningTab ? $('#LearningTabContent') : $("#MasterMainWrapper");
+        var container = this._isInLearningTab ? $('#AnswerBody') : $("#MasterMainWrapper");
         container.html(result.LearningSessionResult);
         new LearningSessionResult();
     }

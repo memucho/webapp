@@ -3,10 +3,11 @@
     testSessionId: string ; 
     constructor() {
 
-       
-      
         var link = "/TestSessionResult/TestSessionResultAsync";
-        $("#btnNext").on("click", function(e){
+        $("#btnNext").on("click", function (e) {
+            if (Utils.IsInWidget()) {
+                return;
+            }
             e.preventDefault();
             this.testSessionId = $("#hddIsTestSession").attr("data-test-session-id").valueOf();
             $.ajax({

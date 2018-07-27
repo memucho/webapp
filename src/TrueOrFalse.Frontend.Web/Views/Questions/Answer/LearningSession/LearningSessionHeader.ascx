@@ -17,7 +17,7 @@
             </div>
         <% } %>
 
-        <% if(Model.LearningSession.IsSetsSession) { %>
+        <% if(Model.LearningSession.IsSetsSession) { %>   
             <%= Model.LearningSession.SetListTitle %> (<span style="white-space: nowrap"><%= Model.LearningSession.SetsToLearn().Count %> Lernsets</span>)
         <% } %>
 
@@ -65,7 +65,7 @@
                 <span id="spanPercentageDone"><%= Model.CurrentLearningStepPercentage %>%</span>
             </div>
         </div>
-        <% if (Model.CurrentLearningStepPercentage<100) {%>
+        <% if (Model.CurrentLearningStepPercentage < 100) {%>
             <div class="ProgressBarSegment ProgressBarLeft" style="width: 100%;"></div>
         <% } %>
             

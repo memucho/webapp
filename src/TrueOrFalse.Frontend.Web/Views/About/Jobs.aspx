@@ -11,7 +11,7 @@
 
 <div class="row">
     <div class="col-xs-12">
-        <h1 class="PageHeader" style="margin-bottom: 25px; margin-top: 0px;"><span class="ColoredUnderline GeneralMemucho">Jobs &amp; Praktika bei memucho</span></h1>
+        <h1 class="PageHeader" style="margin-bottom: 25px; margin-top: 0px;">Jobs &amp; Praktika bei memucho</h1>
     </div>
 </div>
     
@@ -21,16 +21,16 @@
             Bei memucho gibt es aktuell folgende Job-Angebote:    
         </p>
         <ul>
-            <li><a href="#contentManager">Content-Manager (m/w)</a></li>
+            <li><a href="#productmanager">Produktmanager (m/w)</a></li>
             <li><a href="#jobInhalte">Inhalte erstellen, pflegen und koordinieren (Nebenjob)</a></li>
         </ul>
     </div>
 </div>
 
 <div class="row">
-    <div class="col-xs-12 col-md-8" style="margin-top: 20px;" id="contentManager">
+    <div class="col-xs-12 col-md-8" style="margin-top: 20px;" id="productmanager">
         <div class="well">
-            <h2 class="PageHeader">Content-Manager (m/w)</h2>
+            <h2 class="PageHeader">Produktmanager (m/w)</h2>
             <p>
                 memucho ist ein innovatives Start-up und betreibt die Web-Anwendung memucho.de, einen digitalen Bildungsassistent. 
                 Ziel von memucho ist, es Lernenden zu erleichtern, sich interessante und wissenswerte Dinge zu merken, ihr Wissen 
@@ -39,29 +39,35 @@
                 Das Unternehmen memucho selbst versteht sich als gemeinwohlorientiert.
             </p>
             <p>
-                Wir suchen eine(n) Content-Manager/-in, als zentrale Ansprechpartnerin für die Erstellung und Optimierung 
-                sämtlicher redaktioneller Inhalte auf der Webseite memucho.de. Die im weitesten Sinne redaktionellen Tätigkeiten 
-                haben zum Ziel, die (interaktiven) Lerninhalte bei memucho nachhaltig auszubauen und damit für Lernende einen 
-                konkreten Nutzen zu stiften.
+                Wir suchen eine(n) Produktmanager/-in, die/der verantwortlich ist für die Weiterentwicklung des Produkts. 
+                Dazu sollen neu zu entwickelnde oder zu überarbeitende Produktkomponenten identifiziert, konzeptionell durchdacht und 
+                detailliert beschrieben werden. Die Auswahl der entsprechenden Produktkomponenten erfolgt im Bereich Produktentwicklung, 
+                aber in enger Abstimmung mit dem Content-Bereich.
             </p>
             <p class="listTitle">
-                Zentrale Aufgabenfelder sind:
+                Konkrete Aufgabenbereiche sind:
             </p>
             <ul>
                 <li>
-                    Gewinnung, Betreuung und Motivation von Nutzern bei der Erstellung von Inhalten sowie Identifikation, Gewinnung und Betreuung von Kooperationspartnern
+                    Inhaltliche Weiterentwicklung des Produktangebots von memucho
                 </li>
                 <li>
-                    Erstellung und Zusammenstellung von digitalen BIldungsinhalten und Weiterentwicklung der Nutzeransprache auf der Webseite
+                    Konzeptentwicklung für Produktfeatures: Detaillierte Beschreibungen der Anforderungen von Produktkomponenten in Text und als (interaktive) Mockups, die als Grundlage für interne Diskussionsprozesse dienen und schließlich als Grundlage für Grafiker und Entwickler. Bei den Mockups ist der gesamte Prozess der Nutzerinteraktion zu berücksichtigen.
                 </li>
                 <li>
-                    Prüfen von Lizenzen für Bilder und Texte
+                    Zentraler Ansprechpartner für die Entwickler und Grafiker im Prozess der Umsetzung von Produktfeatures
                 </li>
                 <li>
-                    Aufbau und Betreuung unserer Twitter- und Facebook-Accounts
+                    Durchführen von Deployments; Konzeption und Durchführung von Testplänen zur technischen Qualitätssicherung nach jedem Deployment
                 </li>
                 <li>
-                    Vorstellung von memucho bei Bildungsveranstaltungen
+                    Management von Nutzerrückmeldungen zu Fehlern auf der Seite und zu gewünschten Produktfeatures; Umsetzung von Fehlermeldungen in Tickets und Priorisierung der Tickets für die Entwickler
+                </li>
+                <li>
+                    Quantitative Auswertung von Nutzungsverhalten und auf dieser Grundlage Planung neuer Funktionen und Produkteigenschaften, die das Nutzererlebnis verbessern
+                </li>
+                <li>
+                    Konzeption und Durchführung von qualitativen Nutzertests, um (geplante) Neu- oder Weiterentwicklungen von Produkteigenschaften zu testen.
                 </li>
             </ul>
             <p class="listTitle">
@@ -69,22 +75,19 @@
             </p>
             <ul>
                 <li>
-                    Abgeschlossenes Studium der Geistes- oder Sozialwissenschaften
+                    Abgeschlossenes Studium in einem relevanten Feld (Medienwissenschaft, Kommunikationswissenschaften) oder relevante Ausbildung (Medienkaufmann, Fachinformatiker)
                 </li>
                 <li>
-                    Sehr sicherer Umgang mit der deutschen Sprache
+                    Erfahrung in der Gestaltung von User Interfaces/UX für Medienprodukte (z.B. Adobe XD)
                 </li>
                 <li>
                     Eigenständiges und eigenverantwortliches Arbeiten
                 </li>
                 <li>
-                    Organisationstalent
+                    Kommunikations- und Organisationstalent
                 </li>
                 <li>
-                    Idealerweise erste Berufserfahrungen im Bildungsbereich und/oder der Öffentlichkeitsarbeit
-                </li>
-                <li>
-                    Affinität zu digitalen Produkten
+                    Idealerweise erste Berufserfahrungen im Bildungsbereich und/oder digitalen Bildungsprodukten
                 </li>
             </ul>
             <p class="listTitle">
