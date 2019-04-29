@@ -262,6 +262,7 @@
     <Compile Include="Domain\Question\History\Persistence\QuestionChangeMap.cs" />
     <Compile Include="Domain\Question\History\Persistence\QuestionChangeRepo.cs" />
     <Compile Include="Domain\SaveType.cs" />
+    <Compile Include="Infrastructure\Reputation\ReputationsPointsAsText.cs" />
     <Compile Include="Tools\Analytics\Widget\WidgetDetailViewsPerMonthAndTypeResult.cs" />
     <Compile Include="Tools\Analytics\Widget\WidgetViewsPerMonthAndKeyResult.cs" />
     <Compile Include="Tools\Export\LomExporter.cs" />

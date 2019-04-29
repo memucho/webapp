@@ -299,6 +299,7 @@
     <Compile Include="4 Search\QuestionSearchTests.cs" />
     <Compile Include="4 Search\SetSearchTests.cs" />
     <Compile Include="4 Search\Support\UserInputToSearchExpressionTest.cs" />
+    <Compile Include="5 Utiltities\ReputationsPointsAsTextTests.cs" />
     <Compile Include="5 Utiltities\UrlTest.cs" />
     <Compile Include="5 Utiltities\TimeElapsedAsTextTests.cs" />
     <Compile Include="6 Tools\Analytics\Widget_view_tests.cs" />
