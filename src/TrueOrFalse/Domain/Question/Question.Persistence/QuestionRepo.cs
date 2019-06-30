@@ -26,9 +26,12 @@ public class QuestionRepo : RepositoryDbBase<Question>
 
     public IList<User> GetAuthorsQuestion(int questionId, bool filterUsersForSidebar = false)
     {
+        var author = Sl.QuestionRepo.GetByIdFromMemoryCache(questionId).Creator;
+
         var allAuthors = Sl.QuestionChangeRepo
             .GetForQuestion(questionId, filterUsersForSidebar)
-            .Select(QuestionChange => QuestionChange.Author);
+            .Select(QuestionChange => QuestionChange.Author).ToList();
+        allAuthors.Add(author);
 
         return allAuthors.GroupBy(a => a.Id)
             .Select(groupedAuthor => groupedAuthor.First())
