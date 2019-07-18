@@ -137,4 +137,18 @@ $(() => {
     new SearchBox("#StickyHeaderSearchBox");
     new SearchBox("#SmallHeaderSearchBox");
 
+    var url;
+    $(document).keyup((e: any) => {
+        if (e.keyCode !== 13) {
+            url = $(".ui-state-focus").children().children().attr("href");
+        }
+
+        if (e.keyCode === 13) {
+            if (url != undefined) {
+
+                $(location).attr('href', url);
+            }
+        }
+    });
+
 });

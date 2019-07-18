@@ -31,8 +31,8 @@ public class Logg
             var request = HttpContext.Current.Request;
 
             Logg.r().Error(exception, "PageError {Url} {Headers}",
-                request.Headers.ToString(),
-                request.RawUrl);
+                request.RawUrl,
+                request.Headers.ToString());
 
             if (!request.IsLocal)
                 new RollbarClient().SendException(exception);
