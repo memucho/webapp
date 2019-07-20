@@ -122,6 +122,8 @@ public class CategoryController : BaseController
         return Redirect(Links.LearningSession(learningSession));
     }
 
+
+    [HttpGet]
     public string Tab(string tabName, int categoryId)
     {
         return ViewRenderer.RenderPartialView(
