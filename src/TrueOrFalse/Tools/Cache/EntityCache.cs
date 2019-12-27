@@ -15,6 +15,7 @@ public class EntityCache
     private const string _cacheKeyCategoryQuestionsList = "categoryQuestionsList_EntityCache";
     private const string _cacheKeyCategorySetsList = "categorySetsList_EntityCache";
     private const string _cacheKeyCategoryQuestionInSetList = "categoryQuestionInSetList_EntityCache";
+    private const string _cacheRelatedCategoryList = "relatedCategoryList_EntityCache"; 
 
     private static ConcurrentDictionary<int, Question> Questions => (ConcurrentDictionary<int, Question>)HttpRuntime.Cache[_cacheKeyQuestions];
     private static ConcurrentDictionary<int, Category> Categories => (ConcurrentDictionary<int, Category>)HttpRuntime.Cache[_cacheKeyCategories];
@@ -25,6 +26,8 @@ public class EntityCache
         (ConcurrentDictionary<int, ConcurrentDictionary<int, int>>)HttpRuntime.Cache[_cacheKeyCategoryQuestionsList];
     private static ConcurrentDictionary<int, ConcurrentDictionary<int, int>> CategorySetsList =>
         (ConcurrentDictionary<int, ConcurrentDictionary<int, int>>)HttpRuntime.Cache[_cacheKeyCategorySetsList];
+    private static ConcurrentDictionary<int, ConcurrentDictionary<int, int>> RelatedCategoryList =>
+        (ConcurrentDictionary<int, ConcurrentDictionary<int, int>>)HttpRuntime.Cache[_cacheRelatedCategoryList];
 
     /// <summary>
     /// CategoryIds > QuestionIds (for each category) > SetsIds (of sets that bind question to category)
@@ -135,6 +138,12 @@ public class EntityCache
     {
         return CategorySetsList.ContainsKey(categoryId)
             ? CategorySetsList[categoryId].Keys.ToList()
+            : new List<int>();
+    }
+    public static IList<int> RelatedCategories(int categoryId)
+    {
+        return RelatedCategoryList.ContainsKey(categoryId)
+            ? RelatedCategoryList[categoryId].Keys.ToList()
             : new List<int>();
     }
 
