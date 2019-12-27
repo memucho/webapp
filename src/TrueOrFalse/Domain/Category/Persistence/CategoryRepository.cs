@@ -153,7 +153,7 @@ public class CategoryRepository : RepositoryDbBase<Category>
             WHERE  Related_id = {categoryId} 
             AND CategoryRelationType = {(int)CategoryRelationType.IsChildCategoryOf}").List<int>();
 
-        return GetByIds(categoryIds.ToArray());
+        return EntityCache.GetCategories(categoryIds).ToList();
     }
 
 

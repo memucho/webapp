@@ -214,7 +214,7 @@ public class CategoryModel : BaseContentModule
             : views.Aggregate((a, b) => a + " " + b + System.Environment.NewLine);
     }
 
-    public void GetCategoryRelations()
+    private void GetCategoryRelations()
     {
         var descendants = GetCategoriesDescendants.WithAppliedRules(Category);
         CategoriesDescendantsCount = descendants.Count;
