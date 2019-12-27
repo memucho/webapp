@@ -42,6 +42,8 @@ namespace TrueOrFalse.Utilities.ScheduledJobs
             Schedule_EditCategoryInWishKnowledge();
             Schedule_KnowledgeReportCheck();
             Schedule_LOM_Export();
+            Schedule_RecalcTotalWishInOthersPeople();
+
         }
 
         private static void Schedule_CleanupWorkInProgressQuestions()
@@ -167,8 +169,8 @@ namespace TrueOrFalse.Utilities.ScheduledJobs
                             .RepeatForever()).Build());
         }
 
-        public static void StartImmediately_TrainingReminderCheck() { StartImmediately<TrainingReminderCheck>(); }
-        public static void StartImmediately_TrainingPlanUpdateCheck() { StartImmediately<TrainingPlanUpdateCheck>(); }
+        //public static void StartImmediately_TrainingReminderCheck() { StartImmediately<TrainingReminderCheck>(); }
+        //public static void StartImmediately_TrainingPlanUpdateCheck() { StartImmediately<TrainingPlanUpdateCheck>(); }
         public static void StartImmediately_CleanUpWorkInProgressQuestions() { StartImmediately<CleanUpWorkInProgressQuestions>(); }
         public static void StartImmediately_RecalcKnowledgeStati() { StartImmediately<RecalcKnowledgeStati>(); }
         public static void StartImmediately_RefreshEntityCache() { StartImmediately<RefreshEntityCache>(); }

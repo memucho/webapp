@@ -1087,6 +1087,7 @@
     <Compile Include="Tools\Update\Steps\UpdateToVs198.cs" />
     <Compile Include="Tools\Update\Steps\UpdateToVs197.cs" />
     <Compile Include="Tools\Update\Steps\UpdateToVs196.cs" />
+    <Compile Include="Tools\Update\Steps\UpdateToVs209.cs" />
     <Compile Include="Tools\Update\TemplateMigration\MarkdownConverter\MarkdownConverter.cs" />
     <Compile Include="Tools\Update\TemplateMigration\MarkdownConverter\Part.cs" />
     <Compile Include="Tools\Update\TemplateMigration\MarkdownConverter\PartType.cs" />

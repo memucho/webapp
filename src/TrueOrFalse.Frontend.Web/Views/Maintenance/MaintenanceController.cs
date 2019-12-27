@@ -315,7 +315,7 @@ public class MaintenanceController : BaseController
     [HttpPost]
     public ActionResult TrainingReminderCheck()
     {
-        JobScheduler.StartImmediately_TrainingReminderCheck();
+        //JobScheduler.StartImmediately_TrainingReminderCheck();
         return View("Tools",
             new ToolsModel {Message = new SuccessMessage("Job: 'Training Reminder Check' wird ausgeführt.")});
     }
@@ -324,7 +324,7 @@ public class MaintenanceController : BaseController
     [HttpPost]
     public ActionResult TrainingPlanUpdateCheck()
     {
-        JobScheduler.StartImmediately_TrainingPlanUpdateCheck();
+        //JobScheduler.StartImmediately_TrainingPlanUpdateCheck();
         Logg.r().Information("TrainingPlanUpdateCheck manually started");
         return View("Tools",
             new ToolsModel {Message = new SuccessMessage("Job: 'Training Plan Update Check' wird ausgeführt.")});

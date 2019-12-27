@@ -40,17 +40,16 @@ public static class QuestionInKnowledge
 
     private static void ChangeTotalInOthersWishknowledge( bool isIncrement, User user, Question question)
     {
-        var i = question.Creator.Id;
         if (question.Creator == null || question.Creator.Id == user.Id) 
             return; 
-
+           
         var sign = isIncrement ? "+" : "-" ;
         
-        Sl.Resolve<ISession>()
-            .CreateSQLQuery(
+                Sl.Resolve<ISession>()
+                    .CreateSQLQuery(
                 @"Update user Set TotalInOthersWishknowledge = TotalInOthersWishknowledge " + sign + " 1 where id = " +
                 question.Creator.Id + ";")
-            .ExecuteUpdate();
+                    .ExecuteUpdate();
     }
 
     private static void UpdateRelevancePersonal(IList<Question> questions, User user, int relevance = 50, SaveType saveType = SaveType.CacheAndDatabase)
