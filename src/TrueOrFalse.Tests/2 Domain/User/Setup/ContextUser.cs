@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using NHibernate;
+using NHibernate.Event;
 
 public class ContextUser
 {
@@ -37,6 +39,8 @@ public class ContextUser
     {
         foreach (var usr in All)
             _userRepo.Create(usr);
+
+        _userRepo.Flush();
 
         return this;
     }

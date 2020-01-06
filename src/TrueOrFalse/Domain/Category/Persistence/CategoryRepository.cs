@@ -54,7 +54,7 @@ public class CategoryRepository : RepositoryDbBase<Category>
         _searchIndexCategory.Update(category);
         EntityCache.AddOrUpdate(category);
 
-        Sl.CategoryChangeRepo.AddCreateEntry(category, Sl.SessionUser.User);
+        Sl.CategoryChangeRepo.AddCreateEntry(category);
     }
 
     /// <summary>

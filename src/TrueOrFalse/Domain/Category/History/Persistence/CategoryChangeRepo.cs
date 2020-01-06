@@ -27,7 +27,7 @@ public class CategoryChangeRepo : RepositoryDbBase<CategoryChange>
         base.Create(categoryChange);
     }
 
-    public void AddCreateEntry(Category category, User author) => AddUpdateOrCreateEntry(category, author, CategoryChangeType.Create);
+    public void AddCreateEntry(Category category) => AddUpdateOrCreateEntry(category, category.Creator, CategoryChangeType.Create);
     public void AddUpdateEntry(Category category, User author, bool imageWasUpdated) => AddUpdateOrCreateEntry(category, author, CategoryChangeType.Update, imageWasUpdated);
 
     private void AddUpdateOrCreateEntry(Category category, User author, CategoryChangeType categoryChangeType, bool imageWasUpdated = false)
