@@ -39,7 +39,7 @@ public class KnowledgeModel : BaseModel
     public User User = new User();
     public int ReputationRank;
     public int ReputationTotal;
-    public IList<object> CatsAndSetsWish;
+    public IList<Category> CatsWish;
 
     public UIMessage Message;
 
@@ -100,7 +100,7 @@ public class KnowledgeModel : BaseModel
 
         var setValuationIds = R<SetValuationRepo>().GetByUser(UserId).Select(v => v.SetId).ToList();
         var setsWish = R<SetRepo>().GetByIds(setValuationIds).OrderByDescending(s => s.QuestionCount()).ToList(); // sorts by questioncount including private questions! Excluding them would also exclude private questions visible to user
-        CatsAndSetsWish = SortSetsIntoListOfCategories.Run(categoriesWish, setsWish);
+        CatsWish = categoriesWish;
 
         //GET DATES information
         Dates = R<DateRepo>().GetBy(UserId, true);
@@ -175,8 +175,7 @@ public class KnowledgeModel : BaseModel
         };
 
         var wishCategories = Sl.R<CategoryRepository>().GetByIds(652, 145, 6) ?? new List<Category>();
-        var wishSets = Sl.R<SetRepo>().GetByIds(14, 20, 189) ?? new List<Set>();
-        CatsAndSetsWish = SortSetsIntoListOfCategories.Run(wishCategories, wishSets);
+        CatsWish = wishCategories;
 
         Dates = GetSampleDates.Run();
         DatesInNetwork = GetSampleDates.RunAgain();

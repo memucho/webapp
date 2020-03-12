@@ -17,8 +17,6 @@ public class TestSessionResultModel : BaseModel
     public int PercentageAverageRightAnswers;
     public IList<TestSessionStep> Steps;
 
-    public Set TestedSet;
-    public IList<Set> TestedSets;
     public Category TestedCategory;
     public string LinkForRepeatTest;
 
@@ -30,12 +28,6 @@ public class TestSessionResultModel : BaseModel
     {
         get
         {
-            if (TestSession.IsSetSession)
-                return TestedSet.Questions().Count;
-
-            if (TestSession.IsSetsSession)
-                return TestedSets.Sum(s => s.Questions().Count); //DB is accessed
-
             if (TestSession.IsCategorySession)
                 return GetQuestionsForCategory.AllIncludingQuestionsInSet(TestedCategory.Id).Count;
 
@@ -50,19 +42,7 @@ public class TestSessionResultModel : BaseModel
         if(testSession.SessionNotFound)
             return;
 
-        if (TestSession.IsSetSession)
-        {
-            TestedSet = Sl.R<SetRepo>().GetById(TestSession.SetToTestId);
-            LinkForRepeatTest = Links.TestSessionStartForSet(TestedSet.Name, TestedSet.Id);
-            ContentRecommendationResult = ContentRecommendation.GetForSet(TestedSet, 6);
-        }
-        else if (TestSession.IsSetsSession)
-        {
-            TestedSets = R<SetRepo>().GetByIds(TestSession.SetsToTestIds.ToList());
-            LinkForRepeatTest = Links.TestSessionStartForSets(testSession.SetsToTestIds.ToList(), testSession.SetListTitle);
-            ContentRecommendationResult = ContentRecommendation.GetForSet(TestedSets.FirstOrDefault(), 6);
-        }
-        else if (TestSession.IsCategorySession)
+        if (TestSession.IsCategorySession)
         {
             TestedCategory = Sl.R<CategoryRepository>().GetById(TestSession.CategoryToTestId);
             LinkForRepeatTest = Links.TestSessionStartForCategory(TestedCategory.Name, TestedCategory.Id);

@@ -30,17 +30,10 @@ public class AnswerQuestionController : BaseController
 
     [SetMainMenu(MainMenuEntry.None)]
     [SetThemeMenu(isQuestionPage: true)]
-    public ActionResult Answer(string text, int? id, int? elementOnPage, string pager, int? setId, int? questionId, string category)
+    public ActionResult Answer(string text, int? id, int? elementOnPage, string pager, int? questionId, string category)
     {
         if (id.HasValue && SeoUtils.HasUnderscores(text))
             return SeoUtils.RedirectToHyphendVersion(RedirectPermanent, id.Value);
-
-        if (setId != null && questionId != null)
-        {
-            return SeoUtils.HasUnderscores(text) ? 
-                SeoUtils.RedirectToHyphendVersion(RedirectPermanent, setId.Value, questionId.Value) : 
-                AnswerSet(setId.Value, questionId.Value);
-        }
 
         return AnswerQuestion(text, id, elementOnPage, pager, category);
     }
@@ -128,24 +121,6 @@ public class AnswerQuestionController : BaseController
         Sl.SaveQuestionView.Run(questionViewGuid, question, sessionUser.User, widgetViewFunc?.Invoke(testSession));
 
         return resultFunc(testSession, questionViewGuid, question);
-    }
-
-    public ActionResult AnswerSet(int setId, int questionId)
-    {
-        var set = Resolve<SetRepo>().GetById(setId);
-        var question = _questionRepo.GetById(questionId);
-        return AnswerSet(set, question);
-    }
-
-    public ActionResult AnswerSet(Set set, Question question)
-    {
-        _sessionUiData
-            .VisitedQuestions
-            .Add(new QuestionHistoryItem(set, question));
-
-        var questionViewGuid = Guid.NewGuid();
-        Sl.SaveQuestionView.Run(questionViewGuid, question, _sessionUser.User);
-        return View(_viewLocation, new AnswerQuestionModel(questionViewGuid, set, question));
     }
 
     public ActionResult AnswerQuestion(string text, int? id, int? elementOnPage, string pager, string category)
@@ -538,22 +513,6 @@ public class AnswerQuestionController : BaseController
 
         var currentUrl = Links.AnswerQuestion(question, elementOnPage, activeSearchSpec.Key);
         return GetQuestionPageData(model, currentUrl, new SessionData());
-    }
-
-    public string RenderAnswerBodyBySet(int questionId, int setId)
-    {
-        var set = Resolve<SetRepo>().GetById(setId);
-        var question = _questionRepo.GetById(questionId);
-        _sessionUiData
-            .VisitedQuestions
-            .Add(new QuestionHistoryItem(set, question));
-
-        var questionViewGuid = Guid.NewGuid();
-        Sl.SaveQuestionView.Run(questionViewGuid, question, _sessionUser.User);
-        var model = new AnswerQuestionModel(questionViewGuid, set, question);
-
-        var currenUrl = Links.AnswerQuestion(question, set);
-        return GetQuestionPageData(model, currenUrl, new SessionData());
     }
 
     [HttpPost]

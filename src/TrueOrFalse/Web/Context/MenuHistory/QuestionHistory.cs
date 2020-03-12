@@ -27,18 +27,6 @@ public class QuestionHistoryItem : HistoryItemBase
     public Set Set;
 
     public QuestionHistoryItem(
-        Set set,
-        Question question,
-        HistoryItemType type = HistoryItemType.Any)
-    {
-        Set = set;
-        SetId = set.Id;
-        Type = type;
-            
-        FillQuestionFields(question);
-    }
-
-    public QuestionHistoryItem(
         Question question, 
         QuestionSearchSpec seachSpec,
         HistoryItemType type = HistoryItemType.Any)

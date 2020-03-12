@@ -79,10 +79,8 @@ public class AnswerQuestionModel : BaseModel
     public bool SourceIsCategory;
     public Category SourceCategory;
 
-    public Set Set;
     public IList<Category> Categories;
     public Category PrimaryCategory;
-    public IList<SetMini> SetMinis;
     public int SetCount;
 
     public HistoryAndProbabilityModel HistoryAndProbability;
@@ -217,31 +215,6 @@ public class AnswerQuestionModel : BaseModel
             if (SourceCategory != null)
                 SourceIsCategory = true;
         }
-
-        ContentRecommendationResult = ContentRecommendation.GetForQuestion(question, 6);
-        Populate(question);
-    }
-
-    public AnswerQuestionModel(Guid questionViewGuid, Set set, Question question)
-    {
-        QuestionViewGuid = questionViewGuid;
-
-        int pageCurrent = set.QuestionsInSet.GetIndex(question.Id) + 1;
-        int pagesTotal = set.QuestionsInSet.Count;
-        PageCurrent = pageCurrent.ToString();
-        PagesTotal = pagesTotal.ToString();
-
-        HasPreviousPage = pageCurrent > 1;
-        HasNextPage = pageCurrent < pagesTotal;
-
-        if (HasNextPage)
-            NextUrl = url => Links.AnswerQuestion(url, set.QuestionsInSet.GetNextTo(question.Id).Question, set);
-
-        if (HasPreviousPage)
-            PreviousUrl = url => Links.AnswerQuestion(url, set.QuestionsInSet.GetPreviousTo(question.Id).Question, set);
-
-        SourceIsSet = true;
-        Set = set;
 
         ContentRecommendationResult = ContentRecommendation.GetForQuestion(question, 6);
         Populate(question);

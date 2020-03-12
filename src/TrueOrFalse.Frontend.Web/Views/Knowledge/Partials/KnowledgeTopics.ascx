@@ -17,7 +17,7 @@
     </div>
     <div id="table-wrapper" class="ui">
       <vuetable ref="vuetable"
-        api-url="/Knowledge/GetCatsAndSetsWish"
+        api-url="/Knowledge/GetCatsWish"
         :fields="fields"
         :sort-order="sortOrder"
         :css="css.table"

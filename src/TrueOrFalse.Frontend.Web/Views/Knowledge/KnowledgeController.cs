@@ -88,12 +88,12 @@ public class KnowledgeController : BaseController
     }
 
     [HttpGet]
-    public JsonResult GetCatsAndSetsWish(int page, int per_page, string sort = "", bool isAuthor = false)
+    public JsonResult GetCatsWish(int page, int per_page, string sort = "", bool isAuthor = false)
     {
         var itemCountPerPage = per_page; 
-        var categoryAndSetDataWishKnowledge = new KnowledgeTopics(isAuthor);
-        var unsortedItems = categoryAndSetDataWishKnowledge.FilteredCategoryWishKnowledge(ControllerContext);
-        var sortedItems = categoryAndSetDataWishKnowledge.SortList(unsortedItems, sort).ToList();
+        var categoryDataWishKnowledge = new KnowledgeTopics(isAuthor);
+        var unsortedItems = categoryDataWishKnowledge.FilteredCategoryWishKnowledge(ControllerContext);
+        var sortedItems = categoryDataWishKnowledge.SortList(unsortedItems, sort).ToList();
         var data = GetPageForPagination(sortedItems, page, itemCountPerPage);
 
         var itemCount = sortedItems.Count;

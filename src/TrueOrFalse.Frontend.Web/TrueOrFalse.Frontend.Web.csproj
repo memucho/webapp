@@ -313,7 +313,6 @@
     <Compile Include="Views\Questions\QuestionList\QuestionJson.cs" />
     <Compile Include="Views\Categories\Detail\Partials\KnowledgeGraph\KnowledgeGraphModel.cs" />
     <Compile Include="Views\Questions\QuestionList\QuestionListModel.cs" />
-    <Compile Include="Views\Categories\Detail\Partials\SetTestSessionNoStartScreen\SetTestSessionNoStartScreenJson.cs" />
     <Compile Include="Views\Categories\Detail\Partials\InlineText\InlineTextModel.cs" />
     <Compile Include="Views\Categories\Detail\Partials\Spacer\SpacerJson.cs" />
     <Compile Include="Views\Categories\Detail\Partials\Spacer\SpacerModel.cs" />
@@ -322,7 +321,6 @@
     <Compile Include="Views\Categories\Detail\Partials\TopicNavigation\TopicNavigationModel.cs" />
     <Compile Include="Views\Categories\Detail\TemplateParser\Document.cs" />
     <Compile Include="Views\Categories\Detail\TemplateToHtml\MarkdownToHtml.cs" />
-    <Compile Include="Views\Categories\Detail\Partials\SetTestSessionNoStartScreen\SetTestSessionNoStartScreenModel.cs" />
     <Compile Include="Views\Categories\Detail\CategoryKnowledgeBarModel.cs" />
     <Compile Include="Views\Categories\Detail\Tabs\LearningTabModel.cs" />
     <Compile Include="Views\Categories\Detail\TemplateParser\TemplateJson.cs" />
@@ -341,22 +339,10 @@
     <Compile Include="Views\Categories\History\Detail\CategoryHistoryDetailModel.cs" />
     <Compile Include="Views\Categories\Navigation\CategoryNetworkNavigationModel.cs" />
     <Compile Include="Views\Categories\Navigation\CategoryNavigationModel.cs" />
-    <Compile Include="Views\Games\Edit\GameModel.cs" />
-    <Compile Include="Views\Games\Edit\GameController.cs" />
-    <Compile Include="Views\Games\GameRowModel.cs" />
-    <Compile Include="Views\Games\Play\BodyControls\GameNeverStartedModel.cs" />
-    <Compile Include="Views\Games\Play\PlayModel.cs" />
-    <Compile Include="Views\Games\Play\BodyControls\GameCompletedModel.cs" />
-    <Compile Include="Views\Games\Play\BodyControls\GameInProgressPlayerModel.cs" />
-    <Compile Include="Views\Games\Play\BodyControls\GameInProgressWatchModel.cs" />
-    <Compile Include="Views\Games\Play\BodyControls\GameReadyModel.cs" />
-    <Compile Include="Views\Games\Play\PlayController.cs" />
-    <Compile Include="Views\Games\Play\BodyControls\PlayBaseModel.cs" />
     <Compile Include="Views\Help\FAQAccordeonItem.cs" />
     <Compile Include="Views\Help\WidgetMenuModel.cs" />
     <Compile Include="Views\Knowledge\KnowledgeTopics.cs" />
     <Compile Include="Views\Knowledge\KnowledgeQuestions.cs" />
-    <Compile Include="Views\Knowledge\Partials\KnowledgeCardMiniSetModel.cs" />
     <Compile Include="Views\Knowledge\Partials\KnowledgeCardMiniCategoryModel.cs" />
     <Compile Include="Views\Knowledge\TrainingDateModel.cs" />
     <Compile Include="Views\Knowledge\Wheel\KnowledgeWheelController.cs" />
@@ -21829,7 +21815,6 @@
     <Content Include="Views\Questions\QuestionList\QuestionList.css">
       <DependentUpon>QuestionList.less</DependentUpon>
     </Content>
-    <Content Include="Views\Sets\Detail\Modals\CopySetModal.ascx" />
     <Content Include="Views\Error\Error.css">
       <DependentUpon>Error.less</DependentUpon>
     </Content>
@@ -21838,7 +21823,6 @@
       <DependentUpon>YoutubeApi.ts</DependentUpon>
     </Content>
     <Content Include="Views\Messages\Partials\MessagesRows.ascx" />
-    <Content Include="Views\Knowledge\Partials\KnowledgeCardMiniSet.ascx" />
     <Content Include="Views\Knowledge\Partials\KnowledgeCardMiniCategory.ascx" />
     <Content Include="package.json" />
     <Content Include="tsconfig.json" />
@@ -21962,8 +21946,6 @@
     <Compile Include="Views\Maintenance\ContentCreatedReportModel.cs" />
     <Compile Include="Views\Maintenance\CMSModel.cs" />
     <Compile Include="Views\Maintenance\ToolsModel.cs" />
-    <Compile Include="Views\Games\GamesController.cs" />
-    <Compile Include="Views\Games\GamesModel.cs" />
     <Compile Include="Views\Questions\Answer\AnswerBodyControl\AnswerBodyModel.cs" />
     <Compile Include="Views\Questions\Answer\LearningSession\LearningSessionModel.cs" />
     <Compile Include="Views\Questions\Answer\LearningSession\LearningSessionResultController.cs" />
@@ -21979,11 +21961,6 @@
     <Compile Include="Views\Questions\History\QuestionHistoryController.cs" />
     <Compile Include="Views\Questions\History\QuestionHistoryModel.cs" />
     <Compile Include="Views\Questions\QuestionList\QuestionListController.cs" />
-    <Compile Include="Views\Sets\Detail\SetKnowledgeBarModel.cs" />
-    <Compile Include="Views\Sets\Detail\Modals\ShareSetModalModel.cs" />
-    <Compile Include="Views\Sets\Detail\Video\SetVideoController.cs" />
-    <Compile Include="Views\Sets\Detail\Video\SetVideoModel.cs" />
-    <Compile Include="Views\Sets\Edit\QuestionInSetModel.cs" />
     <Compile Include="Views\Shared\AnalyticsFooterModel.cs" />
     <Compile Include="Views\Shared\AuthorViewModel.cs" />
     <Compile Include="Views\Shared\Cards\CardSingleCategoryModel.cs" />
@@ -22081,7 +22058,6 @@
     <Content Include="Scripts\widgets\ShareDialog.js">
       <DependentUpon>ShareDialog.ts</DependentUpon>
     </Content>
-    <Content Include="Views\Categories\Detail\Partials\SetTestSessionNoStartScreen\SetTestSessionNoStartScreen.ascx" />
     <Content Include="Views\Categories\Modals\EditAggregationModal.ascx" />
     <Content Include="Views\Help\Js\WidgetPricing.js">
       <DependentUpon>WidgetPricing.ts</DependentUpon>
@@ -22288,12 +22264,6 @@
     <Content Include="Views\Questions\Edit\EditSolutionControls\SolutionTypeFlashCard.js.map">
       <DependentUpon>SolutionTypeFlashCard.ts</DependentUpon>
     </Content>
-    <Content Include="Views\Sets\Detail\SetKnowledgeBar.ascx" />
-    <Content Include="Views\Sets\Detail\Js\ShareSet.js">
-      <DependentUpon>ShareSet.ts</DependentUpon>
-    </Content>
-    <Content Include="Views\Sets\Detail\Modals\ShareSetModal.ascx" />
-    <Content Include="Views\Sets\Edit\Js\AddQuestions.js" />
     <TypeScriptCompile Include="Scripts\header\StickyHeaderSearchBox.ts" />
     <TypeScriptCompile Include="Scripts\SidebarCards.ts" />
     <TypeScriptCompile Include="Scripts\YoutubeApi.ts" />
@@ -22319,15 +22289,9 @@
     <TypeScriptCompile Include="Views\Questions\Answer\Js\QuestionFilter.ts" />
     <TypeScriptCompile Include="Views\Questions\Answer\LearningSession\Js\LearningSessionResult.ts" />
     <TypeScriptCompile Include="Views\Questions\History\Detail\Js\Page.ts" />
-    <TypeScriptCompile Include="Views\Sets\Detail\Js\SetCopy.ts" />
-    <TypeScriptCompile Include="Views\Sets\Edit\Js\YoutubePreview.ts" />
-    <Content Include="Views\Sets\Edit\Js\YoutubePreview.js">
-      <DependentUpon>YoutubePreview.ts</DependentUpon>
-    </Content>
     <Content Include="Views\Shared\CategoryLabel.ascx" />
     <Content Include="Views\Shared\MainMenuThemeCentered.ascx" />
     <Content Include="Views\Shared\SidebarCards.ascx" />
-    <Content Include="Views\Sets\Edit\QuestionInSet.ascx" />
     <Content Include="Views\Shared\LinkToTop.ascx" />
     <Content Include="Views\Shared\GlobalLicense.ascx" />
     <Content Include="Views\Shared\SidebarCards\CreateQuestion.ascx" />
@@ -22522,23 +22486,9 @@
     <Content Include="Views\Questions\Answer\TestSession\TestSessionResult.aspx" />
     <Content Include="Views\Questions\Answer\TestSession\TestSessionHeader.ascx" />
     <Content Include="Views\Questions\Edit\EditSolutionControls\SolutionTypeMatchList.ascx" />
-    <Content Include="Views\Sets\Detail\Js\SetVideo.js">
-      <DependentUpon>SetVideo.ts</DependentUpon>
-    </Content>
-    <Content Include="Views\Sets\Detail\Js\SetVideoPlayer.js">
-      <DependentUpon>SetVideoPlayer.ts</DependentUpon>
-    </Content>
     <Content Include="Views\Knowledge\Wheel\KnowledgeWheel.ascx" />
-    <Content Include="Views\Sets\Detail\Video\VideoPager.ascx" />
     <Content Include="Views\Questions\Edit\EditSolutionControls\SolutionTypeMultipleChoice.ascx" />
-    <Content Include="Views\Sets\Detail\Video\SetVideo.ascx" />
-    <Content Include="Views\Sets\Edit\Js\EditSet.js">
-      <DependentUpon>EditSet.ts</DependentUpon>
-    </Content>
     <Content Include="Views\Shared\AddToWishknowledgeButton.ascx" />
-    <Content Include="Views\Sets\Edit\Js\EditSet.js.map">
-      <DependentUpon>EditSet.ts</DependentUpon>
-    </Content>
     <Content Include="Views\Shared\Cards\CardSingleCategory.ascx" />
     <Content Include="Views\Shared\AddToWishknowledge.ascx" />
     <Content Include="Views\Shared\SidebarSponsor.ascx" />
@@ -22592,18 +22542,11 @@
     <Content Include="Views\Knowledge\TrainingDate.ascx" />
     <Content Include="Views\Maintenance\AntiForgeryToken.ascx" />
     <Content Include="Views\Maintenance\CMS.aspx" />
-    <Content Include="Views\Sets\Edit\Js\Validation.js">
-      <DependentUpon>Validation.ts</DependentUpon>
-    </Content>
-    <Content Include="Views\Sets\Detail\SetQuestionRowResult.ascx" />
     <Content Include="Views\Shared\UnpinSetModal.ascx" />
     <Content Include="Views\Users\Detail\Js\Page.js">
       <DependentUpon>Page.ts</DependentUpon>
     </Content>
     <Content Include="Views\Users\UserSearchResult.ascx" />
-    <Content Include="Views\Sets\Edit\EditSet.css">
-      <DependentUpon>EditSet.less</DependentUpon>
-    </Content>
     <Content Include="Views\Users\Detail\TabBadges.ascx" />
     <Content Include="Views\Users\Detail\User.css">
       <DependentUpon>User.less</DependentUpon>
@@ -22692,13 +22635,6 @@
     <TypeScriptCompile Include="Views\Categories\Edit\Js\EditAggregation.ts" />
     <TypeScriptCompile Include="Views\Categories\Edit\Js\Page.ts" />
     <TypeScriptCompile Include="Views\Maintenance\Js\CmsCategoryNetworkNavigation.ts" />
-    <TypeScriptCompile Include="Views\Games\Edit\Js\Page.ts" />
-    <TypeScriptCompile Include="Views\Games\Edit\Js\Validation.ts" />
-    <TypeScriptCompile Include="Views\Games\Js\GameRow.ts" />
-    <TypeScriptCompile Include="Views\Games\Js\Games.ts" />
-    <TypeScriptCompile Include="Views\Games\Play\Js\GameInProgressPlayer.ts" />
-    <TypeScriptCompile Include="Views\Games\Play\Js\Play.ts" />
-    <TypeScriptCompile Include="Views\Games\Play\Js\GameReady.ts" />
     <TypeScriptCompile Include="Views\Help\Js\WidgetPricing.ts" />
     <TypeScriptCompile Include="Views\Knowledge\Wheel\KnowledgeWheel.ts" />
     <TypeScriptCompile Include="Views\Maintenance\Js\ContentStats.ts" />
@@ -22802,44 +22738,6 @@
     </Content>
     <Content Include="Views\Categories\CategoriesSearchResult.ascx" />
     <Content Include="Views\Drafts\FontAwesome.aspx" />
-    <Content Include="Views\Games\Edit\Game.aspx" />
-    <Content Include="Views\Games\Edit\Game.css">
-      <DependentUpon>Game.less</DependentUpon>
-    </Content>
-    <Content Include="Views\Games\Edit\Js\Page.js">
-      <DependentUpon>Page.ts</DependentUpon>
-    </Content>
-    <Content Include="Views\Games\Edit\Js\Validation.js">
-      <DependentUpon>Validation.ts</DependentUpon>
-    </Content>
-    <Content Include="Views\Games\GameRow.ascx" />
-    <Content Include="Views\Games\Games.css">
-      <DependentUpon>Games.less</DependentUpon>
-    </Content>
-    <Content Include="Views\Games\Js\GameRow.js">
-      <DependentUpon>GameRow.ts</DependentUpon>
-    </Content>
-    <Content Include="Views\Games\Js\Games.js">
-      <DependentUpon>Games.ts</DependentUpon>
-    </Content>
-    <Content Include="Views\Games\Play\BodyControls\GameCompleted.ascx" />
-    <Content Include="Views\Games\Play\BodyControls\GameInProgressWatch.ascx" />
-    <Content Include="Views\Games\Play\BodyControls\GameInProgressPlayer.ascx" />
-    <Content Include="Views\Games\Play\BodyControls\GameNeverStarted.ascx" />
-    <Content Include="Views\Games\Play\BodyControls\GameReady.ascx" />
-    <Content Include="Views\Games\Play\Js\GameInProgressPlayer.js">
-      <DependentUpon>GameInProgressPlayer.ts</DependentUpon>
-    </Content>
-    <Content Include="Views\Games\Play\Js\GameReady.js">
-      <DependentUpon>GameReady.ts</DependentUpon>
-    </Content>
-    <Content Include="Views\Games\Play\Play.css">
-      <DependentUpon>Play.less</DependentUpon>
-    </Content>
-    <Content Include="Views\Games\Play\Js\Play.js">
-      <DependentUpon>Play.ts</DependentUpon>
-    </Content>
-    <Content Include="Views\Games\Play\Play.aspx" />
     <Content Include="Views\Knowledge\Knowledge.css">
       <DependentUpon>Knowledge.less</DependentUpon>
     </Content>
@@ -22856,9 +22754,6 @@
     <Content Include="Views\Questions\Edit\Js\MarkdownDescription.js">
       <DependentUpon>MarkdownDescription.ts</DependentUpon>
     </Content>
-    <Content Include="Views\Sets\Js\SetDelete.js">
-      <DependentUpon>SetDelete.ts</DependentUpon>
-    </Content>
     <Content Include="Views\Shared\CategoriesOfQuestion.ascx" />
     <Content Include="Views\Shared\MessageGame.ascx" />
     <Content Include="Views\Shared\NotLoggedIn\Modal_LoggedIn.ascx" />
@@ -22868,7 +22763,6 @@
     <Content Include="Views\Maintenance\ToolsBrainWaveHub.js">
       <DependentUpon>ToolsBrainWaveHub.ts</DependentUpon>
     </Content>
-    <Content Include="Views\Games\Games.aspx" />
     <Content Include="Scripts\answerQuestion\BrainWavesHub.js">
       <DependentUpon>BrainWavesHub.ts</DependentUpon>
     </Content>
@@ -23383,17 +23277,8 @@
     </Compile>
     <Compile Include="Views\Questions\Edit\ReferenceJson.cs" />
     <Compile Include="Views\Questions\QuestionsSearchResultModel.cs" />
-    <Compile Include="Views\Sets\Detail\SetQuestionRowModel.cs" />
-    <Compile Include="Views\Sets\SetsSearchResultModel.cs" />
     <Compile Include="Views\Shared\HistoryAndProbabilityModel.cs" />
     <Compile Include="Views\Sets\Detail\SetController.cs" />
-    <Compile Include="Views\Sets\Detail\SetModel.cs" />
-    <Compile Include="Views\Sets\Edit\EditSetController.cs" />
-    <Compile Include="Views\Sets\Edit\EditSetModel.cs" />
-    <Compile Include="Views\Sets\SetsControllerSearch.cs" />
-    <Compile Include="Views\Sets\SetRowModel.cs" />
-    <Compile Include="Views\Sets\SetsController.cs" />
-    <Compile Include="Views\Sets\SetsModel.cs" />
     <Compile Include="Views\Questions\Answer\AnswerQuestionControllerSearch.cs" />
     <Compile Include="Views\Categories\Edit\EditCategoryController.cs" />
     <Compile Include="Views\Categories\Edit\EditCategoryModel.cs" />
@@ -23465,12 +23350,6 @@
     <TypeScriptCompile Include="Views\Questions\Answer\TestSession\Js\TestSessionResult.ts" />
     <TypeScriptCompile Include="Views\Questions\Edit\EditSolutionControls\SolutionTypeFlashCard.ts" />
     <TypeScriptCompile Include="Views\Questions\Edit\Js\MarkdownDescription.ts" />
-    <TypeScriptCompile Include="Views\Sets\Detail\Js\ShareSet.ts" />
-    <TypeScriptCompile Include="Views\Sets\Detail\Js\SetVideo.ts" />
-    <TypeScriptCompile Include="Views\Sets\Detail\Js\SetVideoPlayer.ts" />
-    <TypeScriptCompile Include="Views\Sets\Edit\Js\EditSet.ts" />
-    <TypeScriptCompile Include="Views\Sets\Edit\Js\Validation.ts" />
-    <TypeScriptCompile Include="Views\Sets\Js\SetDelete.ts" />
     <TypeScriptCompile Include="Views\Shared\Spinner\Js\Spinner.ts" />
     <TypeScriptCompile Include="Views\Users\Account\Js\Membership.ts" />
     <TypeScriptCompile Include="Views\Users\Account\WidgetStats\Js\WidgetStats.ts" />
@@ -23610,7 +23489,6 @@
       <DependentUpon>Questions.less</DependentUpon>
     </Content>
     <Content Include="Views\Error\_404.aspx" />
-    <Content Include="Views\Sets\SetsSearchResult.ascx" />
     <Content Include="Views\Shared\HistoryAndProbability.ascx" />
     <Content Include="Views\Questions\Edit\EditSolutionControls\SolutionTypeText.js">
       <DependentUpon>SolutionTypeText.ts</DependentUpon>
@@ -23624,14 +23502,6 @@
     <Content Include="Views\Questions\Js\ToQuestionSet.js">
       <DependentUpon>ToQuestionSet.ts</DependentUpon>
     </Content>
-    <Content Include="Views\Sets\Detail\Js\Set.js">
-      <DependentUpon>Set.ts</DependentUpon>
-    </Content>
-    <Content Include="Views\Sets\Detail\Set.aspx" />
-    <Content Include="Views\Sets\Detail\Set.css">
-      <DependentUpon>Set.less</DependentUpon>
-    </Content>
-    <Content Include="Views\Sets\Edit\EditSet.aspx" />
     <TypeScriptCompile Include="Views\Images\ImageDetail.ts" />
     <TypeScriptCompile Include="Views\Maintenance\Images\ImageMaintenance.ts" />
     <TypeScriptCompile Include="Views\Messages\Js\Message.ts" />
@@ -23647,26 +23517,6 @@
     <TypeScriptCompile Include="Scripts\RowPin.ts" />
     <TypeScriptCompile Include="Views\Questions\Edit\Js\Validation.ts" />
     <TypeScriptCompile Include="Views\Questions\Js\QuestionsSearch.ts" />
-    <TypeScriptCompile Include="Views\Sets\Detail\Js\Set.ts" />
-    <TypeScriptCompile Include="Views\Sets\Edit\Js\ImageUpload.ts" />
-    <TypeScriptCompile Include="Views\Sets\Edit\Js\SetSortable.ts" />
-    <TypeScriptCompile Include="Views\Sets\Edit\Js\RemoveQuestionFromSet.ts" />
-    <Content Include="Views\Sets\Edit\Js\ImageUpload.js">
-      <DependentUpon>ImageUpload.ts</DependentUpon>
-    </Content>
-    <Content Include="Views\Sets\Edit\Js\RemoveQuestionFromSet.js">
-      <DependentUpon>RemoveQuestionFromSet.ts</DependentUpon>
-    </Content>
-    <Content Include="Views\Sets\Edit\Js\SetSortable.js">
-      <DependentUpon>SetSortable.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="Views\Sets\Js\Sets.ts" />
-    <Content Include="Views\Sets\Js\Sets.js">
-      <DependentUpon>Sets.ts</DependentUpon>
-    </Content>
-    <Content Include="Views\Sets\Modals\DeleteSet.ascx" />
-    <Content Include="Views\Sets\SetRow.ascx" />
-    <Content Include="Views\Sets\Sets.aspx" />
     <Content Include="Views\Questions\Answer\AnswerControls\SolutionTypeText.ascx" />
     <Content Include="Views\Questions\Answer\AnswerControls\SolutionTypeMultipleChoice_SingleSolution.ascx" />
     <Content Include="Views\Questions\Answer\AnswerControls\SolutionTypeSequence.ascx" />
@@ -23699,9 +23549,6 @@
     <Content Include="Views\Questions\Js\Questions.js" />
     <TypeScriptCompile Include="Views\Questions\Js\QuestionRowSelection.ts" />
     <Content Include="Views\Maintenance\Maintenance.aspx" />
-    <Content Include="Views\Sets\Sets.css">
-      <DependentUpon>Sets.less</DependentUpon>
-    </Content>
     <Content Include="Views\Shared\AnswerHistory.ascx" />
     <Content Include="Views\Shared\AudioPlayer.ascx" />
     <Content Include="Views\Shared\CorrectnessProbability.ascx" />
@@ -23755,7 +23602,6 @@
     <None Include="Style\site-debug.less" />
     <Content Include="Style\z_variables_2.3.2.less" />
     <Content Include="Views\Questions\Questions.less" />
-    <Content Include="Views\Sets\Sets.less" />
     <Content Include="Views\Users\Users.less" />
     <Content Include="Views\Questions\Answer\AnswerControls\SolutionTypeDate.js.map">
       <DependentUpon>SolutionTypeDate.ts</DependentUpon>
@@ -23774,18 +23620,6 @@
     </Content>
     <Content Include="Views\Questions\Js\ToQuestionSet.js.map">
       <DependentUpon>ToQuestionSet.ts</DependentUpon>
-    </Content>
-    <Content Include="Views\Sets\Js\Sets.js.map">
-      <DependentUpon>Sets.ts</DependentUpon>
-    </Content>
-    <Content Include="Views\Sets\Edit\Js\ImageUpload.js.map">
-      <DependentUpon>ImageUpload.js</DependentUpon>
-    </Content>
-    <Content Include="Views\Sets\Edit\Js\RemoveQuestionFromSet.js.map">
-      <DependentUpon>RemoveQuestionFromSet.ts</DependentUpon>
-    </Content>
-    <Content Include="Views\Sets\Edit\Js\SetSortable.js.map">
-      <DependentUpon>SetSortable.ts</DependentUpon>
     </Content>
     <Content Include="Views\Users\Js\users.js.map">
       <DependentUpon>Users.ts</DependentUpon>
@@ -23811,24 +23645,14 @@
     <Content Include="Views\Images\ImageUpload\ImageUpload.js.map">
       <DependentUpon>ImageUpload.ts</DependentUpon>
     </Content>
-    <Content Include="Views\Sets\Detail\Set.less" />
-    <Content Include="Views\Sets\Detail\Js\Set.js.map">
-      <DependentUpon>Set.ts</DependentUpon>
-    </Content>
     <Content Include="Views\Categories\Categories.css.map">
       <DependentUpon>Categories.css</DependentUpon>
     </Content>
     <Content Include="Views\Questions\Edit\EditQuestion.css.map">
       <DependentUpon>EditQuestion.css</DependentUpon>
     </Content>
-    <Content Include="Views\Sets\Detail\Set.css.map">
-      <DependentUpon>Set.css</DependentUpon>
-    </Content>
     <Content Include="Views\Users\Users.css.map">
       <DependentUpon>Users.css</DependentUpon>
-    </Content>
-    <Content Include="Views\Sets\Sets.css.map">
-      <DependentUpon>Sets.css</DependentUpon>
     </Content>
     <Content Include="Views\Messages\Message.less" />
     <Content Include="Views\Messages\Js\Message.js.map">
@@ -23914,36 +23738,6 @@
     <Content Include="Views\Maintenance\ToolsBrainWaveHub.js.map">
       <DependentUpon>ToolsBrainWaveHub.ts</DependentUpon>
     </Content>
-    <Content Include="Views\Games\Edit\Game.less" />
-    <Content Include="Views\Games\Edit\Game.css.map">
-      <DependentUpon>Game.css</DependentUpon>
-    </Content>
-    <Content Include="Views\Games\Edit\Js\Validation.js.map">
-      <DependentUpon>Validation.ts</DependentUpon>
-    </Content>
-    <Content Include="Views\Games\Games.less" />
-    <Content Include="Views\Games\Games.css.map">
-      <DependentUpon>Games.css</DependentUpon>
-    </Content>
-    <Content Include="Views\Games\Play\Play.less" />
-    <Content Include="Views\Games\Play\Play.css.map">
-      <DependentUpon>Play.css</DependentUpon>
-    </Content>
-    <Content Include="Views\Games\Js\Games.js.map">
-      <DependentUpon>Games.ts</DependentUpon>
-    </Content>
-    <Content Include="Views\Games\Js\GameRow.js.map">
-      <DependentUpon>GameRow.ts</DependentUpon>
-    </Content>
-    <Content Include="Views\Games\Play\Js\Play.js.map">
-      <DependentUpon>Play.ts</DependentUpon>
-    </Content>
-    <Content Include="Views\Games\Play\Js\GameInProgressPlayer.js.map">
-      <DependentUpon>GameInProgressPlayer.ts</DependentUpon>
-    </Content>
-    <Content Include="Views\Games\Play\Js\GameReady.js.map">
-      <DependentUpon>GameReady.ts</DependentUpon>
-    </Content>
     <Content Include="Views\Questions\Answer\AnswerControls\SolutionTypeNumeric.js.map">
       <DependentUpon>SolutionTypeNumeric.ts</DependentUpon>
     </Content>
@@ -23971,12 +23765,6 @@
     <Content Include="Views\Users\Js\UserRowFollow.js.map">
       <DependentUpon>UserRowFollow.ts</DependentUpon>
     </Content>
-    <Content Include="Views\Games\Edit\Js\Page.js.map">
-      <DependentUpon>Page.ts</DependentUpon>
-    </Content>
-    <Content Include="Views\Sets\Js\SetDelete.js.map">
-      <DependentUpon>SetDelete.ts</DependentUpon>
-    </Content>
     <Content Include="Views\Questions\Edit\Js\MarkdownDescription.js.map">
       <DependentUpon>MarkdownDescription.ts</DependentUpon>
     </Content>
@@ -23995,18 +23783,11 @@
       <DependentUpon>Welcome.css</DependentUpon>
     </Content>
     <Content Include="Views\Users\Detail\User.less" />
-    <Content Include="Views\Sets\Edit\EditSet.less" />
-    <Content Include="Views\Sets\Edit\EditSet.css.map">
-      <DependentUpon>EditSet.css</DependentUpon>
-    </Content>
     <Content Include="Views\Users\Detail\User.css.map">
       <DependentUpon>User.css</DependentUpon>
     </Content>
     <Content Include="Views\AlgoInsight\TabForgettingCurve_.js.map">
       <DependentUpon>TabForgettingCurve_.ts</DependentUpon>
-    </Content>
-    <Content Include="Views\Sets\Edit\Js\Validation.js.map">
-      <DependentUpon>Validation.ts</DependentUpon>
     </Content>
     <Content Include="Views\Shared\FeatureNotImplementedModal.ascx" />
     <Content Include="Views\Topics\Topic.aspx" />
@@ -24043,12 +23824,6 @@
     <Content Include="Views\Questions\Answer\Js\ShareQuestion.js.map">
       <DependentUpon>ShareQuestion.ts</DependentUpon>
     </Content>
-    <Content Include="Views\Sets\Detail\Js\SetVideoPlayer.js.map">
-      <DependentUpon>SetVideoPlayer.ts</DependentUpon>
-    </Content>
-    <Content Include="Views\Sets\Detail\Js\SetVideo.js.map">
-      <DependentUpon>SetVideo.ts</DependentUpon>
-    </Content>
     <Content Include="Views\Categories\Js\CategoryDelete.js.map">
       <DependentUpon>CategoryDelete.ts</DependentUpon>
     </Content>
@@ -24066,9 +23841,6 @@
     </Content>
     <Content Include="Views\Widgets\app.config" />
     <Content Include="Views\Help\Widget.less" />
-    <Content Include="Views\Sets\Detail\Js\ShareSet.js.map">
-      <DependentUpon>ShareSet.ts</DependentUpon>
-    </Content>
     <Content Include="Views\Questions\Answer\AnswerControls\SolutionTypeMultipleChoice - Copy.js.map">
       <DependentUpon>SolutionTypeFlashCard.ascx</DependentUpon>
     </Content>
@@ -24077,9 +23849,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Questions\Modals\QuestionInSet.cshtml" />
     <Content Include="Views\Shared\ActivityPopupContent.ascx" />
-    <Content Include="Views\Sets\Edit\Js\YoutubePreview.js.map">
-      <DependentUpon>YoutubePreview.ts</DependentUpon>
-    </Content>
     <Content Include="Views\Welcome\Partials\BlogPostCarousel.ascx" />
     <Content Include="Views\Users\Account\WidgetStats\WidgetStats.less" />
     <Content Include="Views\Maintenance\Js\ContentStats.js.map">
