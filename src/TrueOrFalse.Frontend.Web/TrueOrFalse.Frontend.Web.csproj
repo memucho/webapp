@@ -22009,11 +22009,6 @@
     <Compile Include="Views\Welcome\WelcomeBoxSetTxtQModel.cs" />
     <Compile Include="Views\Widgets\WidgetBaseModel.cs" />
     <Compile Include="Views\Widgets\WidgetController.cs" />
-    <Compile Include="Views\Widgets\WidgetSetModel.cs" />
-    <Compile Include="Views\Widgets\WidgetQuestionModel.cs" />
-    <Compile Include="Views\Widgets\WidgetSetResultModel.cs" />
-    <Compile Include="Views\Widgets\WidgetSetStartModel.cs" />
-    <Compile Include="Views\Widgets\WidgetSetVideoModel.cs" />
     <Content Include="Images\LogosPartners\innovationspreis-nominiertButton2016.png" />
     <Content Include="Images\LogosPartners\OERCamp-Logo-Text_unten.jpg" />
     <Content Include="Images\Logo\LogoSmallBlue.png" />
@@ -22320,9 +22315,7 @@
       <DependentUpon>Team.less</DependentUpon>
     </Content>
     <Content Include="Views\Widgets\CustomCss\besser.memucho.de.css" />
-    <Content Include="Views\Widgets\WidgetSetStart.aspx" />
-    <Content Include="Views\Widgets\WidgetSetResult.aspx" />
-    <Content Include="Views\Widgets\WidgetSetVideo.aspx" />
+    <Content Include="Views\Widgets\WidgetDiscontinuationInfo.aspx" />
     <Content Include="android-chrome-144x144.png" />
     <Content Include="android-chrome-192x192.png" />
     <Content Include="android-chrome-36x36.png" />
@@ -22593,17 +22586,6 @@
     <Content Include="Views\Welcome\WelcomeBoxSetImgQ.ascx" />
     <Content Include="Views\Welcome\WelcomeBoxSetTxtQ.ascx" />
     <Content Include="Views\Widgets\w.js" />
-    <Content Include="Views\Widgets\WidgetQuestion.js">
-      <DependentUpon>WidgetQuestion.ts</DependentUpon>
-    </Content>
-    <Content Include="Views\Widgets\WidgetSet.aspx" />
-    <Content Include="Views\Widgets\WidgetQuestion.aspx" />
-    <Content Include="Views\Widgets\WidgetSetVideo.js">
-      <DependentUpon>WidgetSetVideo.ts</DependentUpon>
-    </Content>
-    <Content Include="Views\Widgets\WidgetSetVideo.js.map">
-      <DependentUpon>WidgetSetVideo.ts</DependentUpon>
-    </Content>
     <TypeScriptCompile Include="Scripts\answerQuestion\AnswerQuestionUserFeedback.ts" />
     <TypeScriptCompile Include="Scripts\answerQuestion\AnswerEntry.ts" />
     <TypeScriptCompile Include="Scripts\answerQuestion\IAnswerEntry.ts" />
@@ -23362,11 +23344,9 @@
     <TypeScriptCompile Include="Views\Welcome\Js\TourInit.ts" />
     <TypeScriptCompile Include="Views\Welcome\Login\Login.ts" />
     <TypeScriptCompile Include="Views\Welcome\Registration\Js\FacebookRegistration.ts" />
-    <TypeScriptCompile Include="Views\Widgets\WidgetQuestion.ts" />
     <TypeScriptCompile Include="Views\Welcome\Js\Validation.ts" />
     <TypeScriptCompile Include="Views\Welcome\Js\ValidationPasswordRecovery.ts" />
     <TypeScriptCompile Include="Views\Welcome\Js\ValidationPasswordReset.ts" />
-    <TypeScriptCompile Include="Views\Widgets\WidgetSetVideo.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -23833,9 +23813,6 @@
     </Content>
     <Content Include="Views\About\ForTeachers.less" />
     <Content Include="Views\About\Jobs.less" />
-    <Content Include="Views\Widgets\WidgetQuestion.js.map">
-      <DependentUpon>WidgetQuestion.ts</DependentUpon>
-    </Content>
     <Content Include="Views\Questions\Answer\AnswerControls\SolutionTypeMultipleChoice.js.map">
       <DependentUpon>SolutionTypeMultipleChoice.ascx</DependentUpon>
     </Content>

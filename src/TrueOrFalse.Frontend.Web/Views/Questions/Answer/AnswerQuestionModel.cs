@@ -75,13 +75,11 @@ public class AnswerQuestionModel : BaseModel
     public bool SourceIsTabMine;
     public bool SourceIsTabWish;
 
-    public bool SourceIsSet;
     public bool SourceIsCategory;
     public Category SourceCategory;
 
     public IList<Category> Categories;
     public Category PrimaryCategory;
-    public int SetCount;
 
     public HistoryAndProbabilityModel HistoryAndProbability;
 
@@ -288,10 +286,6 @@ public class AnswerQuestionModel : BaseModel
         SoundUrl = new GetQuestionSoundUrl().Run(question);
 
         Categories = question.Categories;
-        SetMinis = question.SetTop5Minis;
-        SetCount = question.SetsAmount;
-
-
         QuestionHasParentCategories = question.Categories.Any();
         //Find best suited primary category for question
         if (!IsTestSession && !IsLearningSession && QuestionHasParentCategories)

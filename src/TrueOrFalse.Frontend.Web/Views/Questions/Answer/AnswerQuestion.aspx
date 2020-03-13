@@ -87,11 +87,6 @@
                 Model.TopNavMenu.IsCategoryLearningBreadCrumb = true;
             }
         }
-        else
-        {
-            if (Model.SetMinis.Count != 0)
-                Model.TopNavMenu.BreadCrumb.Add(new TopNavMenuItem {Text = Model.SetMinis[0].Name, Url = Links.SetDetail(Model.SetMinis[0].Name, Model.SetMinis[0].Id) });
-        }
 
         Model.TopNavMenu.IsCategoryBreadCrumb = false;
         Model.TopNavMenu.QuestionBreadCrumb = true;
