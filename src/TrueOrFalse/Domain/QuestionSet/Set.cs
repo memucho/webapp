@@ -71,6 +71,4 @@ public class Set : DomainEntity, ICreator
     public virtual bool HasVideo => 
         !IsNullOrEmpty(VideoUrl) && 
         !IsNullOrEmpty(YoutubeVideo.GetVideoKeyFromUrl(VideoUrl));
-
-    public virtual string ToLomXml() => LomXml.From(this);
 }

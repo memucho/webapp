@@ -23,7 +23,6 @@ public class LomExporter
 
         ExportCategories(exportPath);
         ExportQuestions(exportPath);
-        ExportLearnsets(exportPath);
     }
 
     private static void ExportCategories(string exportPath)
@@ -63,26 +62,6 @@ public class LomExporter
             catch (Exception e)
             {
                 Logg.Error(new Exception($"Error exporting question {question.Id}", e));
-            }
-        }
-    }
-
-    private static void ExportLearnsets(string exportPath)
-    {
-        var allSets = Sl.SetRepo.GetAll();
-
-        foreach (var set in allSets)
-        {
-            if (!set.Creator.IsMemuchoUser && !set.Creator.IsBeltz)
-                continue;
-
-            try
-            {
-                File.WriteAllText(Path.Combine(exportPath, $"set-{set.Id}.xml"), LomXml.From(set));
-            }
-            catch (Exception e)
-            {
-                Logg.Error(new Exception($"Error exporting set {set.Id}", e));
             }
         }
     }

@@ -21996,17 +21996,12 @@
     <Compile Include="Views\VariousPublic\RedirectController.cs" />
     <Compile Include="Views\Welcome\Login\LoginController.cs" />
     <Compile Include="Views\Welcome\Partials\TopicOfWeekModel.cs" />
-    <Compile Include="Views\Welcome\Partials\WelcomeCardMiniSetModel.cs" />
     <Compile Include="Views\Welcome\Partials\WelcomeCardMiniCategoryModel.cs" />
     <Compile Include="Views\Welcome\Registration\RegisterController.cs" />
     <Compile Include="Views\Welcome\WelcomeBoxCategoryImgQModel.cs" />
     <Compile Include="Views\Welcome\WelcomeBoxCategoryTxtQModel.cs" />
-    <Compile Include="Views\Welcome\WelcomeBoxSingleSetModel.cs" />
     <Compile Include="Views\Welcome\WelcomeBoxSingleQuestionModel.cs" />
     <Compile Include="Views\Welcome\WelcomeBoxTopQuestionsModel.cs" />
-    <Compile Include="Views\Welcome\WelcomeBoxTopSetsModel.cs" />
-    <Compile Include="Views\Welcome\WelcomeBoxSetImgQModel.cs" />
-    <Compile Include="Views\Welcome\WelcomeBoxSetTxtQModel.cs" />
     <Compile Include="Views\Widgets\WidgetBaseModel.cs" />
     <Compile Include="Views\Widgets\WidgetController.cs" />
     <Content Include="Images\LogosPartners\innovationspreis-nominiertButton2016.png" />
@@ -22306,7 +22301,6 @@
     </Content>
     <Content Include="Views\Welcome\Partials\TeamPics.ascx" />
     <Content Include="Views\Welcome\Partials\TopicOfWeek.ascx" />
-    <Content Include="Views\Welcome\Partials\WelcomeCardMiniSet.ascx" />
     <Content Include="Views\Welcome\Partials\WelcomeCardMiniCategory.ascx" />
     <Content Include="Views\Welcome\Promoter.css">
       <DependentUpon>Promoter.less</DependentUpon>
@@ -22578,13 +22572,9 @@
     </Content>
     <Content Include="Views\Welcome\WelcomeBoxCategoryImgQ.ascx" />
     <Content Include="Views\Welcome\WelcomeBoxCategoryTxtQ.ascx" />
-    <Content Include="Views\Welcome\WelcomeBoxSingleSet.ascx" />
     <Content Include="Views\Welcome\WelcomeBoxTopQuestions.ascx" />
-    <Content Include="Views\Welcome\WelcomeBoxTopSets.ascx" />
     <Content Include="Views\Welcome\WelcomeBoxTopCategories.ascx" />
     <Content Include="Views\Welcome\WelcomeBoxSingleQuestion.ascx" />
-    <Content Include="Views\Welcome\WelcomeBoxSetImgQ.ascx" />
-    <Content Include="Views\Welcome\WelcomeBoxSetTxtQ.ascx" />
     <Content Include="Views\Widgets\w.js" />
     <TypeScriptCompile Include="Scripts\answerQuestion\AnswerQuestionUserFeedback.ts" />
     <TypeScriptCompile Include="Scripts\answerQuestion\AnswerEntry.ts" />

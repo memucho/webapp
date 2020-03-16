@@ -24,7 +24,6 @@ public class QuestionHistoryItem : HistoryItemBase
     public Func<UrlHelper, string> Link;
 
     public Question Question;
-    public Set Set;
 
     public QuestionHistoryItem(
         Question question, 

@@ -217,11 +217,6 @@
     <Compile Include="2 Domain\Date\Date_time.cs" />
     <Compile Include="2 Domain\Date\Date_persistence.cs" />
     <Compile Include="2 Domain\Date\Setup\ContextDate.cs" />
-    <Compile Include="2 Domain\Game\Game_persistence.cs" />
-    <Compile Include="2 Domain\Game\Game_player_position.cs" />
-    <Compile Include="2 Domain\Game\Game_rounds.cs" />
-    <Compile Include="2 Domain\Game\Setup\ContextGame.cs" />
-    <Compile Include="2 Domain\Game\Game_round_answers.cs" />
     <Compile Include="2 Domain\Image\ImageLicenses_from_wikimedia.cs" />
     <Compile Include="2 Domain\Image\ImageInfo_from_wikimedia.cs" />
     <Compile Include="2 Domain\Image\ImageMetadata_from_wikimedia.cs" />
@@ -252,7 +247,6 @@
     <Compile Include="2 Domain\Question\Questions_in_Sets.cs" />
     <Compile Include="2 Domain\Question\Reference\Reference_persistence.cs" />
     <Compile Include="2 Domain\Set\Set_performance.cs" />
-    <Compile Include="2 Domain\Set\Set_manipulate.cs" />
     <Compile Include="2 Domain\Set\Set_persistence.cs" />
     <Compile Include="2 Domain\Set\Setup\ContextSet.cs" />
     <Compile Include="2 Domain\Question\Answer\Should_retrieve_stats_in_time_period.cs" />

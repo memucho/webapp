@@ -6,7 +6,6 @@ public class TabKnowledgeModel : BaseModel
     public UserTinyModel User;
     public bool IsCurrentUser;
 
-    public IList<Set> WishSets;
     public IList<Question> WishQuestions;
     public IList<QuestionsInCategory> WishQuestionsCategories;
 
@@ -14,12 +13,6 @@ public class TabKnowledgeModel : BaseModel
     {
         User = userModel.User;
         IsCurrentUser = userModel.IsCurrentUser;
-
-        WishSets = WishSets = Resolve<SetRepo>().GetByIds(
-            Resolve<SetValuationRepo>()
-                .GetByUser(User.Id)
-                .SetIds().ToArray()
-            );
 
         var valuations = Sl.QuestionValuationRepo
             .GetByUserFromCache(User.Id)

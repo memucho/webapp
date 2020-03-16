@@ -16,11 +16,6 @@ public class LomXml
         return From(new LomXmlParams(category));
     }
 
-    public static string From(Set set)
-    {
-        return From(new LomXmlParams(set));
-    }
-
     public static string From(Question question)
     {
         return From(new LomXmlParams(question));
@@ -188,18 +183,4 @@ public class LomXmlParams
         TechnicalLocation = "https://memucho.de" + Links.AnswerQuestion(question);
         RightsDescription = "CC BY, Autor: " + question.Creator.Name + " (Nutzer auf memucho.de)";
     }
-
-    public LomXmlParams(Set set)
-    {
-        GeneralIdentifier = "set-" + set.Id;
-        GeneralTitle = set.Name;
-        GeneralDescription = set.Text;
-        Categories = set.Categories;
-        AggregationLevel = LomAggregationLevel.Level2Lesson.GetValue();
-        LifecycleDate = set.DateCreated;
-        MetaMetaCatalogEntry = "metadata.memucho-set-" + set.Id;
-        TechnicalLocation = "https://memucho.de" + Links.SetDetail(set);
-        RightsDescription = "CC BY, Autor: " + set.Creator.Name + " (Nutzer auf memucho.de)";
-    }
-
 }
