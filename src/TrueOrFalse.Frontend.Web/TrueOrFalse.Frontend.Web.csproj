@@ -1963,7 +1963,6 @@
     <Content Include="Fonts\font-awesome-5.7.2\webfonts\fa-brands-400.svg" />
     <Content Include="Fonts\font-awesome-5.7.2\webfonts\fa-regular-400.svg" />
     <Content Include="Fonts\font-awesome-5.7.2\webfonts\fa-solid-900.svg" />
-    <Content Include="Images\animated-overlay.gif" />
     <Content Include="Images\Categories\100_128s.jpg" />
     <Content Include="Images\Categories\100_206s.jpg" />
     <Content Include="Images\Categories\100_350.jpg" />
@@ -9063,10 +9062,6 @@
     <Content Include="Images\Logo\LogoMediumGrey.png" />
     <Content Include="Images\Logo\LogoWordmark_w300.png" />
     <Content Include="Images\Logo\Logo_Green_Text.svg" />
-    <Content Include="Images\Memo.png" />
-    <Content Include="Images\memo_liegend_bearbeitet4.png" />
-    <Content Include="Images\memo_mit_laptop_ohne_koerper.png" />
-    <Content Include="Images\OerAward.png" />
     <Content Include="Images\QuestionSets\100_1000.jpg" />
     <Content Include="Images\QuestionSets\100_1024.jpg" />
     <Content Include="Images\QuestionSets\100_128s.jpg" />
