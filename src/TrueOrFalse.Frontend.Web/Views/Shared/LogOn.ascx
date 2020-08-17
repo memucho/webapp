@@ -77,6 +77,7 @@
                     <% if (userSession.IsInstallationAdmin)  { %>
                         <li><a style="padding-bottom: 15px;" href="<%= Url.Action("RemoveAdminRights", Links.AccountController) %>">Adminrechte abgeben</a>  </li>
                     <% } %>
+                    <li><a href="#" data-url="<%=Url.Action("ToggleWorld", Links.AccountController) %>">Toggle World</a></li>
                 </ul>
             </div>
         </div>

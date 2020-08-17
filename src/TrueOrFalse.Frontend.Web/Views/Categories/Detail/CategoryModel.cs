@@ -60,7 +60,8 @@ public class CategoryModel : BaseContentModule
     public LearningTabModel LearningTabModel;
     public UserTinyModel UserTinyModel;
     public AnalyticsFooterModel AnalyticsFooterModel;
-    public bool CategoryIsDeleted; 
+    public bool CategoryIsDeleted;
+    public bool ShowHtml = false;
     public CategoryModel()
     {
 
@@ -148,6 +149,9 @@ public class CategoryModel : BaseContentModule
         EasiestQuestion = GetQuestion(false);
 
         TotalPins = category.TotalRelevancePersonalEntries.ToString();
+
+        if (!_sessionUser.ShowOwnWorld || category.IsInWishknowledge())
+            ShowHtml = true;
     }
 
     private List<Question> GetTopQuestionsInSubCats()

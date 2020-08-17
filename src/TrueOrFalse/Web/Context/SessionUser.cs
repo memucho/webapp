@@ -20,6 +20,12 @@ public class SessionUser : SessionBase, IRegisterAsInstancePerLifetime
         private set => Data["isLoggedIn"] = value;
     }
 
+    public bool ShowOwnWorld
+    {
+        get => Data.Get("showOwnWorld", false);
+        private set => Data["showOwnWorld"] = value;
+    }
+
     public bool IsInstallationAdmin
     {
         get => Data.Get("isAdministrativeLogin", false);
@@ -67,6 +73,11 @@ public class SessionUser : SessionBase, IRegisterAsInstancePerLifetime
         User = null;
         if (HttpContext.Current != null)
             FormsAuthentication.SignOut();
+    }
+
+    public void ToggleOwnWorld()
+    {
+        ShowOwnWorld = !ShowOwnWorld;
     }
 
     public void UpdateUser()

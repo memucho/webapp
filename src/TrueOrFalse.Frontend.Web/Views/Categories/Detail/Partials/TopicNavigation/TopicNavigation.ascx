@@ -16,7 +16,7 @@
             <% foreach (var category in Model.CategoryList)
                 { %>
                 
-                    <% if(Model.GetTotalTopicCount(category) > 0 || Model.GetTotalQuestionCount(category) > 0 || Model.IsInstallationAdmin)   
+                    <% if(Model.ShowCategory(category) && (Model.GetTotalTopicCount(category) > 0 || Model.GetTotalQuestionCount(category) > 0 || Model.IsInstallationAdmin))   
                        { %>
                         <div class="col-xs-6 topic">
                             <div class="row">

@@ -103,8 +103,10 @@
     <% } %>
     
     <div id="MarkdownContent" class="module" v-sortable="options">
-        
-        <%= Model.CustomPageHtml %>
+        <% if (Model.ShowHtml)
+           {%>
+            <%= Model.CustomPageHtml %>
+        <%}%>
         
         <div id="ContentModulePlaceholder" v-if="editMode" v-cloak>
             <content-module inline-template content-module-type="AddModuleButton">
