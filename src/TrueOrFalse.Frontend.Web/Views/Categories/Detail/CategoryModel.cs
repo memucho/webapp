@@ -61,7 +61,6 @@ public class CategoryModel : BaseContentModule
     public UserTinyModel UserTinyModel;
     public AnalyticsFooterModel AnalyticsFooterModel;
     public bool CategoryIsDeleted;
-    public bool ShowHtml = false;
     public CategoryModel()
     {
 
@@ -150,8 +149,6 @@ public class CategoryModel : BaseContentModule
 
         TotalPins = category.TotalRelevancePersonalEntries.ToString();
 
-        if (!_sessionUser.ShowOwnWorld || category.IsInWishknowledge())
-            ShowHtml = true;
     }
 
     private List<Question> GetTopQuestionsInSubCats()
@@ -168,6 +165,12 @@ public class CategoryModel : BaseContentModule
             .Distinct(ProjectionEqualityComparer<Question>.Create(x => x.Id))
             .ToList();
     }
+
+    public bool ShowContent(Category category)
+    {
+        return !_sessionUser.ShowOwnWorld || category.IsInWishknowledge();
+    }
+
 
     private Question GetQuestion(bool hardestQuestion)
     {

@@ -21644,6 +21644,9 @@
       <DependentUpon>KnowledgeSummaryBar.ts</DependentUpon>
     </Content>
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\NotLoggedIn - Copy.js">
+      <DependentUpon>ShowMyWorld.ts</DependentUpon>
+    </Content>
     <Content Include="Scripts\npm\d3\d3.js" />
     <Content Include="Scripts\npm\postscribe\postscribe.js" />
     <Content Include="Scripts\npm\sortablejs\Sortable.js" />
@@ -21822,6 +21825,7 @@
       <DependentUpon>GetResultTestSession.ts</DependentUpon>
     </Content>
     <TypeScriptCompile Include="Scripts\KnowledgeSummaryBar.ts" />
+    <TypeScriptCompile Include="Scripts\ShowMyWorld.ts" />
     <TypeScriptCompile Include="Views\Categories\Detail\JsAnalyticsTab\KnowledgeGraph.ts" />
     <TypeScriptCompile Include="Views\Categories\Detail\JsEditMode\ContentModuleSettings\ContentModuleSelectionComponent.ts" />
     <TypeScriptCompile Include="Views\Categories\Detail\JsEditMode\ContentModuleSettings\InlineEditComponent.ts" />
@@ -22010,6 +22014,9 @@
       <DependentUpon>KnowledgeSummaryBar.ts</DependentUpon>
     </Content>
     <Content Include="Views\Questions\QuestionList\QuestionList.less" />
+    <Content Include="Scripts\NotLoggedIn - Copy.js.map">
+      <DependentUpon>ShowMyWorld.ts</DependentUpon>
+    </Content>
     <None Include="Views\Maintenance\ContentStats.less" />
     <Compile Include="Views\Maintenance\ContentStatsModel.cs" />
     <Compile Include="Views\Maintenance\Images\MaintenanceImagesController.cs" />

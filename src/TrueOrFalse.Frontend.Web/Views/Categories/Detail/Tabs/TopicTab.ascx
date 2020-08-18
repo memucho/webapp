@@ -103,11 +103,9 @@
     <% } %>
     
     <div id="MarkdownContent" class="module" v-sortable="options">
-        <% if (Model.ShowHtml)
-           {%>
-            <%= Model.CustomPageHtml %>
-        <%}%>
         
+        <%= Model.CustomPageHtml %>
+
         <div id="ContentModulePlaceholder" v-if="editMode" v-cloak>
             <content-module inline-template content-module-type="AddModuleButton">
                 <div class="placeholderBorder" :class="{ hover : hoverState }" @click="addModule('before')" @mouseenter="updateHoverState(true)" @mouseleave="updateHoverState(false)">
@@ -122,7 +120,7 @@
     <% } %>
     
 </div>
-<% if (!Model.CategoryIsDeleted)
+<% if (!Model.CategoryIsDeleted && Model.ShowContent(Model.Category))
    { %>
 <%: Html.Partial("~/Views/Categories/Detail/Partials/CategoryFooter/CategoryFooter.ascx") %>
     <% } %>

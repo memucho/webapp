@@ -5,10 +5,11 @@ public class InlineTextModel : BaseContentModule
 {
     public string Content;
     public string Raw;
-    
-    public InlineTextModel(string htmlContent)
+    public bool ShowContent;
+    public InlineTextModel(string htmlContent, bool isInWishknowledge = false)
     {
         Raw = htmlContent;
         Content = MarkdownMarkdig.ToHtml(htmlContent);
+        ShowContent = !_sessionUser.ShowOwnWorld || isInWishknowledge;
     }
 }

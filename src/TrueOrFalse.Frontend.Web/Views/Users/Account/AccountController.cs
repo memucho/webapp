@@ -48,9 +48,11 @@ public class AccountController : BaseController
         return Redirect(Request.UrlReferrer.AbsolutePath);
     }
 
-    public void ToggleWorld()
+    [AccessOnlyAsLoggedIn]
+    public ActionResult ToggleWorld()
     {
         _sessionUser.ToggleOwnWorld();
+        return Redirect(Request.UrlReferrer.AbsolutePath);
     }
 
     [SetMainMenu(MainMenuEntry.None)]

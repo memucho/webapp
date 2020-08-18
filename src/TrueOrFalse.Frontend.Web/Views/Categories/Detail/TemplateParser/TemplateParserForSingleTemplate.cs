@@ -59,7 +59,7 @@ public class TemplateParserForSingleTemplate
             case "categorynetwork":
                 return new CategoryModel(category, loadKnowledgeSummary: false);
             case "inlinetext":
-                return new InlineTextModel(templateJson.InlineText);
+                return new InlineTextModel(templateJson.InlineText, category.IsInWishknowledge());
             default:
                 throw new Exception("Kein Model für diese Template hinterlegt.");
         }
