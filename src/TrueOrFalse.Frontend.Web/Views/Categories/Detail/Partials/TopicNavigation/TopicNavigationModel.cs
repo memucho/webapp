@@ -118,7 +118,7 @@ public class TopicNavigationModel : BaseContentModule
 
     public bool ShowCategory(Category category)
     {
-        return !_sessionUser.ShowOwnWorld || category.IsInWishknowledge();
+        return !_sessionUser.ShowMyWorld || category.IsInWishknowledge();
     }
 
 }

@@ -1,23 +1,10 @@
-﻿class NotLoggedIn
+﻿class ShowMyWorld
 {
     static Yes() {
 
-        if ($("#IsLoggedIn").val() == "False")
+        if ($("#ShowMyWorld").val() == "True")
             return true;
 
         return false;
-    }
-
-    static ShowErrorMsg(feature = "unknown") {
-        //$('#modalNotLoggedIn').modal('show');
-
-        Login.OpenModal(null, Login.ShowFeatureInfo);
-    }
-}
-
-class IsLoggedIn {
-    
-    static get Yes(): boolean {
-        return !NotLoggedIn.Yes();
     }
 }

@@ -36,11 +36,11 @@
     
         <% if(Model.CategoriesChildren.Count > 0){ %>
             <div class="related-categories">
-                <% foreach(var category in Model.CategoriesChildren){ 
-                       if (Model.ShowContent(category)) {%>
-                        <% Html.RenderPartial("CategoryLabel", category); %>
-                    <% }
-                   } %>
+                <% foreach(var category in Model.CategoriesChildren){%>
+                        <template v-if="'True' == '<%= Model.ShowContent(category) %>'">
+                            <% Html.RenderPartial("CategoryLabel", category); %>
+                        </template>
+                    <% } %>
                 <i class="fa fa-plus-circle show-tooltip color-category add-new" 
                     style="font-size: 13px; cursor: pointer; line-height: 32px; padding-top: 4px; color: #555555;"
                     onclick="window.location = '/Erstelle?parent=<%= Model.Category.Id%>'; return false; " 

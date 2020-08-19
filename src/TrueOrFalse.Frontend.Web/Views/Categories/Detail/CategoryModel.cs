@@ -168,7 +168,7 @@ public class CategoryModel : BaseContentModule
 
     public bool ShowContent(Category category)
     {
-        return !_sessionUser.ShowOwnWorld || category.IsInWishknowledge();
+        return !_sessionUser.ShowMyWorld || category.IsInWishknowledge();
     }
 
 

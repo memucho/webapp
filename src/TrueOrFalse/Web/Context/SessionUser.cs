@@ -20,10 +20,10 @@ public class SessionUser : SessionBase, IRegisterAsInstancePerLifetime
         private set => Data["isLoggedIn"] = value;
     }
 
-    public bool ShowOwnWorld
+    public bool ShowMyWorld
     {
-        get => Data.Get("showOwnWorld", false);
-        private set => Data["showOwnWorld"] = value;
+        get => Data.Get("showMyWorld", false);
+        private set => Data["showMyWorld"] = value;
     }
 
     public bool IsInstallationAdmin
@@ -77,7 +77,7 @@ public class SessionUser : SessionBase, IRegisterAsInstancePerLifetime
 
     public void ToggleOwnWorld()
     {
-        ShowOwnWorld = !ShowOwnWorld;
+        ShowMyWorld = !ShowMyWorld;
     }
 
     public void UpdateUser()

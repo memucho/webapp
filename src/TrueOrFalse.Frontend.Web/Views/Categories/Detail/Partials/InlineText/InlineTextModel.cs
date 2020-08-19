@@ -10,6 +10,6 @@ public class InlineTextModel : BaseContentModule
     {
         Raw = htmlContent;
         Content = MarkdownMarkdig.ToHtml(htmlContent);
-        ShowContent = !_sessionUser.ShowOwnWorld || isInWishknowledge;
+        ShowContent = !_sessionUser.ShowMyWorld || isInWishknowledge;
     }
 }
