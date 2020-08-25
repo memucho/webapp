@@ -24059,6 +24059,7 @@
     <Content Include="Views\Questions\Answer\Js\QuestionDetails\AnswerQuestionDetailsComponent.js.map">
       <DependentUpon>AnswerQuestionDetailsComponent.ts</DependentUpon>
     </Content>
+    <None Include="Web.overwritten.config" />
     <None Include="Web.overwritten.config.sample" />
     <Content Include="Views\Welcome\Logout.aspx" />
     <Content Include="Views\Api\Export.aspx" />

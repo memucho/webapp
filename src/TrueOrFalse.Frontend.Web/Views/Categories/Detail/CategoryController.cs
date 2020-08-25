@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using FluentNHibernate.Conventions.Helpers;
 using TrueOrFalse.Frontend.Web.Code;
 
 
@@ -49,7 +50,7 @@ public class CategoryController : BaseController
     private LoadModelResult LoadModel(int id, int? version, bool bySetId = false)
     {
         var result = new LoadModelResult();
-        var category = bySetId ? Resolve<CategoryRepository>().GetBySetId(id) : Resolve<CategoryRepository>().GetById(id);
+        var category = bySetId ? Resolve<CategoryRepository>().GetBySetId(id) : EntityCache.GetCategory(id);
 
         var isCategoryNull = category == null;
 
@@ -178,10 +179,9 @@ public class CategoryController : BaseController
 
     public string Tab(string tabName, int categoryId)
     {
-       
-        var category = Sl.CategoryRepo.GetById(categoryId);
+        var category = EntityCache.GetCategory(categoryId);
         var isCategoryNull = category == null;
-       category = isCategoryNull ? new Category() : category; 
+        category = isCategoryNull ? new Category() : category; 
         
         return ViewRenderer.RenderPartialView(
             "/Views/Categories/Detail/Tabs/" + tabName + ".ascx",
@@ -189,6 +189,8 @@ public class CategoryController : BaseController
             ControllerContext
         );
     }
+
+
 
     public string KnowledgeBar(int categoryId) =>
         ViewRenderer.RenderPartialView(

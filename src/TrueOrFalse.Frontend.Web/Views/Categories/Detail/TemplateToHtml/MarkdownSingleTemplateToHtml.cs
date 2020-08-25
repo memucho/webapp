@@ -69,6 +69,9 @@ public class MarkdownSingleTemplateToHtml
         Category category,
         ControllerContext controllerContext)
     {
+        if (contentModule.TemplateJson.TemplateName.ToLower() == "inlinetext" && Sl.SessionUser.ShowMyWorld &&
+            !category.IsInWishknowledge())
+            return null;
         return GetPartialHtml(contentModule.TemplateJson, controllerContext, contentModule);
     }
 

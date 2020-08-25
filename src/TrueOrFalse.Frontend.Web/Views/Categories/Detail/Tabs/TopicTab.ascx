@@ -3,7 +3,6 @@
 <%@ Import Namespace="System.Web.Optimization" %>
 <%@ Import Namespace="TrueOrFalse.Frontend.Web.Code" %>
 
-
 <div id="ContentModuleApp">
     <% if (Model.Category.IsHistoric)
        { %>

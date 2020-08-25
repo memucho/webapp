@@ -49,10 +49,10 @@ public class AccountController : BaseController
     }
 
     [AccessOnlyAsLoggedIn]
-    public ActionResult ToggleWorld()
+    public bool ToggleWorld()
     {
         _sessionUser.ToggleOwnWorld();
-        return Redirect(Request.UrlReferrer.AbsolutePath);
+        return _sessionUser.ShowMyWorld;
     }
 
     [SetMainMenu(MainMenuEntry.None)]

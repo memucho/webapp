@@ -24,6 +24,21 @@
             });
 
         this.renderOrDisplayTab(this._url);
+
+        $("#ToggleMyWorldBtn").click(() => {
+            var url = "/Account/ToggleWorld";
+            $.get(url,
+                () => {
+                    if ($("#TopicTabContent").length) {
+                        var topicUrl = "/Category/GetTopicTabAsync/" + this.CategoryId;
+                        $.post(topicUrl,
+                            (view) => {
+                                $("#TopicTabContent").html(view);
+                            });
+                    }
+                });
+            console.log("clicked");
+        });
     }
 
     private pushUrlAndSetActiveByClick(_categoryName: string) {
@@ -111,7 +126,6 @@
             $("#AnalyticsTabContent").css("display", "none");
         }
     }
-
 }
 
 $(() => {
