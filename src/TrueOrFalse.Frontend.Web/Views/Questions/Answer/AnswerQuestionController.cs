@@ -333,8 +333,7 @@ public class AnswerQuestionController : BaseController
     public string RenderAnswerBody(
         int questionId, 
         string pager, 
-        bool? isMobileDevice = null, 
-        int? testSessionId = null, 
+        bool? isMobileDevice = null,
         int? learningSessionId = null, 
         bool isVideo = false,
         bool? hideAddToKnowledge = false)

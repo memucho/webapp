@@ -6,13 +6,10 @@ public class CategoryModel : BaseContentModule
 {
     public string MetaTitle;
     public string MetaDescription;
-
     public int Id;
     public string Name;
     public string Description;
-
     public KnowledgeSummary KnowledgeSummary;
-
     public string CustomPageHtml;//Is set in controller because controller context is needed
     public CategoryChange CategoryChange;//Is set in controller because controller context is needed
     public bool NextRevExists;   //Is set in controller because controller context is needed
@@ -42,7 +39,6 @@ public class CategoryModel : BaseContentModule
     public string WikipediaURL;
     public string Url;
     public bool IsOwnerOrAdmin;
-    public bool IsTestSession = false;
     public bool IsLearningSession = true;
     public int CountAggregatedQuestions;
     public int CountCategoryQuestions;

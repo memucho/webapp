@@ -9,16 +9,13 @@ public class LearningSessionNew
     public IList<LearningSessionStepNew> Steps;
     public LearningSessionConfig Config;
     public int Pager;
-
     public int CurrentIndex { get; private set; }
     public bool IsLastStep { get; private set; }
     public LearningSessionStepNew CurrentStep => Steps[CurrentIndex];
     public string UrlName = "";
-
     public User User;
     public bool IsLoggedIn;
     public Guid QuestionViewGuid;
-
 
     public LearningSessionNew(List<LearningSessionStepNew> learningSessionSteps, LearningSessionConfig config)
     {

@@ -16,11 +16,6 @@ class SolutionTypeMatchList
         if (isMobile !== isCurrentAnswerBodyMobile) {
             var url = "/AnswerQuestion/RenderAnswerBody";
 
-            var isTestSession = $('#hddIsTestSession').val();
-            if(isTestSession !== undefined)
-                if (isTestSession.toLowerCase() === "true")
-                    var testSessionId = parseInt($('#hddIsTestSession').attr('data-test-session-id'));
-
             var isLearningSession = $('#hddIsLearningSession').val();
             if (isLearningSession !== undefined)
                 if (isLearningSession.toLowerCase() === "true")
@@ -38,7 +33,6 @@ class SolutionTypeMatchList
                     questionId: $("#questionId").val(),
                     pager: urlParams.pager,
                     isMobileDevice: isMobile,
-                    testSessionId: testSessionId,
                     learningSessionId: learningSessionId,
                     isVideo: isVideo,
                     hideAddToKnowledge: $("#disableAddKnowledgeButton").val()
