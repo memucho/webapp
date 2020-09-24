@@ -302,12 +302,12 @@ public class AnswerQuestionController : BaseController
         Sl.SaveQuestionView.LogOverallTime(questionViewGuid, millisecondsSinceQuestionView);
 
     [HttpPost]
-    public void CountLastAnswerAsCorrect(int id, Guid questionViewGuid, int interactionNumber, int? testSessionId, int? learningSessionId, string learningSessionStepGuid) => 
-        _answerQuestion.Run(id, _sessionUser.UserId, questionViewGuid, interactionNumber, testSessionId, learningSessionId, learningSessionStepGuid, countLastAnswerAsCorrect: true);
+    public void CountLastAnswerAsCorrect(int id, Guid questionViewGuid) => 
+        _answerQuestion.Run(id, _sessionUser.UserId, questionViewGuid, true);
 
     [HttpPost]
-    public void CountUnansweredAsCorrect(int id, Guid questionViewGuid, int interactionNumber, int millisecondsSinceQuestionView, string learningSessionStepGuid, int? testSessionId, int? learningSessionId) => 
-        _answerQuestion.Run(id, _sessionUser.UserId, questionViewGuid, interactionNumber, testSessionId, learningSessionId, learningSessionStepGuid, millisecondsSinceQuestionView, countUnansweredAsCorrect: true);
+    public void CountUnansweredAsCorrect(int id, Guid questionViewGuid) => 
+        _answerQuestion.Run(id, _sessionUser.UserId, questionViewGuid, false, true);
 
     public ActionResult PartialAnswerHistory(int questionId)
     {

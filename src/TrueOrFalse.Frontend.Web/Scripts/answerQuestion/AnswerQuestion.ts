@@ -386,7 +386,7 @@ class AnswerQuestion {
                 learningSessionStepGuid: self.LearningSessionStepGuid
             },
             cache: false,
-            success: function (result) {
+            success: function () {
                 self.AnswerCountedAsCorrect = true;
                 $(Utils.UIMessageHtml(successMessage, "success")).insertAfter('#Buttons');
                 self._inputFeedback.AnimateCorrectAnswer();

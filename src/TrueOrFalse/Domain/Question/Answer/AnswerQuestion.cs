@@ -90,14 +90,9 @@ public class AnswerQuestion : IRegisterAsInstancePerLifetime
         int questionId,
         int userId,
         Guid questionViewGuid,
-        int interactionNumber,
-        int? testSessionId,
-        int? learningSessionId,
-        string learningSessionStepGuid,
-        int millisecondsSinceQuestionView = -1,
         bool countLastAnswerAsCorrect = false,
-        bool countUnansweredAsCorrect = false,
-        /*for testing*/ DateTime dateCreated = default(DateTime))
+        bool countUnansweredAsCorrect = false
+       )
     {
         if(countLastAnswerAsCorrect && countUnansweredAsCorrect)
             throw new Exception("either countLastAnswerAsCorrect OR countUnansweredAsCorrect should be set to true, not both");
@@ -111,8 +106,6 @@ public class AnswerQuestion : IRegisterAsInstancePerLifetime
             answer.AnswerredCorrectly = AnswerCorrectness.MarkedAsTrue;
             return Run(questionId, "", userId, (question, answerQuestionResult) =>
                     _answerLog.CountLastAnswerAsCorrect(questionViewGuid), countLastAnswerAsCorrect: true);
-
-            // Sl.AnswerRepo.Update(learningSessionStep.AnswerWithInput);
         }
         throw new Exception("neither countLastAnswerAsCorrect or countUnansweredAsCorrect true");
     }
