@@ -605,9 +605,7 @@ public class AnswerQuestionController : BaseController
                 currentStepIdx = learningSession.CurrentIndex,
                 skipStepIdx = sessionData.SkipStepIdx,
                 isLastStep = sessionData.IsLastStep,
-                currentStepGuid = sessionData.CurrentStepGuid,
                 currentSessionHeader = sessionData.CurrentSessionHeader,
-                learningSessionId = sessionData.LearningSessionId,
                 isLearningSession = !learningSession.Config.InWishknowledge,
                 stepCount = learningSession.Steps.Count 
             } : null,
@@ -628,14 +626,11 @@ public class AnswerQuestionController : BaseController
             CurrentSessionHeader = currentSessionHeader;
             SkipStepIdx = skipStepIdx;
             IsLastStep = isLastStep;
-            LearningSessionId = learningSessionId;
         }
 
         public string CurrentSessionHeader { get; }
         public int SkipStepIdx { get; }
         public bool IsLastStep { get; }
-        public Guid CurrentStepGuid { get; }
-        public int LearningSessionId { get;}
     }
     
     [SetThemeMenu(isLearningSessionPage: true)]
