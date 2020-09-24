@@ -503,7 +503,7 @@ public class AnswerQuestionController : BaseController
         bool isLastStep = answerQuestionModel.IsLastLearningStep;
         string currentUrl = Links.LearningSession(learningSession);
 
-        var sessionData = new SessionData(currentSessionHeader, currentStepIdx, isLastStep, skipStepIdx);
+        var sessionData = new SessionData(currentSessionHeader, isLastStep, skipStepIdx);
         var config = learningSession.Config;
         return GetQuestionPageData(answerQuestionModel, currentUrl, sessionData, isSession: true,
             isInLearningTab: config.IsInLearningTab, isInTestMode: config.IsInTestMode);
@@ -623,7 +623,7 @@ public class AnswerQuestionController : BaseController
 
     private class SessionData
     {
-        public SessionData(string currentSessionHeader = "", int currentStepIdx = -1, bool isLastStep = false, int skipStepIdx = -1, int learningSessionId = -1)
+        public SessionData(string currentSessionHeader = "", bool isLastStep = false, int skipStepIdx = -1, int learningSessionId = -1)
         {
             CurrentSessionHeader = currentSessionHeader;
             SkipStepIdx = skipStepIdx;
@@ -631,11 +631,11 @@ public class AnswerQuestionController : BaseController
             LearningSessionId = learningSessionId;
         }
 
-        public string CurrentSessionHeader { get; private set; }
-        public int SkipStepIdx { get; private set; }
-        public bool IsLastStep { get; private set; }
-        public Guid CurrentStepGuid { get; private set; }
-        public int LearningSessionId { get; private set; }
+        public string CurrentSessionHeader { get; }
+        public int SkipStepIdx { get; }
+        public bool IsLastStep { get; }
+        public Guid CurrentStepGuid { get; }
+        public int LearningSessionId { get;}
     }
     
     [SetThemeMenu(isLearningSessionPage: true)]
