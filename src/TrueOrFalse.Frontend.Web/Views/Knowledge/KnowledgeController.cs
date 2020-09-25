@@ -29,21 +29,6 @@ public class KnowledgeController : BaseController
         return -1;
     }
 
-    [RedirectToErrorPage_IfNotLoggedIn]
-    public ActionResult StartLearningSession()
-    {
-        var user = _sessionUser.User;
-        if (user.WishCountQuestions == 0)
-            throw new Exception("Cannot start LearningSession from Wishknowledge with no questions.");
-
-        var valuations = Sl.QuestionValuationRepo
-            .GetByUserFromCache(user.Id)
-            .QuestionIds().ToList();
-
-        var learningSession = Sl.Resolve<SessionUser>().LearningSession;
-
-       return Redirect(Links.LearningSession(learningSession));
-    }
 
     public String GetKnowledgeContent(string content)
     {
