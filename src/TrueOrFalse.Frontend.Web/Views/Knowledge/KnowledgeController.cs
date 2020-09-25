@@ -16,7 +16,7 @@ public class KnowledgeController : BaseController
     [SetMainMenu(MainMenuEntry.Knowledge)]
     public ActionResult EmailConfirmation(string emailKey)
     {
-        return View("Knowledge", new KnowledgeModel(emailKey: emailKey));
+        return View("Knowledge", new KnowledgeModel(emailKey));
     }
 
     public int GetNumberOfWishknowledgeQuestions()
