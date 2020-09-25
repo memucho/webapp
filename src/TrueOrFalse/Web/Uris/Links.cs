@@ -28,12 +28,6 @@ namespace TrueOrFalse.Frontend.Web.Code
         public static string HelpFAQ() => GetUrlHelper().Action(HelpActionFAQ, HelpController);
         public const string HelpWillkommen = "Willkommen";
         public const string HelpWunschwissen = "Willkommen";
-        public static string HelpWidget() => GetUrlHelper().Action("Widget", HelpController);
-        public static string HelpWidgetWordpress() => GetUrlHelper().Action("WidgetInWordpress", HelpController);
-        public static string HelpWidgetMoodle() => GetUrlHelper().Action("WidgetInMoodle", HelpController);
-        public static string HelpWidgetBlackboard() => GetUrlHelper().Action("WidgetInBlackboard", HelpController);
-        public static string WidgetPricing() => GetUrlHelper().Action("WidgetPricing", HelpController);
-        public static string WidgetExamples() => GetUrlHelper().Action("WidgetExamples", HelpController);
 
         public const string AccountController = "Account";
         public const string RegisterAction = "Register";
@@ -260,21 +254,6 @@ namespace TrueOrFalse.Frontend.Web.Code
             return "#";
         }
 
-        public static string StartLearningSession(LearningSessionNew learningSession)
-        {
-            if(!learningSession.Config.InWishknowledge)
-                return StartCategoryLearningSession(learningSession.Config.CategoryId);
-            else
-            {
-                return StartWishLearningSession();
-            }
-
-            throw new Exception("unknown type");
-        }
-
-        public static string StartWishLearningSession() =>
-            GetUrlHelper().Action("StartLearningSession", KnowledgeController );
-
         public static string StartCategoryLearningSession(int categoryId) =>
            GetUrlHelper().Action("StartLearningSession", CategoryController, new { categoryId = categoryId });
 
@@ -314,7 +293,6 @@ namespace TrueOrFalse.Frontend.Web.Code
                 + Join("&setIds=", setIds);
         }
 
-        public static string TestSessionRegisterQuestionAnswered(UrlHelper url) => url.Action("RegisterQuestionAnswered", TestSessionController);
         public static string LearningSessionAmendAfterShowSolution(UrlHelper url) => url.Action("AmendAfterShowSolution", AnswerQuestionController);
 
         /*Questionsets / Sets*/
@@ -355,20 +333,6 @@ namespace TrueOrFalse.Frontend.Web.Code
         public static string Messages(UrlHelper url) => url.Action("Messages","Messages");
         public static string MessageSetRead(UrlHelper url) => url.Action("SetMessageRead", "Messages");
         public static object MessageSetUnread(UrlHelper url) => url.Action("SetMessageUnread", "Messages");
-
-        /* Games */
-        public static string Games() => Games(GetUrlHelper());
-        public static string Games(UrlHelper url) => url.Action("Games", "Games");
-        public static string GameCreateFromDate(int dateId) => GetUrlHelper().Action("Create", "Game", new {dateId = dateId});
-        public static string GameCreateFromSet(int setId) => GetUrlHelper().Action("Create", "Game", new { setId = setId});
-        public static string GameCreateFromSets(List<int> setIds) => GetUrlHelper().Action("Create", "Game") + "?setIds="
-                + Join("&setIds=", setIds);
-        public static string GameCreateFromCategory(int categoryId) => GetUrlHelper().Action("Create", "Game", new { categoryId = categoryId });
-
-
-
-        public static string GameCreate() => GetUrlHelper().Action("Create", "Game", null);
-        public static string GamePlay(UrlHelper url, int gameId) => GetUrlHelper().Action("Play", "Play", new { gameId = gameId });
 
         /*Category*/
         public const string CategoriesAction = "Categories";
