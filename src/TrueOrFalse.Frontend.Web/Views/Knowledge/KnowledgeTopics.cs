@@ -75,7 +75,6 @@ public class KnowledgeTopics : BaseModel
             categoryAndSetWishKnowledge.IsCategory = true;
             categoryAndSetWishKnowledge.LinkStartLearningSession = Links.StartCategoryLearningSession(categoryWish.Id);
             categoryAndSetWishKnowledge.CreateQuestionLink = Links.CreateQuestion(categoryId: categoryWish.Id);
-            categoryAndSetWishKnowledge.StartGameLink = Links.GameCreateFromCategory(categoryWish.Id);
             categoryAndSetWishKnowledge.LearnSetsCount = categoryWish.GetCountSets();
             categoryAndSetWishKnowledge.QuestionsCount = categoryWish.CountQuestionsAggregated;
             categoryAndSetWishKnowledge.EditCategoryOrSetLink = Links.CategoryEdit(categoryWish);
@@ -101,7 +100,6 @@ public class KnowledgeTopics : BaseModel
                 IsCategory = false,
                 LinkStartLearningSession = Links.StartLearningSessionForSet(setWish.Id),
                 CreateQuestionLink = Links.CreateQuestion(setId: setWish.Id),
-                StartGameLink = Links.GameCreateFromSet(setWish.Id),
                 LearnSetsCount = 1,
                 QuestionsCount = setWish.QuestionCount(),
                 EditCategoryOrSetLink = Links.SetEdit(setWish),
@@ -126,9 +124,7 @@ public class KnowledgeTopics : BaseModel
         public string KnowlegdeWishPartial;
         public bool IsCategory;
         public string LinkStartLearningSession;
-        public string DateToLearningTopicLink { get; set; }
         public string CreateQuestionLink { get; set; }
-        public string StartGameLink { get; set; }
         public int LearnSetsCount = 0;
         public int QuestionsCount = 0;
         public string EditCategoryOrSetLink { get; set; }
