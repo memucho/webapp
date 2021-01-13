@@ -390,8 +390,6 @@ p:empty {
 }
 .topicNavigation img,
 .setCardMiniList img {
-  -webkit-border-radius: 50%;
-          border-radius: 50%;
   -webkit-box-shadow: 5px 5px 10px #eeeeee;
           box-shadow: 5px 5px 10px #eeeeee;
 }
@@ -847,8 +845,6 @@ p:empty {
   }
 }
 #CategoryHeader img {
-  -webkit-border-radius: 50%;
-          border-radius: 50%;
   width: 80px;
 }
 #CategoryHeader .LicenseInfo {
