@@ -370,6 +370,44 @@ class GraphService_tests : BaseTest
 
         Assert.That(allPersonalCategoriesWithRelations.ByName("A").CachedData.Children.Count,
             Is.EqualTo(3));
+
+        Assert.That(ContextCategory.HasCorrectChild(allPersonalCategoriesWithRelations.ByName("X3"), "I"),
+            Is.EqualTo(true));
+
+        Assert.That(ContextCategory.HasCorrectChild(allPersonalCategoriesWithRelations.ByName("X3"), "F"),
+            Is.EqualTo(true));
+
+        Assert.That(ContextCategory.HasCorrectChild(allPersonalCategoriesWithRelations.ByName("X3"), "G"),
+            Is.EqualTo(true));
+
+        Assert.That(allPersonalCategoriesWithRelations.ByName("X3").CachedData.Children.Count,
+            Is.EqualTo(3));
+
+        Assert.That(ContextCategory.HasCorrectChild(allPersonalCategoriesWithRelations.ByName("X"), "G"),
+            Is.EqualTo(true));
+
+        Assert.That(ContextCategory.HasCorrectChild(allPersonalCategoriesWithRelations.ByName("X"), "I"),
+            Is.EqualTo(true));
+
+        Assert.That(ContextCategory.HasCorrectChild(allPersonalCategoriesWithRelations.ByName("X"), "F"),
+            Is.EqualTo(true));
+
+        Assert.That(allPersonalCategoriesWithRelations.ByName("X").CachedData.Children.Count,
+            Is.EqualTo(3));
+
+        Assert.That(allPersonalCategoriesWithRelations.ByName("B").CachedData.Children.Count,
+            Is.EqualTo(0));
+
+        Assert.That(allPersonalCategoriesWithRelations.ByName("F").CachedData.Children.Count,
+            Is.EqualTo(0));
+
+        Assert.That(allPersonalCategoriesWithRelations.ByName("G").CachedData.Children.Count,
+            Is.EqualTo(1));
+
+        Assert.That(allPersonalCategoriesWithRelations.ByName("I").CachedData.Children.Count,
+            Is.EqualTo(0));
+
+
     }
 
     [Test]
