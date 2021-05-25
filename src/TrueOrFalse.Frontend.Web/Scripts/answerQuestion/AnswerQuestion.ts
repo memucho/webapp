@@ -169,7 +169,7 @@ class AnswerQuestion {
     }
 
     static GetQuestionId(): number {
-        return +$("#questionId").val();
+        return $("#questionId").val();
     }
 
     IsLastQuestion(): boolean {

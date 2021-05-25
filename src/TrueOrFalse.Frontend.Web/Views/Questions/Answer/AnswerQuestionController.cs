@@ -278,7 +278,7 @@ public class AnswerQuestionController : BaseController
         var question = _questionRepo.GetById(questionId);
 
         var questionValuationForUser =
-            NotNull.Run(Sl.QuestionValuationRepo.GetByFromCache(question.Id, _sessionUser.UserId));
+            NotNull.Run(Sl.QuestionValuationRepo.GetByFromCache(question.Id, Sl.CurrentUserId));
         var valuationForUser = Resolve<TotalsPersUserLoader>().Run(_sessionUser.UserId, question.Id);
 
         return View("HistoryAndProbability",
