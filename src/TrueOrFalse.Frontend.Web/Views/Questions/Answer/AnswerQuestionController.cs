@@ -484,6 +484,7 @@ public class AnswerQuestionController : BaseController
         return ViewRenderer.RenderPartialView("~/Views/Questions/Answer/AnswerQuestionDetails.ascx", model, ControllerContext);
     }
 
+    [HttpPost]
     public JsonResult GetQuestionDetails(int questionId)
     {
         var question = EntityCache.GetQuestionById(questionId);
