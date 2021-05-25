@@ -95,7 +95,6 @@ public class AnswerQuestionModel : BaseModel
     public bool ShowCategoryList = true;
 
     public ContentRecommendationResult ContentRecommendationResult;
-    public AnalyticsFooterModel AnalyticsFooterModel;
     public bool QuestionHasParentCategories = false;
 
     public AnswerQuestionModel(Question question, bool? isMobileDevice = null, bool showCategoryList = true, CategoryModel categoryModel= null)
@@ -228,8 +227,8 @@ public class AnswerQuestionModel : BaseModel
         if (!IsTestSession && !IsLearningSession && QuestionHasParentCategories)
         {
             PrimaryCategory = GetPrimaryCategory.GetForQuestion(question);
-            AnalyticsFooterModel = new AnalyticsFooterModel(PrimaryCategory, true);
             AllCategoriesParents = GraphService.GetAllParentsFromEntityCache(PrimaryCategory.Id);
+
             var allCategoryChildrens = EntityCache.GetChildren(PrimaryCategory.Id);
             AllCategorysWithChildrenAndParents = EntityCache.GetCategoryCacheItems(
                 question.Categories.Select(c => c.Id)

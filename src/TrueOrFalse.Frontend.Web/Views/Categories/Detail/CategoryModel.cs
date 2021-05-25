@@ -55,7 +55,6 @@ public class CategoryModel : BaseContentModule
     public bool IsInWishknowledge;
     public bool IsLearningTab;
     public string TotalPins;
-    public AnalyticsFooterModel AnalyticsFooterModel;
     public bool CategoryIsDeleted;
     public IList<AuthorViewModel> Authors = new List<AuthorViewModel>();
     public bool ShowLearningSessionConfigurationMessageForTab { get; set; }
@@ -78,7 +77,6 @@ public class CategoryModel : BaseContentModule
         IsMyWorld = UserCache.GetItem(Sl.CurrentUserId).IsFiltered; 
         TopNavMenu.BreadCrumbCategories = CrumbtrailService.Get(category, RootCategory.Get);
         CategoryIsDeleted = isCategoryNull;
-        AnalyticsFooterModel = new AnalyticsFooterModel(category, false, isCategoryNull);
         MetaTitle = category.Name;
         MetaDescription = SeoUtils.ReplaceDoubleQuotes(category.Description).Truncate(250, true);
 
