@@ -158,7 +158,7 @@ public class QuestionListController : BaseController
     [HttpPost]
     public int GetUpdatedCorrectnessProbability(int questionId)
     {
-        var question = Sl.QuestionRepo.GetById(questionId);
+        var question = EntityCache.GetQuestionById(questionId);
         var model = new AnswerQuestionModel(question);
 
         return model.HistoryAndProbability.CorrectnessProbability.CPPersonal;
