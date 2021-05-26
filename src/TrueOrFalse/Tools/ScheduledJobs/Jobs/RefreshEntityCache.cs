@@ -1,9 +1,4 @@
-﻿using System;
-using System.Diagnostics;
-using System.Linq;
-using Autofac;
-using NHibernate.Util;
-using Quartz;
+﻿using Quartz;
 
 namespace TrueOrFalse.Utilities.ScheduledJobs
 {
