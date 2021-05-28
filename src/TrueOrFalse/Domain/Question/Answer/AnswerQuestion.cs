@@ -139,20 +139,10 @@ public class AnswerQuestion : IRegisterAsInstancePerLifetime
         action(question, result);
 
         ProbabilityUpdate_Question.Run(question);
-
-        var l = ServiceLocator.GetContainer(); 
         if (countLastAnswerAsCorrect)
-            JobExecute.RunAsTask(scope =>
-            {
-                Sl.R<UpdateQuestionAnswerCount>().ChangeOneWrongAnswerToCorrect(questionId);
-            }, "Name1");
-        
+            Sl.R<UpdateQuestionAnswerCount>().ChangeOneWrongAnswerToCorrect(questionId);
         else
-            JobExecute.RunAsTask(scope =>
-            {
-                Sl.R<UpdateQuestionAnswerCount>().Run(questionId, countUnansweredAsCorrect || result.IsCorrect);
-            }, "Name2");
-       
+            Sl.R<UpdateQuestionAnswerCount>().Run(questionId, countUnansweredAsCorrect || result.IsCorrect);
 
         ProbabilityUpdate_Valuation.Run(questionId, userId);
 

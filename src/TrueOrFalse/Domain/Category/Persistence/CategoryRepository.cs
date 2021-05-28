@@ -21,7 +21,6 @@ public class CategoryRepository : RepositoryDbBase<Category>
 
     public IList<Category> GetByIdsEager(IEnumerable<int> categoryIds = null)
     {
-        var l = ServiceLocator.GetContainer(); 
         var query = _session.QueryOver<Category>();
         if (categoryIds != null)
             query = query.Where(Restrictions.In("Id", categoryIds.ToArray()));
