@@ -19,6 +19,7 @@ public class JobExecute
 
     public static void Run(Action<ILifetimeScope> action, string jobName, bool writeLog = true)
     {
+        var s = ServiceLocator.GetContainer(); 
         try
         {
             using (var scope = ServiceLocator.GetContainer().BeginLifetimeScope(jobName))

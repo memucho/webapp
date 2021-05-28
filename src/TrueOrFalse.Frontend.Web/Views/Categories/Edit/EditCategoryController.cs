@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security;
 using System.Web;
 using System.Web.Mvc;
+using Autofac;
 using Newtonsoft.Json;
 using NHibernate;
 using NHibernate.Mapping;
@@ -257,7 +258,7 @@ public class EditCategoryController : BaseController
         category.Visibility = CategoryVisibility.Owner;
 
         var parentCategory = EntityCache.GetCategoryCacheItem(parentCategoryId);
-
+        var l = ServiceLocator.GetContainer(); 
         JobExecute.RunAsTask(scope =>
         {
             ModifyRelationsForCategory.AddParentCategory(Sl.CategoryRepo.GetByIdEager(category.Id), parentCategoryId);
@@ -487,7 +488,7 @@ public class EditCategoryController : BaseController
         if (categoryCacheItem.HasPublicParent())
         {
             categoryCacheItem.Visibility = CategoryVisibility.All;
-
+            var l = ServiceLocator.GetContainer(); 
             JobExecute.RunAsTask(scope =>
             {
                 var category = Sl.CategoryRepo.GetById(categoryId);
