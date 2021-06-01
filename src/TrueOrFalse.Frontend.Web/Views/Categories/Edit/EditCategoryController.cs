@@ -11,7 +11,7 @@ using TrueOrFalse.Frontend.Web.Code;
 using TrueOrFalse.Web;
 
 [SetUserMenu(UserMenuEntry.None)]
-public class EditCategoryController : BaseController
+public class EditCategoryController : BaseController, IRegisterAsInstancePerLifetime
 {
     private readonly CategoryRepository _categoryRepository;
     private const string _viewPath = "~/Views/Categories/Edit/EditCategory.aspx";
@@ -488,7 +488,7 @@ public class EditCategoryController : BaseController
         {
             categoryCacheItem.Visibility = CategoryVisibility.All;
 
-            JobExecute.RunAsTask(scope =>
+            JobExecute.Run(scope =>
             {
                 var category = Sl.CategoryRepo.GetById(categoryId);
                 category.Visibility = CategoryVisibility.All;

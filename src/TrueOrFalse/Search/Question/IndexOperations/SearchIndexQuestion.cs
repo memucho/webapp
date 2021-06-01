@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading;
-using Quartz;
-using Serilog;
+﻿using System.Collections.Generic;
 using SolrNet;
-using SolrNet.Commands;
 
 namespace TrueOrFalse.Search
 {
