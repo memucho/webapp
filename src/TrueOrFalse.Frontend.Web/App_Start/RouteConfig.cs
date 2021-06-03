@@ -82,6 +82,9 @@ namespace TrueOrFalse
             /* API */ routes.MapRoute("Question_SaveRelevancePersonal", "Questions/SaveRelevancePersonal/{id}/{newValue}", new { controller = "AnswerQuestion", action = "SaveRelevancePersonal" });
             /* API */ routes.MapRoute("Question_SaveRelevanceForAll", "Questions/SaveRelevanceForAll/{id}/{newValue}", new { controller = "AnswerQuestion", action = "SaveRelevanceForAll" });
 
+            /*InternalApi*/
+            /* API */ routes.MapRoute("UpdateCategoryAsync", "Internal/UpdateCategory", new { controller = "Internal", action = "UpdateCategory" });
+
             routes.MapRoute("Sets_MineSearchApi", "Fragesaetze/Meine/SucheApi", new { controller = "Sets", action = "SetsMineSearchApi" });
             routes.MapRoute("Sets_Mine", "Fragesaetze/Meine", new { controller = "Sets", action = "SetsMine" });
             routes.MapRoute("Sets_Wish", "Fragesaetze/Wunschwissen", new { controller = "Sets", action = "SetsWish" }); //}, new[] { "TrueOrFalse" }); ?

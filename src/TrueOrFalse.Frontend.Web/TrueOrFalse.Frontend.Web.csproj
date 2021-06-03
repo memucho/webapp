@@ -319,6 +319,7 @@
     <Compile Include="Views\Api\CategoryApiModel.cs" />
     <Compile Include="Views\Api\CategoryStatisticsApiController.cs" />
     <Compile Include="Views\Api\EduSharingApiController.cs" />
+    <Compile Include="Views\Api\InternalController.cs" />
     <Compile Include="Views\Api\MetaData\LomApiConroller.cs" />
     <Compile Include="Views\Api\Search\SearchApiController.cs" />
     <Compile Include="Views\Api\Search\PrepareSearch.cs" />
@@ -4296,6 +4297,7 @@
   <ItemGroup>
     <Folder Include="bin\" />
     <Folder Include="Views\Categories\Detail\JsLearningTab\" />
+    <Folder Include="Views\Internal\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
