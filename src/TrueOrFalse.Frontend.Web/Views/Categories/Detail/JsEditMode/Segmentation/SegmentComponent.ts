@@ -279,7 +279,7 @@ var segmentComponent = Vue.component('segment-component', {
         this.segmentId = "Segment-" + this.categoryId;
         if (this.childCategoryIds != null) {
             var baseChildCategoryIds = JSON.parse(this.childCategoryIds);
-            this.currentChildCategoryIds.push(baseChildCategoryIds);
+            this.currentChildCategoryIds = baseChildCategoryIds;
         }
         var segment = {
             CategoryId: parseInt(this.categoryId),
