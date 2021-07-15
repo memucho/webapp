@@ -862,6 +862,7 @@
     <Compile Include="Tools\Update\Steps\UpdateToVs214.cs" />
     <Compile Include="Tools\Update\Steps\UpdateToVs213.cs" />
     <Compile Include="Tools\Update\Steps\UpdateToVs212.cs" />
+    <Compile Include="Tools\Update\Steps\UpdateToVs226.cs" />
     <Compile Include="Tools\Update\TemplateMigration\QuestionSolutionType3To7Migration.cs" />
     <Compile Include="Tools\Update\TemplateMigration\TopicNavigationMigration.cs" />
     <Compile Include="Web\IgnoreLog.cs" />
