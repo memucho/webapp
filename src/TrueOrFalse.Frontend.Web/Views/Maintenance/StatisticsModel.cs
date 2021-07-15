@@ -69,8 +69,8 @@ public class StatisticsModel : BaseModel
             .Select(r => new QuestionsCreatedPerDayResult
             {
                 DateTime = r.Key,
-                CountByMemucho = r.Count(q => q.Creator.Id == _memuchoId),
-                CountByOthers = r.Count(q => q.Creator.Id != _memuchoId)
+                CountByMemucho = r.Count(q => new UserTinyModel(q.Creator).Id == _memuchoId),
+                CountByOthers = r.Count(q => new UserTinyModel(q.Creator).Id != _memuchoId)
             })
             .ToList();
 
