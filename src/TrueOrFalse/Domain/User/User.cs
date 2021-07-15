@@ -15,6 +15,7 @@ public class User : DomainEntity, IUserTinyModel
     public virtual string PasswordHashedAndSalted { get; set; }
     public virtual string Salt { get; set; }
     public virtual string EmailAddress { get; set; }
+    public virtual int PaymentStatus { get; set; }
 
     public virtual string Name { get; set; }
     public virtual bool IsEmailConfirmed { get; set;  }
