@@ -384,6 +384,16 @@ public class MaintenanceController : BaseController
             new ToolsModel { Message = new SuccessMessage("Der User wurde gelöscht") });
     }
 
+    [HttpPost]
+    public ActionResult ChangePayment(int userId, PaymentStatus paymentStatus = PaymentStatus.Free)
+    {
+        var user = Sl.UserRepo.GetById(userId);
+       user.PaymentStatus = (PaymentStatus)paymentStatus; 
+
+        return View("Tools",
+            new ToolsModel { Message = new SuccessMessage("Der User " + user.Name + " mit der Id " + user.Id + " hat jetzt den PaymentStatus " + user.PaymentStatus) });
+    }
+
     [ValidateAntiForgeryToken]
     [HttpPost]
     public ActionResult ReloadListFromIgnoreCrawlers()
