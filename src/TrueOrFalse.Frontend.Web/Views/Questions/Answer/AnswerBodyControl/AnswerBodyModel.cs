@@ -84,7 +84,6 @@ public class AnswerBodyModel : BaseModel
         IsInWidget = answerQuestionModel.IsInWidget;
         IsLearningSession = answerQuestionModel.IsLearningSession;
         LearningSession = answerQuestionModel.LearningSession;
-        IsTestSession = answerQuestionModel.IsTestSession;
         IsInLearningTab = isInLearningTab;
         TestSessionProgessAfterAnswering = answerQuestionModel.TestSessionProgessAfterAnswering;
 

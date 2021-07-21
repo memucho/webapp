@@ -5,7 +5,7 @@
 
 <asp:Content ID="ContentHeadSEO" ContentPlaceHolderID="HeadSEO" runat="server">
     <% Title = Model.QuestionTitle; %>
-    <% if (Model.IsLearningSession || Model.IsTestSession ) { %>
+    <% if (Model.IsLearningSession ) { %>
         <meta name="robots" content="noindex" />
     <%}else { %>
         <link rel="canonical" href="<%= Settings.CanonicalHost %><%= Links.AnswerQuestion(Model.Question) %>" />
@@ -108,7 +108,7 @@
         <div class="">
 
            <div class= "col-sm-12">
-                <% if (Model.QuestionHasParentCategories &&!Model.IsLearningSession && !Model.IsTestSession && Model.ContentRecommendationResult.Categories.Count != 0)
+                <% if (Model.QuestionHasParentCategories &&!Model.IsLearningSession && Model.ContentRecommendationResult.Categories.Count != 0)
                    {
                        Html.RenderPartial("~/Views/Shared/AnalyticsFooter.ascx", Model.AnalyticsFooterModel);
                    } %>

@@ -12,7 +12,6 @@ public class TopicToContinueLearningModel
     public TopicToContinueLearningModel(AnswerQuestionModel answerQuestionModel, IList<CategoryCacheItem> categoryList)
     {
         IsLearningSession = answerQuestionModel.IsLearningSession;
-        IsTestSession = answerQuestionModel.IsTestSession;
         ContentRecommendationResult = answerQuestionModel.ContentRecommendationResult;
         Categories = categoryList;
     }

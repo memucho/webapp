@@ -222,9 +222,9 @@
                             Dein Ansprechpartner für alle Fragen zum Widget ist:<br/>
                         </p>
                         <p>
-                            <strong>Christof Mauersberger</strong><br/>
-                            E-Mail: <span class="mailme">christof at memucho dot de</span><br/>
-                            Telefon: +49 - 1577 - 682 57 07<br/>
+                            <strong>Robert Mischke</strong><br/>
+                            E-Mail: <span class="mailme">team at memucho dot de</span><br/>
+                            Telefon:+49-178 186 68 48<br/>
                         </p>
                         
                     </div>

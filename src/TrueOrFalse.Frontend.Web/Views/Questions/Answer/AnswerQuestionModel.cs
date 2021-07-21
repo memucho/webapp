@@ -85,8 +85,6 @@ public class AnswerQuestionModel : BaseModel
     public int CurrentLearningStepIdx;
     public bool IsLastLearningStep;
 
-    public bool IsTestSession;
-
     public int TestSessionProgessAfterAnswering;
 
     public bool DisableCommentLink;
@@ -105,6 +103,7 @@ public class AnswerQuestionModel : BaseModel
         HasNextPage = HasPreviousPage = false;
         ContentRecommendationResult = ContentRecommendation.GetForQuestion(question, 6);
         ShowCategoryList = showCategoryList;
+        LearningSession = LearningSessionCache.GetLearningSession();  
 
         Populate(question);
     }
@@ -126,6 +125,18 @@ public class AnswerQuestionModel : BaseModel
         AnswerHelp = learningSession.Config.AnswerHelp; 
 
         Populate(LearningSessionStep.Question);
+    }
+
+    public AnswerQuestionModel(Question question, bool isQuestionDetails)
+    {
+        var valuationForUser = Resolve<TotalsPersUserLoader>().Run(UserId, question.Id);
+        var questionValuationForUser = NotNull.Run(Sl.QuestionValuationRepo.GetByFromCache(question.Id, UserId));
+        HistoryAndProbability = new HistoryAndProbabilityModel
+        {
+            AnswerHistory = new AnswerHistoryModel(question, valuationForUser),
+            CorrectnessProbability = new CorrectnessProbabilityModel(question, questionValuationForUser),
+            QuestionValuation = questionValuationForUser
+        };
     }
 
     //we have no widgets, this can deleted
@@ -159,11 +170,10 @@ public class AnswerQuestionModel : BaseModel
         Creator = new UserTinyModel(question.Creator);
 
         if (question.Visibility != QuestionVisibility.All)
-            if(Creator.Id != _sessionUser.User.Id || IsTestSession)
+            if(Creator.Id != _sessionUser.User.Id )
                 throw new Exception("Invalid access to questionId" + question.Id);
 
         var questionValuationForUser = NotNull.Run(Sl.QuestionValuationRepo.GetByFromCache(question.Id, UserId));
-        var valuationForUser = Resolve<TotalsPersUserLoader>().Run(UserId, question.Id);
 
         if(IsLoggedIn)
             ImageUrlAddComment = new UserImageSettings(UserId).GetUrl_128px_square(_sessionUser.User).Url;
@@ -176,18 +186,16 @@ public class AnswerQuestionModel : BaseModel
             .Select(c => new CommentModel(c))
             .ToList();
         CommentsSettledCount = comments.Count(c => c.IsSettled);
-
        
         CreatorId = Creator.Id.ToString();
         CreatorName = Creator.Name;
         CreationDate = question.DateCreated.ToString("dd.MM.yyyy HH:mm:ss");
         CreationDateNiceText = DateTimeUtils.TimeElapsedAsText(question.DateCreated);
-
         IsOwner = _sessionUser.IsLoggedInUserOrAdmin(Creator.Id);
 
         var imageResult = new UserImageSettings(Creator.Id).GetUrl_250px(Creator);
-        ImageUrl_250 = imageResult.Url;
 
+        ImageUrl_250 = imageResult.Url;
         QuestionId = question.Id;
         QuestionText = question.Text;
         QuestionTitle = Regex.Replace(QuestionText, "<.*?>", String.Empty);
@@ -195,37 +203,24 @@ public class AnswerQuestionModel : BaseModel
         Visibility = question.Visibility;
         SolutionType = question.SolutionType.ToString();
         SolutionModel = GetQuestionSolution.Run(question);
-
         SolutionMetadata = new SolutionMetadata {Json = question.SolutionMetadataJson};
         SolutionMetaDataJson = question.SolutionMetadataJson;
-
-        HistoryAndProbability = new HistoryAndProbabilityModel
-        {
-            AnswerHistory = new AnswerHistoryModel(question, valuationForUser),
-            CorrectnessProbability = new CorrectnessProbabilityModel(question, questionValuationForUser),
-            QuestionValuation = questionValuationForUser
-        };
-
         IsInWishknowledge = questionValuationForUser.IsInWishKnowledge;
-        
         TotalViews = question.TotalViews + 1;
-
         TotalQualityAvg = question.TotalQualityAvg.ToString();
         TotalQualityEntries = question.TotalQualityEntries.ToString();
         TotalRelevanceForAllAvg = question.TotalRelevanceForAllAvg.ToString();
         TotalRelevanceForAllEntries = question.TotalRelevanceForAllEntries.ToString();
         TotalRelevancePersonalAvg = question.TotalRelevancePersonalAvg.ToString();
         TotalRelevancePersonalEntries = question.TotalRelevancePersonalEntries.ToString();
-
         AverageAnswerTime = "";
-
         ImageUrl_500px = QuestionImageSettings.Create(question.Id).GetUrl_128px().Url;
         SoundUrl = new GetQuestionSoundUrl().Run(question);
-
         Categories = question.Categories;
         QuestionHasParentCategories = question.Categories.Any();
+
         //Find best suited primary category for question
-        if (!IsTestSession && !IsLearningSession && QuestionHasParentCategories)
+        if (!IsLearningSession && QuestionHasParentCategories)
         {
             PrimaryCategory = GetPrimaryCategory.GetForQuestion(question);
             AnalyticsFooterModel = new AnalyticsFooterModel(PrimaryCategory, true);
@@ -241,11 +236,6 @@ public class AnswerQuestionModel : BaseModel
 
         DescriptionForSearchEngines = GetMetaDescriptionSearchEngines();
         DescriptionForFacebook = GetMetaDescriptionsFacebook();
-
-        var authors = Sl.QuestionRepo
-            .GetAuthorsQuestion(QuestionId, filterUsersForSidebar:true)
-            .ToList();
-        SidebarModel.Fill(authors, UserId);
     }
 
     private string GetMetaDescriptionSearchEngines()

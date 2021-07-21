@@ -258,7 +258,7 @@
                 <div class="panel-body">
                     <p>
                         Per E-Mail: <span class="mailme">team at memucho dot de</span><br/> 
-                        Christof erreichst du auch über Skype ("cmauersberger") oder per Telefon (+49-1577-6825707).
+                        Robert erreichst du auch per Telefon (+49-178 186 68 48).
                     </p>
                     <p>
                         Oder du schreibst uns eine Postkarte oder kommst persönlich bei uns vorbei (am besten mit Anmeldung)!<br/>

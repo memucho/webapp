@@ -131,7 +131,7 @@
 
                 <div class="row">
                     <div class="col-xs-4 col-md-3 TeamPic">
-                        <img src="/Images/Team/team_christof_20170404_P3312344_155.jpg" alt="Foto Christof"/>
+<%--                        <img src="/Images/Team/team_christof_20170404_P3312344_155.jpg" alt="Foto Christof"/>--%>
                     </div>
                     <div class="col-xs-8 col-md-9">
                         <p>
@@ -139,9 +139,9 @@
                             Sprich uns einfach an, wir freuen uns über deine Nachricht! Dein Ansprechpartner ist:<br/>
                         </p>
                         <p>
-                            <strong>Christof</strong><br/>
-                            E-Mail: <span class="mailme">christof at memucho dot de</span><br/>
-                            Telefon: +49 - 1577 - 682 57 07<br/>
+                            <strong>Robert</strong><br/>
+                            E-Mail: <span class="mailme">robert at memucho dot de</span><br/>
+                            Telefon: +49-178 186 68 48<br/>
                         </p>
                         
                     </div>

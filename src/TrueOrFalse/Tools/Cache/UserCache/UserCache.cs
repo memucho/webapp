@@ -9,7 +9,6 @@ using System.Web;
 public class UserCache
 {
     public const int ExpirationSpanInMinutes = 600;
-    public static LearningSession LearningSession { get; set; }
 
     private static string GetCacheKey(int userId) => "UserCacheItem_" + userId;
 

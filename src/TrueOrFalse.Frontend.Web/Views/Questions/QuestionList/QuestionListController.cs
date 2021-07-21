@@ -35,7 +35,7 @@ public class QuestionListController : BaseController
         var author = new UserTinyModel(question.Creator);
         var authorImage = new UserImageSettings(author.Id).GetUrl_128px_square(author);
         var solution = GetQuestionSolution.Run(question);
-        var answerQuestionModel = new AnswerQuestionModel(question);
+        var answerQuestionModel = new AnswerQuestionModel(question, true);
         var history = answerQuestionModel.HistoryAndProbability.AnswerHistory;
 
         var json = Json(new
@@ -86,7 +86,7 @@ public class QuestionListController : BaseController
     public int GetUpdatedCorrectnessProbability(int questionId)
     {
         var question = Sl.QuestionRepo.GetById(questionId);
-        var model = new AnswerQuestionModel(question);
+        var model = new AnswerQuestionModel(question, true);
 
         return model.HistoryAndProbability.CorrectnessProbability.CPPersonal;
     }

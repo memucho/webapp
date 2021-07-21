@@ -2,7 +2,7 @@
 <%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<TopicToContinueLearningModel>" %>
 
 <div class="col-xs-12">
-    <% if (!Model.IsLearningSession && !Model.IsTestSession && Model.ContentRecommendationResult.Categories.Count != 0)
+    <% if (!Model.IsLearningSession &&  Model.ContentRecommendationResult.Categories.Count != 0)
        { %>
         <h4 class="marginTop50Bottom30">Themen zum Weiterlernen:</h4>
         <div id="ParentsChildrenTopics">

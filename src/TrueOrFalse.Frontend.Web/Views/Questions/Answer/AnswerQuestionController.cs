@@ -322,6 +322,7 @@ public class AnswerQuestionController : BaseController
                 ControllerContext
             );
         }
+
         var question = Sl.QuestionRepo.GetById(questionId);
         if (isVideo)
         {
@@ -331,6 +332,7 @@ public class AnswerQuestionController : BaseController
                 ControllerContext
             );
         }
+
         //For normal questions
         var activeSearchSpec = Resolve<QuestionSearchSpecSession>().ByKey(pager);
         var questionViewGuid = Guid.NewGuid();
@@ -503,7 +505,7 @@ public class AnswerQuestionController : BaseController
     {
         var dateNow = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
         var question = EntityCache.GetQuestionById(questionId);
-        var answerQuestionModel = new AnswerQuestionModel(question);
+        var answerQuestionModel = new AnswerQuestionModel(question, true);
         var correctnessProbability = answerQuestionModel.HistoryAndProbability.CorrectnessProbability;
         var history = answerQuestionModel.HistoryAndProbability.AnswerHistory;
         var json = Json(new

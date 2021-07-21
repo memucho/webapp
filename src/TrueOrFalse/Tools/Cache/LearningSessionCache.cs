@@ -7,27 +7,17 @@ public class LearningSessionCache
 
     public static void AddOrUpdate(LearningSession learningSession)
     {
-        if (Sl.SessionUser.IsLoggedIn)
-        {
-            UserCache.LearningSession = learningSession;
-        }
-        else
-        {
+  
             _learningSessions.AddOrUpdate(
                 HttpContext.Current.Session.SessionID,
                 learningSession,
                 (a, b) => learningSession
             );
-        }
+        
     }
 
     public static LearningSession GetLearningSession()
     {
-        if (Sl.SessionUser.IsLoggedIn)
-        {
-            return UserCache.LearningSession;
-        }
-
         _learningSessions.TryGetValue(HttpContext.Current.Session.SessionID, out var learningSession);
         return learningSession;
     }

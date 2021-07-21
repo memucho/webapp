@@ -45,13 +45,13 @@
             Registergericht: Amtsgericht Cottbus, HRB 13499 CB<br />
             <h3>Vertreten durch:</h3>
             Geschäftsführer:<br />
-            Christof Mauersberger, Robert Mischke<br />
+            Robert Mischke<br />
 
             <h3>Kontakt:</h3>
 
             Telefon:
             <br />
-            +49-1577-6825707<br />
+            +49-178 186 68 48<br />
             <span class="mailme">team at memucho dot de</span>
 
             <h3>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:</h3>
