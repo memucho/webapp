@@ -35,38 +35,6 @@
                 <a class="btn btn-default" href="<%= Links.CategoryHistory(Model.Id) %>">
                     <i class="fa fa-list-ul"></i> &nbsp; Bearbeitungshistorie
                 </a>
-                <% var buttonSetId = Guid.NewGuid(); %>
-                <a href="#" id="<%= buttonSetId %>" class="dropdown-toggle btn btn-link btn-sm ButtonEllipsis" 
-                   type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                    <i class="fa fa-ellipsis-v" style="font-size: 18px; margin-top: 2px;"></i>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="<%= buttonSetId %>">
-                    <li>
-                        <% if (new SessionUser().IsLoggedIn)
-                           {
-                               if (Model.NextRevExists)
-                               { %>
-                                <a id="restoreButton" data-allowed="logged-in" onclick="$('#alertConfirmRestore').show();">
-                                    <div class="dropdown-icon"><i class="fa fa-undo"></i></div>
-                                     Wiederherstellen
-                                </a>
-                            <% }
-                               else
-                               { %>
-                                <a id="editButton" data-allowed="logged-in" href="<%= Links.CategoryEdit(Model.Category) %>">
-                                    <div class="dropdown-icon"><i class="fa fa-edit"></i></div>
-                                    Thema bearbeiten
-                                </a>
-                            <% } %>
-                        <% } %>
-                    </li>
-                    <li>
-                        <a href="<%= Links.CategoryChangesOverview(1) %>">
-                            <div class="dropdown-icon"><i class="fa fa-list"></i></div>
-                             Bearbeitungshistorie aller Themen
-                        </a>
-                    </li>
-                </ul>
             </div>
             <br/>
             <br/>

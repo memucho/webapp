@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using NHibernate;
 
@@ -6,7 +7,6 @@ public class CategoryChangesOverviewModel : BaseModel
 {
     public IList<CategoryChangeDayModel> Days;
     public int PageToShow;
-    
     public CategoryChangesOverviewModel(int pageToShow)
     {
         PageToShow = pageToShow;

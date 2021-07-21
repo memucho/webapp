@@ -1,55 +1,6 @@
-﻿var {
-    tiptap,
-    tiptapUtils,
-    tiptapCommands,
-    tiptapExtensions,
-} = tiptapBuild;
+﻿Vue.component('editor-content', tiptapEditorContent);
 
-var {
-    apache,
-    //cLike,
-    xml,
-    bash,
-    //c,
-    coffeescript,
-    csharp,
-    css,
-    markdown,
-    diff,
-    ruby,
-    go,
-    http,
-    ini,
-    java,
-    javascript,
-    json,
-    kotlin,
-    less,
-    lua,
-    makefile,
-    perl,
-    nginx,
-    objectivec,
-    php,
-    phpTemplate,
-    plaintext,
-    properties,
-    python,
-    pythonREPL,
-    rust,
-    scss,
-    shell,
-    sql,
-    swift,
-    yaml,
-    typescript,
-} = hljsBuild;
-Vue.component('editor-menu-bar', tiptap.EditorMenuBar);
-Vue.component('editor-menu-bubble', tiptap.EditorMenuBubble);
-Vue.component('editor-content', tiptap.EditorContent);
-Vue.component('editor-floating-menu', tiptap.EditorFloatingMenu);
-
-Vue.component('text-component',
+var textComponent = Vue.component('text-component',
     {
         props: ['content'],
         data() {
@@ -61,103 +12,62 @@ Vue.component('text-component',
                 contentHasBeenSaved: false,
                 contentIsChanged: false,
                 savedContent: null,
-                editor: new tiptap.Editor({
-                    extensions: [
-                        new tiptapExtensions.Blockquote(),
-                        new tiptapExtensions.BulletList(),
-                        new tiptapExtensions.CodeBlock(),
-                        new tiptapExtensions.HardBreak(),
-                        new tiptapExtensions.Heading({ levels: [2, 3] }),
-                        new tiptapExtensions.HorizontalRule(),
-                        new tiptapExtensions.ListItem(),
-                        new tiptapExtensions.OrderedList(),
-                        new tiptapExtensions.TodoItem(),
-                        new tiptapExtensions.TodoList(),
-                        new tiptapExtensions.Link({
-                            target: "_self"
-                        }),
-                        new tiptapExtensions.Image(),
-                        new tiptapExtensions.Bold(),
-                        //new tiptapExtensions.Code(),
-                        new tiptapExtensions.Italic(),
-                        new tiptapExtensions.Strike(),
-                        new tiptapExtensions.Underline(),
-                        new tiptapExtensions.History(),
-                        new tiptapExtensions.TrailingNode({
-                            node: 'paragraph',
-                            notAfter: ['paragraph'],
-                        }),
-                        new tiptapExtensions.CodeBlockHighlight({
-                            languages: {
-                                apache,
-                                //cLike,
-                                xml,
-                                bash,
-                                //c,
-                                coffeescript,
-                                csharp,
-                                css,
-                                markdown,
-                                diff,
-                                ruby,
-                                go,
-                                http,
-                                ini,
-                                java,
-                                javascript,
-                                json,
-                                kotlin,
-                                less,
-                                lua,
-                                makefile,
-                                perl,
-                                nginx,
-                                objectivec,
-                                php,
-                                phpTemplate,
-                                plaintext,
-                                properties,
-                                python,
-                                pythonREPL,
-                                rust,
-                                scss,
-                                shell,
-                                sql,
-                                swift,
-                                yaml,
-                                typescript,
-                            },
-                        }),
-                        new tiptapExtensions.Placeholder({
-                            emptyEditorClass: 'is-editor-empty',
-                            emptyNodeClass: 'is-empty',
-                            emptyNodeText: 'Klicke hier um zu tippen ...',
-                            showOnlyWhenEditable: true,
-                            showOnlyCurrent: true,
-                        }),
-                    ],
-                    content: this.content,
-                    editorProps: {
-                        handleKeyDown: (e, k) => {
-                            this.contentIsChanged = true;
-                        },
-                    },
-                    onPaste: () => {
-                        this.contentIsChanged = true;
-                    },
-                    onUpdate: ({ getJSON, getHTML }) => {
-                        this.json = getJSON();
-                        this.html = getHTML();
-                    },
-                    nativeExtensions: [
-                        ]
-                }),
+                editor: null,
             }
         },
         created() {
             this.$root.content = this.html;
         },
         mounted() {
+            this.editor = new tiptapEditor({
+                content: this.content,
+                extensions: [
+                    tiptapStarterKit.configure({
+                        heading: {
+                            levels: [2, 3]
+                        }
+                    }),
+                    tiptapLink.configure({
+                        HTMLAttributes: {
+                            target: '_self',
+                            rel: 'noopener noreferrer nofollow'
+                        }
+                    }),
+                    tiptapPlaceholder.configure({
+                        emptyEditorClass: 'is-editor-empty',
+                        emptyNodeClass: 'is-empty',
+                        placeholder: 'Klicke hier um zu tippen ...',
+                        showOnlyWhenEditable: true,
+                        showOnlyCurrent: true,
+                    }),
+                    tiptapCodeBlockLowlight.configure({
+                        lowlight,
+                    }),
+                    tiptapUnderline,
+                    tiptapImage
+                ],
+                editorProps: {
+                    handleKeyDown: (e, k) => {
+                        this.contentIsChanged = true;
+                    },
+                    attributes: {
+                        id: 'InlineEdit',
+                    }
+                },
+                onPaste: () => {
+                    this.contentIsChanged = true;
+                },
+                onUpdate: ({ editor }) => {
+                    this.json = editor.getJSON();
+                    this.html = editor.getHTML();
+                },
+                onFocus({ editor, event }) {
+                },
+                onBlur({ editor, event }) {
+                },
+                nativeExtensions: [
+                ]
+            });
             eventBus.$on('save-success',
                 () => {
                     this.contentHasBeenSaved = true;
@@ -165,104 +75,49 @@ Vue.component('text-component',
                 });
             eventBus.$on('cancel-edit-mode',
                 () => {
-                    var newContent;
-                    if (this.contentHasBeenSaved)
-                        newContent = this.savedContent;
-                    else
-                        newContent = this.content;
+                    var newContent = this.contentHasBeenSaved ? this.savedContent : this.content;
                     this.contentIsChanged = false;
                     this.editor.destroy();
                     this.editor =
-                        new tiptap.Editor({
+                        new tiptapEditor({
+                            content: newContent,
                             extensions: [
-                                new tiptapExtensions.Blockquote(),
-                                new tiptapExtensions.BulletList(),
-                                new tiptapExtensions.CodeBlock(),
-                                new tiptapExtensions.HardBreak(),
-                                new tiptapExtensions.Heading({ levels: [2, 3] }),
-                                new tiptapExtensions.HorizontalRule(),
-                                new tiptapExtensions.ListItem(),
-                                new tiptapExtensions.OrderedList(),
-                                new tiptapExtensions.TodoItem(),
-                                new tiptapExtensions.TodoList(),
-                                new tiptapExtensions.Link({
-                                    target: "_self"
+                                tiptapStarterKit.configure({
+                                    heading: {
+                                        levels: [2, 3]
+                                    }
                                 }),
-                                new tiptapExtensions.Image(),
-                                new tiptapExtensions.Bold(),
-                                //new tiptapExtensions.Code(),
-                                new tiptapExtensions.Italic(),
-                                new tiptapExtensions.Strike(),
-                                new tiptapExtensions.Underline(),
-                                new tiptapExtensions.History(),
-                                new tiptapExtensions.TrailingNode({
-                                    node: 'paragraph',
-                                    notAfter: ['paragraph'],
+                                tiptapLink.configure({
+                                    HTMLAttributes: {
+                                        target: '_self',
+                                        rel: 'noopener noreferrer nofollow'
+                                    }
                                 }),
-                                new tiptapExtensions.CodeBlockHighlight({
-                                    languages: {
-                                        apache,
-                                        //cLike,
-                                        xml,
-                                        bash,
-                                        //c,
-                                        coffeescript,
-                                        csharp,
-                                        css,
-                                        markdown,
-                                        diff,
-                                        ruby,
-                                        go,
-                                        http,
-                                        ini,
-                                        java,
-                                        javascript,
-                                        json,
-                                        kotlin,
-                                        less,
-                                        lua,
-                                        makefile,
-                                        perl,
-                                        nginx,
-                                        objectivec,
-                                        php,
-                                        phpTemplate,
-                                        plaintext,
-                                        properties,
-                                        python,
-                                        pythonREPL,
-                                        rust,
-                                        scss,
-                                        shell,
-                                        sql,
-                                        swift,
-                                        yaml,
-                                        typescript,
-                                    },
-                                }),
-                                new tiptapExtensions.Placeholder({
+                                tiptapPlaceholder.configure({
                                     emptyEditorClass: 'is-editor-empty',
                                     emptyNodeClass: 'is-empty',
-                                    emptyNodeText: 'Klicke hier um zu tippen ...',
+                                    placeholder: 'Klicke hier um zu tippen ...',
                                     showOnlyWhenEditable: true,
                                     showOnlyCurrent: true,
+                                }),
+                                tiptapCodeBlockLowlight.configure({
+                                    lowlight,
                                 })
                             ],
-                            content: newContent,
                             editorProps: {
-                                handleKeyDown: () => {
+                                handleKeyDown: (e, k) => {
                                     this.contentIsChanged = true;
                                 },
                             },
                             onPaste: () => {
                                 this.contentIsChanged = true;
                             },
-                            onUpdate: ({ getJSON, getHTML }) => {
-                                this.json = getJSON();
-                                this.html = getHTML();
+                            onUpdate: () => {
+                                this.json = this.editor.getJSON();
+                                this.html = this.editor.getHTML();
                             },
                             nativeExtensions: [
-                            ],
+                            ]
                         });
                 });
         },
@@ -294,4 +149,3 @@ Vue.component('text-component',
             },
         },
     });
-

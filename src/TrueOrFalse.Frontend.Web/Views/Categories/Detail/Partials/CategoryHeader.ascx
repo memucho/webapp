@@ -73,7 +73,7 @@
                         <% } %>
                         und
                         <% if (Model.CountAggregatedQuestions == 1) { %> 1 Frage <% }
-                           else if (Model.CountAggregatedQuestions > 1){ %> <%= Model.CountCategoryQuestions %> Fragen <% }
+                           else if (Model.CountAggregatedQuestions > 1){ %> <%= Model.Category.GetCountQuestionsAggregated() %> Fragen <% }
                            else { %> 0 Fragen
                         <% } %>
                     </div>

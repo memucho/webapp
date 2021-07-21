@@ -1,13 +1,13 @@
 ﻿<%@ Import Namespace="System.Web.Optimization" %>
 <%@ Import Namespace="TrueOrFalse.Frontend.Web.Code" %>
 <add-category-component inline-template>
-        <div class="categoryCardModal">
+        <div class="cardModal">
             <div class="modal fade" id="AddCategoryModal" tabindex="-1" role="dialog" aria-labelledby="modal-content-module-settings" aria-hidden="true">
                 <div class="modal-dialog modal-m" role="document">
                     <button type="button" class="close dismissModal" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 
                     <div class="modal-content">
-                        <div class="addCategoryCardModal">
+                        <div class="cardModalContent">
                             <div class="modalHeader">
                                 <h4 v-if="createCategory" class="modal-title">Neues Thema erstellen</h4>
                                 <h4 v-else class="modal-title">Bestehendes Thema verknüpfen</h4>

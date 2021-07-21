@@ -26,7 +26,7 @@
         Wir kümmern uns um das Problem. 
         <ul>
             <li>Wir wurden per E-Mail informiert.</li>
-            <li>Bei dringenden Fragen kannst du Christof unter 01577-6825707 erreichen.</li>
+            <li>Bei dringenden Fragen kannst du Robert unter 0178-1866848 erreichen.</li>
             <li>Oder schicke eine E-Mail an <span class="mailme">team at memucho dot de</span>.</li>
         </ul>
     </p>

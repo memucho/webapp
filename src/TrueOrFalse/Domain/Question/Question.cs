@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Seedworks.Lib.Persistence;
 using TrueOrFalse;
@@ -98,9 +99,10 @@ public class Question : DomainEntity, ICreator
         References = new List<Reference>();
     }
 
-    public virtual string GetShortTitle(int length = 96) 
+    public virtual string GetShortTitle(int length = 96)
     {
-        return Text.TruncateAtWord(length);
+        var safeText = Regex.Replace(Text, "<.*?>", "");
+        return safeText.TruncateAtWord(length);
     }
 
     public virtual bool IsPrivate() => Visibility != QuestionVisibility.All;

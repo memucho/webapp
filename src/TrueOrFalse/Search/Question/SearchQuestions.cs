@@ -28,7 +28,6 @@ namespace TrueOrFalse.Search
                 searchSpec.Filter.SearchTerm,
                 searchSpec,
                 searchSpec.Filter.CreatorId,
-                searchSpec.Filter.ValuatorId,
                 searchSpec.Filter.IgnorePrivates,
                 searchSpec.Filter.Categories,
                 searchSpec.Filter.GetKnowledgeQuestionIds(),
@@ -48,8 +47,7 @@ namespace TrueOrFalse.Search
         public SearchQuestionsResult Run(
             string searchTerm, 
             Pager pager,
-            int creatorId = -1, 
-            int valuatorId = -1,
+            int creatorId = -1,
             bool ignorePrivates = true,
             IList<int> categories = null,
             IList<int> questionIds = null, 
@@ -85,8 +83,7 @@ namespace TrueOrFalse.Search
                 .Add("Text", searchTerm, startsWith: true, boost: 99999);
             //.Add("FullTextExact", searchTerm, phrase: true);
 
-            sqb.Add("CreatorId", creatorId != -1 ? creatorId.ToString() : null, isAndCondition: true, exact: true)
-               .Add("ValuatorIds", valuatorId != -1 ? valuatorId.ToString() : null, isAndCondition: true, exact: true);
+            sqb.Add("CreatorId", creatorId != -1 ? creatorId.ToString() : null, isAndCondition: true, exact: true);
 
             categories?
                 .ForEach(x => sqb.Add("CategoryIds", x.ToString(), isAndCondition: true, exact: true));

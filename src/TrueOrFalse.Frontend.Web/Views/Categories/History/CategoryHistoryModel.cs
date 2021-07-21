@@ -41,11 +41,13 @@ public class CategoryChangeDayModel
 {
     public string Date;
     public IList<CategoryChangeDetailModel> Items;
-    private string _catName; 
+    private string _catName;
+    public DateTime DateTime;
 
     public CategoryChangeDayModel(DateTime date, IList<CategoryChange> changes)
     {
         Date = date.ToString("dd.MM.yyyy");
+        DateTime = date;
         Items = changes.Select(cc =>
         {
             var typ = "";

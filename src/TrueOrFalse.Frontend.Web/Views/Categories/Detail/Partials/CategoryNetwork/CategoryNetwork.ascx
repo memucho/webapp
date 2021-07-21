@@ -38,10 +38,13 @@
                     <% if (category.IsVisibleToCurrentUser()) 
                         Html.RenderPartial("CategoryLabel", category); %>
                 <% } %>
-                <i class="fa fa-plus-circle show-tooltip color-category add-new" 
-                    style="font-size: 13px; cursor: pointer; line-height: 32px; padding-top: 4px; color: #555555;"
-                    onclick="eventBus.$emit('open-add-category-modal', <%= Model.Category.Id %>)" 
-                    data-original-title="Neues untergeordnetes Thema erstellen"></i>
+                <%if (!Model.Category.IsHistoric)  {%>
+                    <i class="fa fa-plus-circle show-tooltip color-category add-new" 
+                       style="font-size: 13px; cursor: pointer; line-height: 32px; padding-top: 4px; color: #555555;"
+                       onclick="eventBus.$emit('open-add-category-modal', <%= Model.Category.Id %>)" 
+                       data-original-title="Neues untergeordnetes Thema erstellen"></i>
+                <%}%>
+
             </div>
         <% } else { %>
             <div style="margin-top: 0;">keine untergeordneten Themen

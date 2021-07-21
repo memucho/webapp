@@ -1,6 +1,7 @@
 ﻿using StackExchange.Profiling;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
@@ -491,20 +492,20 @@ public class AnswerQuestionController : BaseController
 
     public string RenderUpdatedQuestionDetails(int questionId, bool showCategoryList = true)
     {
-        var question = Sl.QuestionRepo.GetById(questionId);
+        var question = EntityCache.GetQuestionById(questionId);
         var model = new AnswerQuestionModel(question, showCategoryList:showCategoryList);
 
         return ViewRenderer.RenderPartialView("~/Views/Questions/Answer/AnswerQuestionDetails.ascx", model, ControllerContext);
     }
 
+    [HttpPost]
     public JsonResult GetQuestionDetails(int questionId)
     {
+        var dateNow = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
         var question = EntityCache.GetQuestionById(questionId);
         var answerQuestionModel = new AnswerQuestionModel(question);
-
         var correctnessProbability = answerQuestionModel.HistoryAndProbability.CorrectnessProbability;
         var history = answerQuestionModel.HistoryAndProbability.AnswerHistory;
-
         var json = Json(new
         {
             personalProbability = correctnessProbability.CPPersonal,
@@ -525,14 +526,15 @@ public class AnswerQuestionController : BaseController
                 isPrivate = c.Visibility == CategoryVisibility.Owner,
             }).AsEnumerable().Distinct().ToList(),
             visibility = question.Visibility,
+            dateNow,
+            endTimer = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds()
         });
-
         return json;
     }
 
     public string RenderCategoryList(int questionId)
     {
-        var question = Sl.QuestionRepo.GetById(questionId);
+        var question = EntityCache.GetQuestionById(questionId);
 
         return ViewRenderer.RenderPartialView("~/Views/Shared/CategoriesOfQuestion.ascx", question, ControllerContext);
     }

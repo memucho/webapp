@@ -65,9 +65,15 @@ public class CategoryController : BaseController
             GetModelWithContentHtml(category, version, isCategoryNull);
 
         if (version != null)
+        {
             ApplyCategoryChangeToModel(result.CategoryModel, (int)version, id);
+            result.Category.IsHistoric = true;
+        }
         else
+        {
             SaveCategoryView.Run(EntityCache.GetCategoryCacheItem(result.Category.Id), User_());
+            result.Category.IsHistoric = false;
+        }
 
         return result;
     }
@@ -93,7 +99,7 @@ public class CategoryController : BaseController
 
         categoryModel.Name = historicCategory.Name;
         categoryModel.CategoryChange = categoryChange;
-        categoryModel.CustomPageHtml = TemplateToHtml.Run( CategoryCacheItem.ToCacheCategory(historicCategory), ControllerContext);
+        categoryModel.CustomPageHtml = TemplateToHtml.Run(CategoryCacheItem.ToCacheCategory(historicCategory), ControllerContext);
         categoryModel.WikipediaURL = historicCategory.WikipediaURL;
         categoryModel.NextRevExists = Sl.CategoryChangeRepo.GetNextRevision(categoryChange) != null;
     }

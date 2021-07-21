@@ -27,7 +27,7 @@ class CategoryHeader {
                 this._isLoaded = true;
                 this.getData(page.CategoryId)
                     .done((data) => {
-                        this.drawViewsByDayChart(data)
+                        this.drawViewsByDayChart(data);
                     });
             };
         });

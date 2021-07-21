@@ -21,7 +21,7 @@ var deleteCategoryComponent = Vue.component('delete-category-component', {
             event => {
             });
 
-        $('#AddCategoryModal').on('hidden.bs.modal',
+        $('#DeleteCategoryModal').on('hidden.bs.modal',
             event => {
             });
     },
@@ -43,12 +43,13 @@ var deleteCategoryComponent = Vue.component('delete-category-component', {
             });
         },
         deleteCategory() {
+            var self = this;
             $.ajax({
                 type: 'POST',
                 url: "/Categories/Delete/" + this.categoryId,
                 cache: false,
                 success: function () {
-                    $('#forTheTimeToDeleteModal').modal('hide');
+                    self.closeModal();
                     window.location.href = window.location.origin;
                 },
                 error: function (result) {

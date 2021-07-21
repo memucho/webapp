@@ -39,7 +39,7 @@ class AnswerBody {
 
         eventBus.$emit('answerbody-loaded');
         document.getElementById('AnswerBody').querySelectorAll('code').forEach(block => {
-            hljsBuild.core.highlightBlock(block);
+            block.innerHTML = Utils.GetHighlightedCode(block.textContent);
         });
     }
 

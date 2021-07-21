@@ -203,6 +203,7 @@ var categoryCardComponent = Vue.component('category-card-component', {
                     self.questionCount = data.questionCount;
                     self.childCategoryCount = data.childCategoryCount;
                     self.categoryName = data.categoryName;
+                    self.$nextTick(() => Images.ReplaceDummyImages());
                 },
             });
         },

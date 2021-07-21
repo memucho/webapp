@@ -103,6 +103,10 @@ var addCategoryComponent = Vue.component('add-category-component', {
         },
 
         addCategory() {
+            if (NotLoggedIn.Yes()) {
+                NotLoggedIn.ShowErrorMsg("CreateCategory");
+                return;
+            }
             Utils.ShowSpinner();
             var self = this;
             var url;

@@ -40,7 +40,7 @@ class QuestionRowDelete {
             $("#questionDeleteResult").removeClass("alert-danger");
             $.ajax({
                 type: 'POST',
-                url: "/Questions/DeleteDetails/" + questionId,
+                url: "/Question/DeleteDetails/" + questionId,
                 cache: false,
                 success: function (result) {
                     if (result.canNotBeDeleted) {
@@ -71,7 +71,7 @@ class QuestionRowDelete {
             $.ajax({
                 type: 'POST',
                 async: false,
-                url: "/Questions/Delete/" + questionId,
+                url: "/Question/Delete/" + questionId,
                 cache: false,
                 success: function (e) {
                     $('#modalDeleteQuestion').modal('hide');

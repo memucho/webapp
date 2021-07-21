@@ -28,10 +28,12 @@
                 vom <%= Model.CurrentDateCreated %> 
             </div>
             
-            <div class="col dropdown" style="float: right">                
-                <a class="btn btn-primary" href="<%= Links.CategoryDetail(Model.CategoryName, Model.CategoryId, Model.CurrentId) %>">
-                    <i class="fa fa-desktop"></i> &nbsp; Anzeige dieser Revision
-                </a>
+            <div class="col dropdown" style="float: right">
+                <% if (ReleaseDate.IsAfterRelease(Model.CurrentDateCreated)) {%>
+                    <a class="btn btn-primary" href="<%= Links.CategoryDetail(Model.CategoryName, Model.CategoryId, Model.CurrentId) %>">
+                        <i class="fa fa-desktop"></i> &nbsp; Anzeige dieser Revision
+                    </a>
+                <%}%>
                 <a class="btn btn-default" href="<%= Links.CategoryHistory(Model.CategoryId) %>">
                     <i class="fa fa-list-ul"></i> &nbsp; Bearbeitungshistorie
                 </a>

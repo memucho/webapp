@@ -7,6 +7,17 @@
     SearchUrl: string;
 }
 
+interface ResultItem {
+    Id: number;
+    Name: string;
+    IconHtml: string;
+    NumberOfQuestions: number;
+    ImageUrl: string;
+    ItemUrl: string;
+
+    NoResults: boolean;
+}
+
 class SearchBox
 {
     _elemInput: JQuery;
@@ -59,7 +70,7 @@ class SearchBox
                         break;
 
                     case "Categories":
-                        var item = <SetItem>resultItem.Item;
+                        var item = <ResultItem>resultItem.Item;
 
                         html =
                             "<div class='SearchResultItem'>" +
@@ -71,29 +82,12 @@ class SearchBox
                             "</div>";
                         break;
 
-                    case "SetsHeader":
-                        html = "<div class='SearchResultHeader'>Lernsets <div class='ResultCount'><a href='" + resultItem.Item.SearchUrl + "'>zeige " + resultItem.ResultCount + " Treffer</a></div></div>";
-                        break;
-
-                    case "Sets":
-                        item = <SetItem>resultItem.Item;
-
-                        html =
-                            "<div class='SearchResultItem'>" +
-                                "<a href='" + item.ItemUrl + "'>" +
-                                    "<img src=" + item.ImageUrl + "/>" +
-                                    item.IconHtml + 
-                                    item.Name +
-                                "</a>" +
-                            "</div>";
-                        break;
-
                     case "QuestionsHeader":
                         html = "<div class='SearchResultHeader'>Fragen <div class='ResultCount'><a href='" + resultItem.Item.SearchUrl + "'>zeige " + resultItem.ResultCount + " Treffer</a></div></div>";
                         break;
 
                     case "Questions":
-                        item = <SetItem>resultItem.Item;
+                        item = <ResultItem>resultItem.Item;
 
                         html =
                             "<div class='SearchResultItem'>" +
@@ -109,7 +103,7 @@ class SearchBox
                         break;
 
                     case "Users":
-                        item = <SetItem>resultItem.Item;
+                        item = <ResultItem>resultItem.Item;
 
                         html =
                             "<div class='SearchResultItem'>" +

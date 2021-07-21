@@ -166,11 +166,28 @@ class Utils
         return JSON.parse(decodedHtml);
     }
 
-    static ConvertJsonToMarkdown(json: object) {
+    static ConvertJsonToMarkdown(json: Object) {
         var jsonString = JSON.stringify(json);
         var encodedHtml = String(jsonString).replace(/"/g, '&quot;');
 
         return '[[' + encodedHtml + ']]';
+    }
+
+    static GetHighlightedCode(oldHtml: string) {
+        var hastNode = {
+            type: 'root',
+            data: { language: null, relevance: null },
+            children: [
+            ]
+        }
+        var lowlightTree = lowlight.highlightAuto(oldHtml);
+
+        hastNode.data.language = lowlightTree.language;
+        hastNode.data.relevance = lowlightTree.relevance;
+        hastNode.children = lowlightTree.value;
+        var newHtml = toHtml(hastNode);
+
+        return newHtml;
     }
 }
 

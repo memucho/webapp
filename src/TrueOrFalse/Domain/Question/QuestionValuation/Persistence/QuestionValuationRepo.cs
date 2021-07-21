@@ -136,7 +136,6 @@ public class QuestionValuationRepo : RepositoryDb<QuestionValuation>
     public override void Create(IList<QuestionValuation> questionValuations)
     {
         base.Create(questionValuations);
-        _searchIndexQuestion.Update(_questionRepo.GetByIds(questionValuations.QuestionIds().ToArray()));
 
         foreach (var questionValuation in questionValuations)
         {
@@ -147,22 +146,17 @@ public class QuestionValuationRepo : RepositoryDb<QuestionValuation>
     public override void Create(QuestionValuation questionValuation)
     {
         base.Create(questionValuation);
-        _searchIndexQuestion.Update(_questionRepo.GetById(questionValuation.Question.Id));
-
         UserCache.AddOrUpdate(questionValuation.ToCacheItem());
     }
 
     public void CreateInDatabase(QuestionValuation questionValuation)
     {
         base.Create(questionValuation);
-        _searchIndexQuestion.Update(_questionRepo.GetById(questionValuation.Question.Id));
     }
 
     public override void CreateOrUpdate(QuestionValuation questionValuation)
     {
         base.CreateOrUpdate(questionValuation);
-        _searchIndexQuestion.Update(_questionRepo.GetById(questionValuation.Question.Id));
-
         UserCache.AddOrUpdate(questionValuation.ToCacheItem());
     }
 

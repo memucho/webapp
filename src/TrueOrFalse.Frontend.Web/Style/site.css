@@ -1627,6 +1627,7 @@ h3 {
 .body-m,
 .body-s,
 .body-xs {
+  width: 100%;
   margin-bottom: 10px;
 }
 .body-l.bold,
@@ -1844,6 +1845,9 @@ strong {
   border: solid 1px #FFA07A;
 }
 #EditQuestionModal .is-empty .ProseMirror {
+  border: solid 1px #FFA07A;
+}
+#EditQuestionModal .btn.is-empty {
   border: solid 1px #FFA07A;
 }
 #EditQuestionModal .input-group-addon {
@@ -2234,4 +2238,70 @@ input::placeholder {
 .alert {
   border: none;
   border-radius: 0;
+}
+.field-error {
+  color: #FFA07A;
+  width: 100%;
+  white-space: nowrap;
+  font-size: 12px;
+}
+.field-error-container {
+  position: relative;
+}
+.field-error-container .field-error {
+  position: absolute;
+  top: 17px;
+}
+.cardModal .modal-s {
+  width: 430px;
+}
+.cardModal .dismissModal {
+  position: absolute;
+  right: 15px;
+  z-index: 10;
+  top: 10px;
+}
+.cardModal .modal-content {
+  padding: 34px 50px;
+}
+.cardModal .modal-content .cardModalContent h4 {
+  font-size: 25px;
+  text-align: center;
+  padding-bottom: 24px;
+}
+.cardModal .modal-content .cardModalContent .modalBody {
+  font-size: 14px;
+  padding: 10px 0 20px;
+  margin-bottom: 10px;
+}
+.cardModal .modal-content .cardModalContent .modalBody .form-control {
+  width: 100%;
+  max-width: 100%;
+}
+.cardModal .modal-content .cardModalContent .modalBody .alert {
+  line-height: 18px;
+}
+.cardModal .modal-content .cardModalContent .modalBody a {
+  color: #003264;
+  transition: 0.2s;
+}
+.cardModal .modal-content .cardModalContent .modalBody a:hover {
+  text-decoration: none;
+  color: #0065CA;
+}
+.cardModal .modal-content .cardModalContent .modalBody .checkBox {
+  user-select: none;
+  color: #999999;
+}
+.cardModal .modal-content .cardModalContent .modalBody .checkBox i {
+  color: #999999;
+}
+.cardModal .modal-content .cardModalContent .modalFooter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.cardModal .modal-content .cardModalContent .modalFooter .memo-button {
+  margin: 0;
 }

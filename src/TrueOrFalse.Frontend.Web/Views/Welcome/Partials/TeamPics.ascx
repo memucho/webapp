@@ -24,31 +24,8 @@
                 (Gründerin)
             </div>
         </div>
-
-        <div class="col-xs-4 infoItemColumn">
-            <div class="TeamPic">
-                <img src="/Images/Team/team_christof_20170404_P3312344_155.jpg" />
-            </div>
-            <div class="infoCatchWord">
-                Christof
-            </div>
-            <div class="infoExplanationSnippet">
-                (Gründer)
-            </div>
-        </div>
     </div>
     <div class="row infoItemRow">
-        <div class="col-xs-4 infoItemColumn">
-            <div class="TeamPic">
-                <img src="/Images/Team/sebastian_q.jpg" />
-            </div>
-            <div class="infoCatchWord">
-                Sebastian
-            </div>
-            <div class="infoExplanationSnippet">
-                (3D-Engineer)
-            </div>
-        </div>
 
         <div class="col-xs-4 infoItemColumn">
             <div class="TeamPic">

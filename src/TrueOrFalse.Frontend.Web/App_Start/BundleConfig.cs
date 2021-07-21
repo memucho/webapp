@@ -85,7 +85,8 @@ namespace TrueOrFalse.View
                 .Include("~/Views/Categories/Detail/JsEditMode/CategoryHeader/CategoryNameComponent.js")
                 .Include("~/Views/Categories/Detail/JsEditMode/CategoryHeader/CategoryHeaderApp.js")
                 .Include("~/Views/Categories/Edit/Js/DeleteCategory/DeleteCategoryComponent.js")
-                .Include("~/Views/Categories/Edit/Js/AddCategory/AddCategoryComponent.js"));
+                .Include("~/Views/Categories/Edit/Js/AddCategory/AddCategoryComponent.js")
+                .Include("~/Views/Shared/Editor/EditorMenuBarComponent.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/js/d3")
                 .Include("~/Scripts/npm/d3/d3.js"));
@@ -97,19 +98,19 @@ namespace TrueOrFalse.View
                 .Include("~/Scripts/npm/sortablejs/Sortable.js")
                 .Include("~/Scripts/npm/vue-sortable/vue-sortable.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/js/tiptap")
-                .Include("~/Scripts/npm/tiptap-build/tiptap-build.js"));
 
+            bundles.Add(new Bundle("~/bundles/js/tiptap")
+                .IncludeDirectory("~/Scripts/npm/tiptap-build/", "*.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/js/Editor")
+                .Include("~/Views/Shared/Editor/EditorMenuBarComponent.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/js/EditQuestion")
                 .Include("~/Views/Questions/Edit/EditComponents/EditQuestionComponent.js")
-                //.IncludeDirectory("~/Views/Questions/Edit/EditComponents/Date/", "*.js")
                 .IncludeDirectory("~/Views/Questions/Edit/EditComponents/FlashCard/", "*.js")
                 .IncludeDirectory("~/Views/Questions/Edit/EditComponents/MatchList/", "*.js")
                 .IncludeDirectory("~/Views/Questions/Edit/EditComponents/MultipleChoice/", "*.js")
-                //.IncludeDirectory("~/Views/Questions/Edit/EditComponents/MultipleChoice_SingleSolution/", "*.js")
                 .Include("~/Views/Shared/CategoryChip/CategoryChipComponent.js")
-                //.IncludeDirectory("~/Views/Questions/Edit/EditComponents/Numeric/", "*.js")
                 .IncludeDirectory("~/Views/Questions/Edit/EditComponents/Text/", "*.js")
                 .Include("~/Scripts/npm/vue-textarea-autosize/vue-textarea-autosize.umd.js"));
 
@@ -232,7 +233,7 @@ namespace TrueOrFalse.View
                 .Include("~/Views/Questions/Js/AddQuestion/AddQuestion.js")
                 .Include("~/Scripts/npm/vue-slider-component/vue-slider-component.umd.js")
                 .Include("~/Views/Questions/Js/QuestionList/SessionConfig.js")
-                .Include("~/Views/Questions/Js/QuestionList/QuestionListComponents.js")
+                .Include("~/Views/Questions/Js/QuestionList/QuestionListComponent.js")
                 .Include("~/Views/Questions/Js/QuestionList/QuestionComponent.js")
                 .Include("~/Views/Shared/PinComponentVue/PinComponent.vue.js"));
 

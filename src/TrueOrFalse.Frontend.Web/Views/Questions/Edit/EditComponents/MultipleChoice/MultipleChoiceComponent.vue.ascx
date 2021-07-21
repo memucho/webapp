@@ -10,6 +10,7 @@
                 <input type="text" class="form-control" :id="'SolutionInput-'+index" placeholder="" v-model="choice.Text" v-on:change="solutionBuilder()" :class="{'is-empty' : choice.Text.length <= 0 && highlightEmptyFields}">
                 <div v-if="choices.length > 1" @click="deleteChoice(index)" class="input-group-addon btn grey-bg"><i class="fas fa-trash"></i></div>
             </div>
+            <div v-if="choice.Text.length <= 0 && highlightEmptyFields" class="field-error">Bitte gib eine Antwort ein.</div>
         </div>
         <div class="d-flex">
             <div @click="addChoice()" class="btn grey-bg form-control col-md-6">Antwort hinzufügen</div>

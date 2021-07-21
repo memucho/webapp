@@ -1,4 +1,14 @@
-﻿#app {
+﻿@media (min-width: 768px) {
+}@media (min-width: 768px) {
+}@media (max-width: 767px) {
+}@media (min-width: 768px) {
+}@media (min-width: 768px) {
+}@media (min-width: 768px) {
+}@media (max-width: 767px) {
+}@media (max-width: 767px) {
+}@media (max-width: 649px) {
+}@media (min-width: 650px) {
+}#app {
   font-family: Open Sans, Regular;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -249,7 +259,7 @@
 }
 .vuetable .td-knowledge-bar-wrapper .set-knowledge-bar .solid-knowledge,
 .vuetable .td-knowledge-bar-wrapper .category-knowledge-bar .solid-knowledge {
-  background-color: #afd534;
+  background-color: #AFD534;
 }
 .vuetable .td-knowledge-bar-wrapper .set-knowledge-bar .not-learned,
 .vuetable .td-knowledge-bar-wrapper .category-knowledge-bar .not-learned {
@@ -257,7 +267,7 @@
 }
 .vuetable .td-knowledge-bar-wrapper .set-knowledge-bar .not-in-wish-knowledge,
 .vuetable .td-knowledge-bar-wrapper .category-knowledge-bar .not-in-wish-knowledge {
-  background-color: #dddddd;
+  background-color: #DDDDDD;
 }
 .vuetable .topic-count-td {
   vertical-align: middle;

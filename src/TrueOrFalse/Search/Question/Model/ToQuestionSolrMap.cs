@@ -21,7 +21,6 @@ namespace TrueOrFalse.Search
                 {
                     Id = question.Id,
                     CreatorId = creator.Id,
-                    ValuatorIds = valuations.Where(v => v.IsInWishKnowledge && v.User != null).Select(x => x.User.Id).ToList(),
                     Valuation = valuations.Count(v => v.IsInWishKnowledge),
                     IsPrivate = question.Visibility != QuestionVisibility.All,
                     Text = question.Text,

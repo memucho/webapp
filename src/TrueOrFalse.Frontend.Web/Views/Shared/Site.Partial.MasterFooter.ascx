@@ -43,7 +43,6 @@
         <a href="<%=Links.ForTeachers() %>">memucho für Lehrer/Dozenten</a><br />
         <a href="<%= Links.Users() %>">Alle Nutzer</a><br />
             &nbsp;<br />
-        <a href="http://blog.memucho.de">memucho-Blog</a><br />
         <a href="<%=Links.WelfareCompany() %>">Gemeinwohlökonomie</a><br />
         <a href="<%=Links.Jobs() %>">Jobs</a><br />
         <a href="<%=Links.Contact %>">Kontakt & Anfahrt</a><br />
@@ -78,7 +77,7 @@
     <div class="FooterCol xxs-stack col-xs-6 col-md-2">
         <b>Hilfe</b><br />
         <a href="<%=Links.HelpFAQ() %>">FAQ</a><br />
-        Christof: <span style="white-space: nowrap;">+49-1577-6825707</span>
+        Robert: <span style="white-space: nowrap;">+49-0178-1866848</span>
     </div>
 
     <div class="FooterCol xxs-stack col-xs-6 col-md-2">

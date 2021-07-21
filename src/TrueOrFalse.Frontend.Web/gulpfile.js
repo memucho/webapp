@@ -45,7 +45,7 @@ exports.copyScripts = copyScripts;
 
 function buildTiptap(cb) {
     var run = require('gulp-run');
-    run('npm run build:tiptap');
+    run('npm run build:webpack');
     cb();
 }
 

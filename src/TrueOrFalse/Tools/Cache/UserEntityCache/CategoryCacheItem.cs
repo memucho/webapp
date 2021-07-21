@@ -119,22 +119,16 @@ public class CategoryCacheItem
         IEnumerable<Question> questions;
 
         if (fullList)
-        {
             questions = AggregatedCategories()
                 .SelectMany(c => EntityCache.GetQuestionsForCategory(c.Id))
                 .Distinct();
-        }
         else
-        {
             questions = EntityCache.GetQuestionsForCategory(categoryId)
                 .Distinct();
-        }
 
 
         if (onlyVisible)
-        {
             questions = questions.Where(q => q.IsVisibleToCurrentUser());
-        }
 
         return questions.ToList();
     }

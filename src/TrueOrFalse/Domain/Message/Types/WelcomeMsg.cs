@@ -18,7 +18,7 @@ public class WelcomeMsg
 
 <p>Viele Grüße,<br>
 Christof, Jule & Robert</p>
-<p style='font-size: 12px; margin-top: 20px'>E-Mail: team@memucho.de | Telefon: 01577-6825707 (Christof)</p>
+<p style='font-size: 12px; margin-top: 20px'>E-Mail: team@memucho.de | Telefon: 0178-1866848 (Robert)</p>
 ", user.Name);
 
         Sl.R<MessageRepo>().Create(new Message{

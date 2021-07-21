@@ -18,7 +18,9 @@
             <h1><i class="fa fa-list-ul"></i>&nbsp; Bearbeitungshistorie '<%= Model.CategoryName %>'</h1>
         </div>
     </div>
-    <% foreach (var day in Model.Days) { %>
+    <% foreach (var day in Model.Days) { 
+           var afterRelease = ReleaseDate.IsAfterRelease(day.DateTime);
+    %>
     
         <div class="row">
             <div class="col-md-12">
@@ -37,10 +39,12 @@
                     vor <%= item.ElapsedTime %> um <%= item.Time %>
                 </div>
                 <div class="col-xs-6 pull-right">
-                    <a class="btn btn-sm btn-default btn-primary" href="<%= Links.CategoryDetail(Model.CategoryName, Model.CategoryId, item.CategoryChangeId) %>">
-                        <i class="fa fa-desktop"></i> Revision anzeigen
-                    </a>&nbsp;
-                    
+                    <%if (afterRelease) {%>
+                        <a class="btn btn-sm btn-default btn-primary" href="<%= Links.CategoryDetail(Model.CategoryName, Model.CategoryId, item.CategoryChangeId) %>">
+                            <i class="fa fa-desktop"></i> Revision anzeigen
+                        </a>&nbsp;
+                    <%} %>
+
                     <a id="DisplayChanges" class="btn btn-sm btn-default btn-primary" href="<%= Links.CategoryHistoryDetail(Model.CategoryId, item.CategoryChangeId) %>">
                         <i class="fa fa-code-fork"></i> Änderungen anzeigen
                     </a>

@@ -210,6 +210,7 @@ public class EditCategoryController : BaseController
         });
     }
 
+    [AccessOnlyAsLoggedIn]
     [HttpPost]
     public JsonResult QuickCreate(string name, int parentCategoryId)
     {

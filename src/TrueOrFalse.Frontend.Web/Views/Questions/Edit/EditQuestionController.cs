@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Security;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
-using Newtonsoft.Json;
-using QuestionListJson;
+using Microsoft.Ajax.Utilities;
 using TrueOrFalse;
 using TrueOrFalse.Frontend.Web.Code;
 using TrueOrFalse.Web;
@@ -155,11 +155,22 @@ public class EditQuestionController : BaseController
         return Redirect(Links.EditQuestion(question));
     }
 
+    [AccessOnlyAsLoggedIn]
+    [HttpPost]
     public JsonResult VueCreate(QuestionDataJson questionDataJson)
     {
+        var safeText = GetSafeText(questionDataJson.TextHtml);
+        if (safeText.Length <= 0)
+            return new JsonResult
+            {
+                Data = new
+                {
+                    ErrorMsg = "Fehlender Fragetext",
+                }
+            };
         var question = new Question();
         question.Creator = _sessionUser.User;
-        question = UpdateQuestion(question, questionDataJson);
+        question = UpdateQuestion(question, questionDataJson, safeText);
 
         _questionRepo.Create(question);
 
@@ -168,40 +179,109 @@ public class EditQuestionController : BaseController
             QuestionInKnowledge.Pin(Convert.ToInt32(question.Id), _sessionUser.User);
 
         if (questionDataJson.SessionIndex > 0)
-        {
-            var questionListController = new QuestionListController();
-            questionListController.InsertNewQuestionToLearningSession(question, questionDataJson.SessionIndex);
-        }
+            InsertNewQuestionToLearningSession(question, questionDataJson.SessionIndex);
 
-        var questionsController = new QuestionsController(_questionRepo);
+        var questionController = new QuestionController(_questionRepo);
 
-        return Json(questionsController.LoadQuestion(question.Id));
+        return questionController.LoadQuestion(question.Id);
     }
 
+    [AccessOnlyAsLoggedIn]
     [HttpPost]
     public JsonResult VueEdit(QuestionDataJson questionDataJson)
     {
+        var safeText = GetSafeText(questionDataJson.TextHtml);
+        if (safeText.Length <= 0)
+            return new JsonResult
+            {
+                Data = new
+                {
+                    ErrorMsg = "Fehlender Fragetext",
+                }
+            };
         var question = Sl.QuestionRepo.GetById(questionDataJson.QuestionId);
-        question = UpdateQuestion(question, questionDataJson);
+        question = UpdateQuestion(question, questionDataJson, safeText);
             
         _questionRepo.Update(question);
         Sl.QuestionChangeRepo.AddUpdateEntry(question);
         EntityCache.AddOrUpdate(question);
 
-        var questionsController = new QuestionsController(_questionRepo);
-
         if (questionDataJson.SessionIndex > 0)
-        {
-            var questionListController = new QuestionListController();
-            questionListController.InsertNewQuestionToLearningSession(question, questionDataJson.SessionIndex);
-        }
+            InsertNewQuestionToLearningSession(question, questionDataJson.SessionIndex);
 
-        return Json(questionsController.LoadQuestion(question.Id));
+        var questionController = new QuestionController(_questionRepo);
+
+        return questionController.LoadQuestion(question.Id);
     }
 
-    private Question UpdateQuestion(Question question, QuestionDataJson questionDataJson)
+    [AccessOnlyAsLoggedIn]
+    [HttpPost]
+    public JsonResult CreateFlashcard(FlashCardLoader flashCardJson)
     {
-        question.Text = questionDataJson.Text;
+        var safeText = GetSafeText(flashCardJson.TextHtml);
+        if (safeText.Length <= 0)
+            return new JsonResult {Data = new
+            {
+                ErrorMsg = "Fehlender Fragetext",
+            }};
+        var serializer = new JavaScriptSerializer();
+        var question = new Question();
+        var questionRepo = Sl.QuestionRepo;
+
+        question.TextHtml = flashCardJson.TextHtml;
+        question.Text = safeText;
+        question.SolutionType = (SolutionType)Enum.Parse(typeof(SolutionType), "9");
+
+        var solutionModelFlashCard = new QuestionSolutionFlashCard();
+        solutionModelFlashCard.Text = flashCardJson.Answer;
+        question.Solution = serializer.Serialize(solutionModelFlashCard);
+
+        question.Creator = _sessionUser.User;
+        question.Categories.Add(Sl.CategoryRepo.GetById(flashCardJson.CategoryId));
+        var visibility = (QuestionVisibility)flashCardJson.Visibility;
+        question.Visibility = visibility;
+        question.License = LicenseQuestionRepo.GetDefaultLicense();
+
+        questionRepo.Create(question);
+
+        Sl.QuestionChangeRepo.AddUpdateEntry(question);
+
+        if (flashCardJson.AddToWishknowledge)
+            QuestionInKnowledge.Pin(Convert.ToInt32(question.Id), _sessionUser.User);
+
+        InsertNewQuestionToLearningSession(question, flashCardJson.LastIndex);
+
+        var questionController = new QuestionController(_questionRepo);
+
+        var json = questionController.LoadQuestion(question.Id);
+
+        return json;
+    }
+
+    private string GetSafeText(string text)
+    {
+        return Regex.Replace(text, "<.*?>", "");
+    }
+
+    private void InsertNewQuestionToLearningSession(Question question, int sessionIndex)
+    {
+        var learningSession = LearningSessionCache.GetLearningSession();
+        var step = new LearningSessionStep(question);
+        learningSession.Steps.Insert(sessionIndex, step);
+    }
+    public class FlashCardLoader
+    {
+        public int CategoryId { get; set; }
+        public string TextHtml { get; set; }
+        public string Answer { get; set; }
+        public int Visibility { get; set; }
+        public bool AddToWishknowledge { get; set; }
+        public int LastIndex { get; set; }
+    }
+    private Question UpdateQuestion(Question question, QuestionDataJson questionDataJson, string safeText)
+    {
+        question.TextHtml = questionDataJson.TextHtml;
+        question.Text = safeText;
         question.SolutionType = (SolutionType)Enum.Parse(typeof(SolutionType), questionDataJson.SolutionType);
 
         var categories = new List<Category>();
@@ -245,7 +325,7 @@ public class EditQuestionController : BaseController
     {
         public int[] CategoryIds { get; set; }
         public int QuestionId { get; set; }
-        public string Text { get; set; }
+        public string TextHtml { get; set; }
         public dynamic Solution { get; set; }
         public string SolutionMetadataJson { get; set; }
         public int Visibility { get; set; }

@@ -33,7 +33,6 @@ public class QuestionFilter : ConditionContainer
 {
     public string SearchTerm;
     public int CreatorId = -1;
-    public int ValuatorId = -1;
     public bool IgnorePrivates = true;
 
     public IList<int> Categories = new List<int>();
@@ -92,7 +91,6 @@ public class QuestionFilter : ConditionContainer
     {
         SearchTerm = "";
         CreatorId = -1;
-        ValuatorId = -1;
         IgnorePrivates = true;
         Categories.Clear();
 

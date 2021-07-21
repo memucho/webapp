@@ -309,6 +309,7 @@
     <Compile Include="Domain\Category\History\Persistence\CategoryChangeMap.cs" />
     <Compile Include="Domain\Category\History\Persistence\CategoryChangeRepo.cs" />
     <Compile Include="Domain\Category\CategoryVisibility.cs" />
+    <Compile Include="Domain\Category\ReleaseDate.cs" />
     <Compile Include="Domain\Category\Type\Impl\CategoryTypeCourse.cs" />
     <Compile Include="Domain\Category\Type\Impl\CategoryTypeEducationProvider.cs" />
     <Compile Include="Domain\Knowledge\Count\GetWishTopicCount.cs" />

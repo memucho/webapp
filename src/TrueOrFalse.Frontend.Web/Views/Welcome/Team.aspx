@@ -24,7 +24,7 @@
         </p>
         <p class="ShortParagraph">
             Wenn du Fragen oder Anregungen hast, schreibe uns eine Email an <a href="mailto:team@memucho.de">team@memucho.de</a>   oder<br />
-            rufe uns an: +49 - 1577 - 6825707
+            rufe uns an: +49-0178-1866848
         </p>
     </div>
       

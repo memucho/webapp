@@ -2,58 +2,8 @@
 if (eventBus == null)
     var eventBus = new Vue();
 
-var {
-    tiptap,
-    tiptapUtils,
-    tiptapCommands,
-    tiptapExtensions,
-} = tiptapBuild;
-var {
-    apache,
-    //cLike,
-    xml,
-    bash,
-    //c,
-    coffeescript,
-    csharp,
-    css,
-    markdown,
-    diff,
-    ruby,
-    go,
-    http,
-    ini,
-    java,
-    javascript,
-    json,
-    kotlin,
-    less,
-    lua,
-    makefile,
-    perl,
-    nginx,
-    objectivec,
-    php,
-    phpTemplate,
-    plaintext,
-    properties,
-    python,
-    pythonREPL,
-    rust,
-    scss,
-    shell,
-    sql,
-    swift,
-    yaml,
-    typescript,
-} = hljsBuild;
+Vue.component('editor-content', tiptapEditorContent);
 
-function initialState() {
-}
-
-
-Vue.component('editor-menu-bar', tiptap.EditorMenuBar);
-Vue.component('editor-content', tiptap.EditorContent);
 var editQuestionComponent = Vue.component('edit-question-component',
     {
         data() {
@@ -74,157 +24,15 @@ var editQuestionComponent = Vue.component('edit-question-component',
                 edit: false,
                 empty: 'empty',
                 licenseIsValid: false,
-                questionEditor: new tiptap.Editor({
-                    editable: true,
-                    extensions: [
-                        new tiptapExtensions.Blockquote(),
-                        new tiptapExtensions.BulletList(),
-                        new tiptapExtensions.CodeBlock(),
-                        new tiptapExtensions.HardBreak(),
-                        new tiptapExtensions.ListItem(),
-                        new tiptapExtensions.OrderedList(),
-                        new tiptapExtensions.TodoItem(),
-                        new tiptapExtensions.TodoList(),
-                        new tiptapExtensions.Link(),
-                        new tiptapExtensions.Bold(),
-                        new tiptapExtensions.Code(),
-                        new tiptapExtensions.Italic(),
-                        new tiptapExtensions.Strike(),
-                        new tiptapExtensions.Underline(),
-                        new tiptapExtensions.History(),
-                        //new tiptapExtensions.CodeBlockHighlight({
-                        //    languages: {
-                        //        apache,
-                        //        //cLike,
-                        //        xml,
-                        //        bash,
-                        //        //c,
-                        //        coffeescript,
-                        //        csharp,
-                        //        css,
-                        //        markdown,
-                        //        diff,
-                        //        ruby,
-                        //        go,
-                        //        http,
-                        //        ini,
-                        //        java,
-                        //        javascript,
-                        //        json,
-                        //        kotlin,
-                        //        less,
-                        //        lua,
-                        //        makefile,
-                        //        perl,
-                        //        nginx,
-                        //        objectivec,
-                        //        php,
-                        //        phpTemplate,
-                        //        plaintext,
-                        //        properties,
-                        //        python,
-                        //        pythonREPL,
-                        //        rust,
-                        //        scss,
-                        //        shell,
-                        //        sql,
-                        //        swift,
-                        //        yaml,
-                        //        typescript,
-                        //    },
-                        //}),
-                        new tiptapExtensions.Placeholder({
-                            emptyEditorClass: 'is-editor-empty',
-                            emptyNodeClass: 'is-empty',
-                            emptyNodeText: 'Gib den Fragetext ein',
-                            showOnlyCurrent: true,
-                        })
-                    ],
-                    editorProps: {
-                        handleClick: (view, pos, event) => {
-                        },
-                        attributes: {
-                            id: 'QuestionInputField',
-                        }
-                    },
-                    onUpdate: ({ getJSON, getHTML }) => {
-                        this.questionJson = getJSON();
-                        this.questionHtml = getHTML();
-                    },
-                }),
+                questionExtensionEditor: null,
+                questionExtension: null,
+                questionExtensionJson: null,
+                questionExtensionHtml: null,
+                questionEditor: null,
                 question: null,
                 questionJson: null,
                 questionHtml: null,
-                descriptionEditor: new tiptap.Editor({
-                    editable: true,
-                    extensions: [
-                        new tiptapExtensions.Blockquote(),
-                        new tiptapExtensions.BulletList(),
-                        new tiptapExtensions.CodeBlock(),
-                        new tiptapExtensions.HardBreak(),
-                        new tiptapExtensions.ListItem(),
-                        new tiptapExtensions.OrderedList(),
-                        new tiptapExtensions.TodoItem(),
-                        new tiptapExtensions.TodoList(),
-                        new tiptapExtensions.Link(),
-                        new tiptapExtensions.Bold(),
-                        new tiptapExtensions.Code(),
-                        new tiptapExtensions.Italic(),
-                        new tiptapExtensions.Strike(),
-                        new tiptapExtensions.Underline(),
-                        new tiptapExtensions.History(),
-                        new tiptapExtensions.CodeBlockHighlight({
-                            languages: {
-                                apache,
-                                //cLike,
-                                xml,
-                                bash,
-                                //c,
-                                coffeescript,
-                                csharp,
-                                css,
-                                markdown,
-                                diff,
-                                ruby,
-                                go,
-                                http,
-                                ini,
-                                java,
-                                javascript,
-                                json,
-                                kotlin,
-                                less,
-                                lua,
-                                makefile,
-                                perl,
-                                nginx,
-                                objectivec,
-                                php,
-                                phpTemplate,
-                                plaintext,
-                                properties,
-                                python,
-                                pythonREPL,
-                                rust,
-                                scss,
-                                shell,
-                                sql,
-                                swift,
-                                yaml,
-                                typescript,
-                            },
-                        }),
-                        new tiptapExtensions.Placeholder({
-                            emptyEditorClass: 'is-editor-empty',
-                            emptyNodeClass: 'is-empty',
-                            emptyNodeText: 'Erklärungen, Zusatzinfos, Merkhilfen, Abbildungen, weiterführende Literatur und Links etc.',
-                            showOnlyCurrent: true,
-                        })
-                    ],
-                    onUpdate: ({ getJSON, getHTML }) => {
-                        this.descriptionHtml = getHTML();
-                    },
-                }),
+                descriptionEditor: null,
                 descriptionHtml: null,
                 visibility: 1,
                 categoryIds: [],
@@ -244,6 +52,9 @@ var editQuestionComponent = Vue.component('edit-question-component',
                 solutionIsValid: false,
                 showMore: false,
                 disabled: true,
+                modalIsVisible: false,
+                showQuestionExtension: false,
+                showDescription: false,
             }
         },
         mounted() {
@@ -259,6 +70,10 @@ var editQuestionComponent = Vue.component('edit-question-component',
                 });
             $('#EditQuestionModal').on('show.bs.modal',
                 event => {
+                    this.showQuestionExtension = false;
+                    this.showDescription = false;
+                    this.modalIsVisible = true;
+                    this.loadEditors();
                     this.isLearningSession = $('#hddIsLearningSession').length > 0;
                     this.highlightEmptyFields = false;
                     if (this.visibility == 1)
@@ -293,8 +108,8 @@ var editQuestionComponent = Vue.component('edit-question-component',
                 });
 
             $('#EditQuestionModal').on('hidden.bs.modal', () => {
-                this.questionEditor.destroy();
-                this.descriptionEditor.destroy();
+                this.modalIsVisible = false;
+                this.destroyEditors();
                 Object.assign(this.$data, this.$options.data.apply(this));
             });
         },
@@ -326,21 +141,130 @@ var editQuestionComponent = Vue.component('edit-question-component',
             },
         },
         methods: {
+            loadEditors() {
+                this.questionEditor = new tiptapEditor({
+                        extensions: [
+                            tiptapStarterKit,
+                            tiptapLink.configure({
+                                HTMLAttributes: {
+                                    target: '_self',
+                                    rel: 'noopener noreferrer nofollow'
+                                }
+                            }),
+                            tiptapCodeBlockLowlight.configure({
+                                lowlight,
+                            }),
+                            tiptapUnderline,
+                            tiptapPlaceholder.configure({
+                                emptyEditorClass: 'is-editor-empty',
+                                emptyNodeClass: 'is-empty',
+                                placeholder: 'Ergänzungen zur Frage zB. Bilder, Code usw.',
+                                showOnlyCurrent: true,
+                            }),
+                            tiptapImage
+                        ],
+                        editorProps: {
+                            handleClick: (view, pos, event) => {
+                            },
+                            attributes: {
+                                id: 'QuestionInputField',
+                            }
+                        },
+                        onUpdate: ({ editor }) => {
+                            this.questionExtensionJson = editor.getJSON();
+                            this.questionExtensionHtml = editor.getHTML();
+                        },
+                }),
+
+                this.questionExtensionEditor = new tiptapEditor({
+                    extensions: [
+                        tiptapStarterKit,
+                        tiptapLink.configure({
+                            HTMLAttributes: {
+                                target: '_self',
+                                rel: 'noopener noreferrer nofollow'
+                            }
+                        }),
+                        tiptapCodeBlockLowlight.configure({
+                            lowlight,
+                        }),
+                        tiptapUnderline,
+                        tiptapPlaceholder.configure({
+                            emptyEditorClass: 'is-editor-empty',
+                            emptyNodeClass: 'is-empty',
+                            placeholder: 'Gib den Fragetext ein',
+                            showOnlyCurrent: true,
+                        }),
+                        tiptapImage
+                    ],
+                    editorProps: {
+                        handleClick: (view, pos, event) => {
+                        },
+                        attributes: {
+                            id: 'QuestionExtensionInputField',
+                        }
+                    },
+                    onUpdate: ({ editor }) => {
+                        this.questionJson = editor.getJSON();
+                        this.questionHtml = editor.getHTML();
+                    },
+                });
+
+                this.descriptionEditor = new tiptapEditor({
+                    extensions: [
+                        tiptapStarterKit,
+                        tiptapLink.configure({
+                            HTMLAttributes: {
+                                target: '_self',
+                                rel: 'noopener noreferrer nofollow'
+                            }
+                        }),
+                        tiptapCodeBlockLowlight.configure({
+                            lowlight,
+                        }),
+                        tiptapUnderline,
+                        tiptapPlaceholder.configure({
+                            emptyEditorClass: 'is-editor-empty',
+                            emptyNodeClass: 'is-empty',
+                            placeholder:
+                                'Erklärungen, Zusatzinfos, Merkhilfen, Abbildungen, weiterführende Literatur und Links etc.',
+                            showOnlyCurrent: true,
+                        }),
+                        tiptapImage
+                    ],
+                    onUpdate: ({ editor }) => {
+                        this.descriptionHtml = editor.getHTML();
+                    },
+                });
+            },
+            destroyEditors() {
+                this.questionEditor.destroy();
+                this.questionEditor = null;
+                this.questionExtensionEditor.destroy();
+                this.questionExtensionEditor = null;
+                this.descriptionEditor.destroy();
+                this.descriptionEditor = null;
+            },
             getQuestionData(id) {
-                var json = { questionId: id };
                 var self = this;
                 $.ajax({
                     type: 'post',
                     contentType: "application/json",
-                    url: '/Questions/GetQuestionData',
-                    data: JSON.stringify(json),
+                    url: '/Question/GetData/' + id,
                     success: function (data) {
                         self.solutionType = data.SolutionType;
                         self.initiateSolution(data.Solution);
                         self.questionHtml = data.Text;
-                        self.questionEditor.setContent(data.Text);
+                        self.questionEditor.commands.setContent(data.Text);
+                        self.questionExtensionHtml = data.TextExtended;
+                        self.questionExtensionEditor.commands.setContent(data.TextExtended);
+                        if (data.TextExtended != null && data.TextExtended.length > 0)
+                            self.showQuestionExtension = true;
                         self.categoryIds = data.CategoryIds;
                         self.descriptionHtml = data.DescriptionHtml;
+                        self.descriptionEditor.commands.setContent(data.DescriptionHtml);
+                        if (data.DescriptionHtml != null && data.DescriptionHtml.length > 0)
+                            self.showDescription = true;
                         self.selectedCategories = data.Categories;
                         self.licenseId = data.LicenseId;
                         self.solutionMetadataJson = data.SolutionMetadataJson;
@@ -381,6 +305,10 @@ var editQuestionComponent = Vue.component('edit-question-component',
                 return solution;
             },
             save() {
+                if (NotLoggedIn.Yes()) {
+                    NotLoggedIn.ShowErrorMsg("EditQuestion");
+                    return;
+                }
                 if (this.disabled) {
                     this.highlightEmptyFields = true;
                     return;
@@ -411,9 +339,9 @@ var editQuestionComponent = Vue.component('edit-question-component',
                                 self.sessionIndex);
 
                             if (!self.edit)
-                                eventBus.$emit('add-question-to-list', result.Data);
+                                eventBus.$emit('add-question-to-list', result);
                             else
-                                eventBus.$emit('reload-question-id', result.Data.Id);
+                                eventBus.$emit('reload-question-id', result.Id);
                             eventBus.$emit("change-active-question", self.sessionIndex);
 
                         }
@@ -442,7 +370,7 @@ var editQuestionComponent = Vue.component('edit-question-component',
             getSaveJson() {
                 let solution = this.getSolution();
                 let solutionType = parseInt(this.solutionType);
-                if (this.solutionType == 4 || this.solutionType == 7)
+                if (this.solutionType == 4 || this.solutionType == 6)
                     solutionType = 1;
 
                 let licenseId = this.getLicenseId();
@@ -456,7 +384,7 @@ var editQuestionComponent = Vue.component('edit-question-component',
 
                 var jsonExtension = {
                     CategoryIds: this.categoryIds,
-                    Text: this.questionHtml,
+                    TextHtml: this.questionHtml,
                     Solution: solution,
                     SolutionType: solutionType,
                     Visibility: this.visibility,
@@ -516,6 +444,8 @@ var editQuestionComponent = Vue.component('edit-question-component',
                 }
             },
             formValidator() {
+                if (!this.modalIsVisible)
+                    return;
                 var questionIsValid = this.questionEditor.state.doc.textContent.length > 0;
                 var solutionIsValid = this.solutionIsValid;
                 this.licenseIsValid = this.licenseConfirmation || this.visibility == 1;

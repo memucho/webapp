@@ -38,13 +38,6 @@
     }
   },
   {
-    "outputFile": "Views/Categories/Categories.css",
-    "inputFile": "Views/Categories/Categories.less",
-    "minify": {
-      "enabled": false
-    }
-  },
-  {
     "outputFile": "Style/components.css",
     "inputFile": "Style/components.less",
     "minify": {
@@ -155,16 +148,8 @@
     }
   },
   {
-    "outputFile": "Views/Welcome/Register.css",
-    "inputFile": "Views/Welcome/Register.less"
-  },
-  {
     "outputFile": "Views/Help/FAQ.css",
     "inputFile": "Views/Help/FAQ.less"
-  },
-  {
-    "outputFile": "Views/Maintenance/ContentReport.css",
-    "inputFile": "Views/Maintenance/ContentReport.less"
   },
   {
     "outputFile": "Views/Categories/Edit/EditCategory.css",
@@ -177,10 +162,6 @@
   {
     "outputFile": "Style/bootstrap/bootstrap.css",
     "inputFile": "Style/bootstrap/bootstrap.less"
-  },
-  {
-    "outputFile": "Views/Sets/Edit/EditSet.css",
-    "inputFile": "Views/Sets/Edit/EditSet.less"
   },
   {
     "outputFile": "Views/Questions/Answer/AnswerQuestionSolution.css",
@@ -218,14 +199,6 @@
     "inputFile": "Views/Error/Error.less"
   },
   {
-    "outputFile": "Views/Welcome/Drive.css",
-    "inputFile": "Views/Welcome/Drive.less"
-  },
-  {
-    "outputFile": "Views/Welcome/Directions.css",
-    "inputFile": "Views/Welcome/Directions.less"
-  },
-  {
     "outputFile": "Style/utils.css",
     "inputFile": "Style/utils.less"
   },
@@ -236,14 +209,6 @@
   {
     "outputFile": "Views/Users/Account/Membership.css",
     "inputFile": "Views/Users/Account/Membership.less"
-  },
-  {
-    "outputFile": "Views/Users/Account/WidgetViews.css",
-    "inputFile": "Views/Users/Account/WidgetViews.less"
-  },
-  {
-    "outputFile": "Views/Users/Account/WidgetViews/WidgetViews.css",
-    "inputFile": "Views/Users/Account/WidgetViews/WidgetViews.less"
   },
   {
     "outputFile": "Views/Users/Account/WidgetStats/WidgetStats.css",
@@ -282,10 +247,6 @@
     "inputFile": "Views/Shared/Spinner/Spinner.less"
   },
   {
-    "outputFile": "Style/TopHeader.css",
-    "inputFile": "Style/TopHeader.less"
-  },
-  {
     "outputFile": "Views/Questions/Answer/AnswerQuestionDetails.css",
     "inputFile": "Views/Questions/Answer/AnswerQuestionDetails.less"
   },
@@ -320,10 +281,6 @@
   {
     "outputFile": "Views/Questions/History/QuestionHistory.css",
     "inputFile": "Views/Questions/History/QuestionHistory.less"
-  },
-  {
-    "outputFile": "Views/Categories/History/Detail/CategoryHistoryDetail.css",
-    "inputFile": "Views/Categories/History/Detail/CategoryHistoryDetail.less"
   },
   {
     "outputFile": "Views/Shared/Switch/Switch.css",

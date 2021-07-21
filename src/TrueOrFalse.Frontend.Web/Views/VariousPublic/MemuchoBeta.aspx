@@ -47,7 +47,7 @@
                 <li>Erzähle uns, was dir an memucho gut gefällt, was du vermisst und welche Fehler dir aufgefallen sind.</li>
             </ul>
             Vorschläge und Fehler kannst du <a href="#" onclick="_urq.push(['Feedback_Open']);">direkt hier eintragen</a>, du kannst auch  
-            Christof anrufen (+49-1577-6825707) oder ihm eine E-Mail schreiben (<span class="mailme">christof at memucho dot de</span>).
+            Robert anrufen (+49-0178-1866848) oder ihm eine E-Mail schreiben (<span class="mailme">robert at memucho dot de</span>).
         </p>
     </div>
     <div class="col-xs-12 col-sm-4" style="text-align: center;">

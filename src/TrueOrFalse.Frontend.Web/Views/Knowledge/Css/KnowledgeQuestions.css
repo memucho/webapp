@@ -1,4 +1,14 @@
-﻿#app {
+﻿@media (min-width: 768px) {
+}@media (min-width: 768px) {
+}@media (max-width: 767px) {
+}@media (min-width: 768px) {
+}@media (min-width: 768px) {
+}@media (min-width: 768px) {
+}@media (max-width: 767px) {
+}@media (max-width: 767px) {
+}@media (max-width: 649px) {
+}@media (min-width: 650px) {
+}#app {
   font-family: Open Sans, Regular;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -96,7 +106,7 @@ table {
   border-radius: 10px;
 }
 .vuetable .know-was .greenD {
-  background-color: #afd534;
+  background-color: #AFD534;
   text-align: center;
 }
 .vuetable .know-was .yellow {
