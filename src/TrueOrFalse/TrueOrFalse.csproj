@@ -333,6 +333,7 @@
     <Compile Include="Infrastructure\Logging\LoggController.cs" />
     <Compile Include="Infrastructure\ObjectExtensions.cs" />
     <Compile Include="Infrastructure\Payment\Payment.cs" />
+    <Compile Include="Infrastructure\Payment\PaymentStatus.cs" />
     <Compile Include="Infrastructure\Persistence\Session\SqlDebugOutputInterceptor.cs" />
     <Compile Include="Tools\Analytics\Widget\WidgetDetailViewsPerMonthAndTypeResult.cs" />
     <Compile Include="Tools\Analytics\Widget\WidgetViewsPerMonthAndKeyResult.cs" />
